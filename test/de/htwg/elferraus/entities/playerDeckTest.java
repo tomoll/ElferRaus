@@ -73,8 +73,8 @@ public class playerDeckTest {
         card c = null;
         playerDeck instance = null;
         boolean expResult = false;
-        boolean result = instance.contains(c);
-        assertEquals(expResult, result);
+        //boolean result = instance.contains(c);
+        //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
