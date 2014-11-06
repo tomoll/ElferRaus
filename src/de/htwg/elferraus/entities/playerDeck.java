@@ -14,12 +14,19 @@ public class playerDeck {
     public void setSize(int size){
         this.size = size;
     }
-    public boolean contains (card c){
+    public int contains (card c){
         for(int i = 0; i<this.size; i++)    
             if(c.getColour().equals(deck[i].getColour()) && c.getNumber() == (deck[i].getNumber())) {
-                return true;
+                return i;
             }
-        return false;
+        return -1;
+    }
+    public card popCard(card c){
+        if(this.contains(c)==-1){
+            return null;
+        }else{
+            return deck[this.contains(c)];
+        }
     }
 }
 
