@@ -10,7 +10,7 @@ package de.htwg.elferraus.entities;
  *
  * @author stinkeChristian
  */
-public class card {
+public class cardTest{
     private int number;
     private String colour;
     
