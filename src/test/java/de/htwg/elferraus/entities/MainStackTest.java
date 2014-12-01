@@ -28,8 +28,12 @@ public class MainStackTest {
     
     @Test
     public void testpopCard() {
-        Card d = new Card(19, "y");
-        assertEquals(d,stack.popCard());
+        assertEquals(80, stack.getAmount());
+        Card x = stack.popCard();
+        Card d = stack.popCard();
+        
+        assertEquals("b", d.getColour());
+        assertEquals(19, d.getNumber());
     }
     
     

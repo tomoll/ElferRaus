@@ -1,27 +1,33 @@
 package de.htwg.elferraus.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Christian Hümmer, Tobias Moll
  */
 
 public class PlayerDeck {
-    private int size;
-    Card [] deck = new Card[size];
     
-    public PlayerDeck(int size) {
-        this.size = size;
-    }
+    List<Card> playerDeck = new ArrayList<Card>(80);
+  
     public int getSize(){
-        return this.size;
+        return playerDeck.size();
     }
    
-    public Card popplCard(int i){
-        Card c = new Card(2,"y");
-        return c;
-     
+    public Card indexToCard(int i){
+        return playerDeck.get(i);
     }
-    public void addCard(Card c){ 
+    public Card popplCard(Card c){
+        if(playerDeck.remove(c)){
+            return c;
+        }else{
+            return null;
+        }
+    }
+    public void addCard(Card c){
+        playerDeck.add(c);
     }
 }
 

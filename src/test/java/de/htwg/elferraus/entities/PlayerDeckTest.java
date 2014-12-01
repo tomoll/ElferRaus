@@ -17,20 +17,26 @@ public class PlayerDeckTest {
     
     @Before
     public void setUp() throws Exception {
-        deck = new PlayerDeck(20);
+        deck = new PlayerDeck();
     }
     
    
     @Test
     public void testGetSize() {
-        assertEquals(10, deck.getSize());
+        Card a = new Card(3, "r");
+        Card b = new Card(4, "r");
+        Card f = new Card(3, "y");
+        deck.addCard(a);
+        deck.addCard(b);
+        deck.addCard(f);
+        assertEquals(3, deck.getSize());
     }
 
     @Test
     public void testpopplCard() {
         Card c = new Card(2,"r");
         deck.addCard(c);
-        assertEquals(c,deck.popplCard(0));
+        assertEquals(c,deck.popplCard(c));
        
         
         

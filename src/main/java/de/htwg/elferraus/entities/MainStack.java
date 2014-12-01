@@ -7,22 +7,45 @@ package de.htwg.elferraus.entities;
 
 public class MainStack {
     private Card[] startstack = new Card[80];
+    int count=0;
+    String colour = "";
     //kein Array sondern Stack
     //am besten eigenen Zähler wegen Array 0 quasi 1!!!
     public MainStack() {
-        for(int i = 0; i<4; i++){
-            //doppelte Schleife um alle Karten zu erstellen und sortiert in Stapel rein 
+        for (int j=0; j < 4; j++){
+            switch(j){
+                case 0:
+                    colour = "y";
+                    break;
+                case 1:
+                    colour = "g";
+                    break;
+                case 2:
+                    colour = "r";
+                    break;
+                case 3:
+                    colour = "b";
+                    break;
+                default:
+                    break;
+            }
+        
+            for (int i=0; i < 20; i++){
+                startstack[count] = new Card(i+1, colour);
+                count++;
+            }
             
         }
+     
     }
     
     public int getAmount(){
-        return 88;
+        return (count);
     }
     
     public Card popCard(){
-        
-        return startstack[79];
+        count--;
+        return startstack[count];
     }
 
 
