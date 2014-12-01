@@ -29,7 +29,7 @@ public class ElferRausControllerTest {
 
     @Test
     public void testround() {
-        assertEquals(2,elfer.a);
+        assertEquals(3,elfer.a);
         elfer.round();
         assertEquals(3,elfer.a);
     
