@@ -1,6 +1,5 @@
 
 package de.htwg.elferraus.entities;
-import de.htwg.elferraus.*;
 
 
 import org.junit.Before;
@@ -24,12 +23,12 @@ public class CardTest {
 
     @Test
     public void testGetNumber() {
-        assertEquals(2, card.getNumber());
+        assertEquals(1, card.getNumber());
     }
 
     @Test
     public void testGetColour() {
-         assertEquals("r", card.getColour());
+         assertEquals("y", card.getColour());
     }
 
 }

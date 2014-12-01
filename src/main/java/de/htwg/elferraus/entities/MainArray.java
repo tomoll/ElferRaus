@@ -4,7 +4,6 @@
  * 
  *
 */
-
 package de.htwg.elferraus.entities;
 
 import java.util.LinkedList;
@@ -16,28 +15,63 @@ import java.util.LinkedList;
  */
 
 public class MainArray {
+    final private LinkedList<Card>[] array;
     
 
     public MainArray() {
+        // 1 = 'b'lue
+        // 2 = 'g'reen
+        // 3 = 'r'ed
+        // 4 = 'y'ellow
+        array = new LinkedList[4];
+        
         //Array mit 4 LinkedLists 
     }
     
     public void setHigh(Card c){
         //Liste oberhalb anlegen
+        int i = ColourStrToInt(c.getColour());
+        array[i].addLast(c);
     }
     
     public void setLow(Card c){
         //Liste unterhalb anlegen
+        int i = ColourStrToInt(c.getColour());
+        array[i].addFirst(c);
     }
     
-    public int getHigh(String colour){
-    
-        return 2;
+    public Card getHigh(String colour){
+        //höchste Karte von der Farbe zurück geben
+        int i = ColourStrToInt(colour);
+        return array[i].getLast();
     }
     
-    public int getLow(String colour){
-        
-        return 2;
+    public Card getLow(String colour){
+        //niedrigste Karte von der Farbe zurück geben
+        int i = ColourStrToInt(colour);
+        return array[i].getFirst();
+    }
+    
+    public void setEleven(Card eleven){
+        int i = ColourStrToInt(eleven.getColour());
+        array[i] = new LinkedList<Card>();
+        array[i].addFirst(eleven);
+    }
+    
+    private int ColourStrToInt(String colour){
+        int colourcode;
+        if(colour.equals("b")){
+            colourcode = 1;
+        } if(colour.equals("g")){
+            colourcode = 2;
+        } if(colour.equals("r")){
+            colourcode = 3;
+        } if(colour.equals("y")){
+            colourcode = 4;
+        } else {
+            colourcode = 0;
+        }
+        return colourcode;
     }
    
 

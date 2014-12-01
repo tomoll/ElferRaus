@@ -1,4 +1,3 @@
-
 package de.htwg.elferraus.entities;
 
 /**

@@ -18,23 +18,32 @@ public class MainArrayTest {
     @Before
     public void setUp() throws Exception {
         array = new MainArray();
+        Card redEleven = new Card(11,"r");
+        array.setEleven(redEleven);
     }
  
     
     @Test
     public void testgetHigh() {
-        Card card1 = new Card(12,"y");
+        Card card1 = new Card(12,"r");
         array.setHigh(card1);
-        assertEquals(12, array.getHigh("y"));
+        assertEquals(card1, array.getHigh("r"));
 
     }
     @Test
     public void testgetLow() {
         Card card2 = new Card(10,"r");
         array.setLow(card2);
-        assertEquals(10, array.getLow("r"));
+        assertEquals(card2, array.getLow("r"));
 
     }
+
+        
+    
+    /*@Test
+    public void testColourStrToInt() {
+        assertEquals(4, array.ColourStrToInt("y"));
+    }*/
    
     
 }

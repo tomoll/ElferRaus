@@ -1,7 +1,11 @@
 package de.htwg.elferraus.controller;
 
-public class ElferRausController {
-    //Table oder sowas wo ganze Spieltisch zusammen gebuat wird 
+import de.htwg.elferraus.entities.*;
+import de.htwg.util.observer.Observable;
+
+
+public class ElferRausController extends Observable {
+    //Table oder sowas wo ganze Spieltisch zusammen gebaut wird 
     int a;
     
     public ElferRausController(){
