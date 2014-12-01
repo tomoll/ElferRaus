@@ -74,5 +74,10 @@ public class MainArray {
         return colourcode;
     }
    
+    public String toString(){
+        //returns a String with the Cards on top and bottom of all Colours which 
+        //lay on the table 
+        return "noch machen";
+    }
 
 }

@@ -29,5 +29,10 @@ public class PlayerDeck {
     public void addCard(Card c){
         playerDeck.add(c);
     }
+    
+    public String toString(){
+        //returns a String with all the Cards from the Player
+        return "noch machen";
+    }
 }
 
