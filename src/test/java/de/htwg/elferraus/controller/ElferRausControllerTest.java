@@ -31,7 +31,7 @@ public class ElferRausControllerTest {
     public void testround() {
         assertEquals(3,elfer.a);
         elfer.round();
-        assertEquals(3,elfer.a);
+        assertEquals(4,elfer.a);
     
     }
     
