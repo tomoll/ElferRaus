@@ -10,8 +10,10 @@ public class RoundController extends Observable {
     //Rundenfunktion, steuert wer gerade dran ist gibt bescheid für nächsten Spieler
     //leitet Ausgabe ein?
     //teilt Karten am Anfang vom Spiel aus 
+    private int players;
     
-    int a;
+    
+    private int a;
     
     public RoundController(){
         a = 3;

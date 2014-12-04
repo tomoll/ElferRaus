@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PlayerDeck {
     
-    List<Card> playerDeck = new ArrayList<Card>(80);
+    private List<Card> playerDeck = new ArrayList<Card>(80);
   
     public int getSize(){
         return playerDeck.size();

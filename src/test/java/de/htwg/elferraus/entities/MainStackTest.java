@@ -36,5 +36,17 @@ public class MainStackTest {
         assertEquals(19, d.getNumber());
     }
     
+    @Test
+    public void testmixCards(){
+        Card c = stack.popCard();
+        assertEquals(20,c.getNumber());
+        assertEquals("b", c.getColour());
+        stack.mixCards();
+        c = stack.popCard();
+        assertFalse(19 == c.getNumber());
+        //assertFalse("b" == c.getColour());
+        
+    }
+    
     
 }

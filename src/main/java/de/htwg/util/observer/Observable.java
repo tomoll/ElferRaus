@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class Observable  {
 
-	protected Vector<IObserver> subscribers = new Vector<IObserver>(2);
+	private Vector<IObserver> subscribers = new Vector<IObserver>(2);
 
 	public void addObserver(IObserver s) {
 		subscribers.addElement(s);

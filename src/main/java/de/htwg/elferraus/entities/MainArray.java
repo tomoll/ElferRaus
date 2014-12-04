@@ -30,35 +30,35 @@ public class MainArray {
     
     public void setHigh(Card c){
         //Liste oberhalb anlegen
-        int i = ColourStrToInt(c.getColour());
+        int i = colourStrToInt(c.getColour());
         array[i].addLast(c);
     }
     
     public void setLow(Card c){
         //Liste unterhalb anlegen
-        int i = ColourStrToInt(c.getColour());
+        int i = colourStrToInt(c.getColour());
         array[i].addFirst(c);
     }
     
     public Card getHigh(String colour){
         //höchste Karte von der Farbe zurück geben
-        int i = ColourStrToInt(colour);
+        int i = colourStrToInt(colour);
         return array[i].getLast();
     }
     
     public Card getLow(String colour){
         //niedrigste Karte von der Farbe zurück geben
-        int i = ColourStrToInt(colour);
+        int i = colourStrToInt(colour);
         return array[i].getFirst();
     }
     
     public void setEleven(Card eleven){
-        int i = ColourStrToInt(eleven.getColour());
+        int i = colourStrToInt(eleven.getColour());
         array[i] = new LinkedList<Card>();
         array[i].addFirst(eleven);
     }
     
-    private int ColourStrToInt(String colour){
+    private int colourStrToInt(String colour){
         int colourcode;
         if(colour.equals("b")){
             colourcode = 1;
