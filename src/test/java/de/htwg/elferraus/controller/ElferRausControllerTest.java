@@ -15,15 +15,15 @@ import static org.junit.Assert.*;
  *
  * @author Christian Hümmer, Tobias Moll
  */
-public class RoundControllerTest {
+public class ElferRausControllerTest {
     
-    public RoundControllerTest() {
+    public ElferRausControllerTest() {
     }
-    RoundController elfer;
+    ElferRausController elfer;
   
     @Before
     public void setUp() {
-        elfer = new RoundController();       
+        elfer = new ElferRausController();       
     }
    
 

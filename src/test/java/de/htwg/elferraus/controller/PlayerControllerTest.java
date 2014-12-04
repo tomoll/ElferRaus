@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Tobi
  */
-public class ActionControllerTest {
+public class PlayerControllerTest {
     
-    public ActionControllerTest() {
+    public PlayerControllerTest() {
     }
     
     @BeforeClass
