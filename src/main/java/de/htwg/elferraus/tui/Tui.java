@@ -17,6 +17,7 @@ public class Tui implements IObserver {
 
     private ElferRausController controller;
     Scanner scanner;
+    Scanner subscanner;
     String line = "";
 
     public Tui(ElferRausController controller) {
@@ -30,6 +31,17 @@ public class Tui implements IObserver {
     }
 
     public void printTUI() {
+        System.out.println(controller.getMainString());
+        System.out.println("------------------------------");
+        System.out.println(controller.currentPlayerString());
+        System.out.println("------------------------------");
+        System.out.println("Please enter a command:");
+        System.out.println("------------------------------");
+        System.out.println("1. Get new card from Stack");
+        System.out.println("2. Lay down card at Index");
+        System.out.println("3. End Round");
+        System.out.println("4. Update cards");
+        System.out.println("5. Quit Game");
 
     }
 
@@ -37,13 +49,17 @@ public class Tui implements IObserver {
         boolean quit = false;
                        
         if (line.equalsIgnoreCase("1")) {
-            
+            controller.getCardRequest();
         }
         else if (line.equalsIgnoreCase("2")) {
-            quit = true;
+            System.out.println("Please enter the index: ");
+            int i;
+            subscanner = new Scanner(System.in);
+            i = Integer.parseInt(subscanner.next());
+            controller.setCardRequest(i);
         }
         else if (line.equalsIgnoreCase("3")) {
-            quit = true;
+           controller.setEndRound();
         }
         else if (line.equalsIgnoreCase("4")) {
             //Do nothing, just redraw the updated grid

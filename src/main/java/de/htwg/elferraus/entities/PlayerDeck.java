@@ -30,6 +30,7 @@ public class PlayerDeck {
         playerDeck.add(c);
     }
     
+    @Override
     public String toString(){
         //returns a String with all the Cards from the Player
         return "noch machen";
