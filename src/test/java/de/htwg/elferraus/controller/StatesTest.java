@@ -5,6 +5,7 @@
  */
 package de.htwg.elferraus.controller;
 
+import de.htwg.elferraus.controller.States.GameStates;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,30 +17,18 @@ import static org.junit.Assert.*;
  *
  * @author Tobi
  */
-public class PlayerControllerTest {
+public class StatesTest {
     
-    public PlayerControllerTest() {
+    public StatesTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
     @Before
     public void setUp() {
     }
     
-    @After
-    public void tearDown() {
-    }
-
     @Test
     public void testSomeMethod() {
-      
+       
     }
     
 }

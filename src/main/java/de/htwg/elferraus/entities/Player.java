@@ -5,8 +5,8 @@ package de.htwg.elferraus.entities;
  * @author Christian
  */
 public class Player {
-    private static MainArray main;
-    private static MainStack stack;
+    public MainArray playTable;
+    public MainStack stack;
     
     public PlayerDeck deck;
     
@@ -15,9 +15,9 @@ public class Player {
     public int stackCards=0;
     
 
-    public Player(MainArray main, MainStack stack) {
+    public Player(MainArray playTable, MainStack stack) {
         this.stack = stack;                             //???
-        this.main = main;                               //weiß ned ob des so einfach mit dem static langt 
+        this.playTable = playTable;                               //weiß ned ob des so einfach mit dem static langt 
         deck = new PlayerDeck();
     }
     
@@ -27,13 +27,13 @@ public class Player {
         int thisNumber = chosenCard.getNumber();
         if(thisColour.equals(colour)) {
             if (thisNumber == 11) {
-                main.setEleven(thisCard);
+                this.playTable.setEleven(chosenCard);
                 valid = true;
-            } else if ((thisNumber + 1) == main.getLow(thisColour).getNumber()) {
-                main.setLow(thisCard);
+            } else if ((thisNumber + 1) == playTable.getLow(thisColour).getNumber()) {
+                playTable.setLow(chosenCard);
                 valid = true;
-            } else if ((thisNumber - 1) == main.getHigh(thisColour).getNumber()) {
-                main.setHigh(thisCard);
+            } else if ((thisNumber - 1) == playTable.getHigh(thisColour).getNumber()) {
+                playTable.setHigh(chosenCard);
                 valid = true;
             } else {
                 valid = false;

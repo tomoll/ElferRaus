@@ -5,7 +5,8 @@
  */
 package de.htwg.elferraus.controller;
 
-
+import de.htwg.elferraus.entities.MainArray;
+import de.htwg.elferraus.entities.MainStack;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,23 +17,34 @@ import static org.junit.Assert.*;
  * @author Christian Hümmer, Tobias Moll
  */
 public class ElferRausControllerTest {
-    
+
     public ElferRausControllerTest() {
     }
-    ElferRausController elfer;
-  
+    ElferRausController hans;
+
     @Before
     public void setUp() {
-        elfer = new ElferRausController(3);       
+        hans = new ElferRausController(2, new MainArray(), new MainStack());
     }
-   
 
     @Test
-    public void testround() {
-       // assertEquals(3,elfer.a);
-        elfer.round();
-        //assertEquals(4,elfer.a);
-    
+    public void testnextPlayer(){
+        
     }
-    
+
+    @Test
+    public void testsetEndRound(){
+        
+    }
+
+    @Test
+    public void testgetCardRequest(){
+        
+    }
+
+    @Test
+    public void testcurrentPlayerString(){
+        
+    }
+
 }

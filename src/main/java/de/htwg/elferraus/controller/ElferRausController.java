@@ -13,17 +13,18 @@ public class ElferRausController extends Observable {
     private int playerAmount;
     private int playerStartDeck;
     public Player[] player;                 //temp auf Public!!!! wieder ändern nur fürt die Tests
-    public MainArray playTable;
-    public MainStack stack;
+    //public MainArray playTable;
+    //public MainStack stack;
     public boolean endRoundAllowed = false;
-    private int actualplayer = 1;
+    private int actualplayer = 0;
 
     public ElferRausController(int players, MainArray playTable, MainStack stack) {
         this.playerAmount = players;
-        this.playTable = playTable;
-        this.stack = stack;
+        //this.playTable = playTable;           //staic zeug versuch --> sieht gut aus!!!! 
+        //this.stack = stack;                   //static zeug verscuh
         player = new Player[playerAmount];
         player[0] = new Player(playTable, stack);
+        player[1] = new Player(playTable, stack);//staaic getestet
         giveCards();
     }
 
@@ -62,7 +63,7 @@ public class ElferRausController extends Observable {
     }
 
     public void getCardRequest() {
-        if (stack.getAmount() > 0 && player[actualplayer].stackCards < 3) {
+        if (player[actualplayer].stack.getAmount() > 0 && player[actualplayer].stackCards < 3) {       //stack player!! wegen static verscuh
             player[actualplayer].getCard();
             setStatusMessage("Succesfully received a new card from the stack!");
             notifyObservers();
@@ -79,7 +80,7 @@ public class ElferRausController extends Observable {
 
     public String getMainString() {
 
-        return playTable.toString();
+        return player[actualplayer].playTable.toString();                //player playtable wegen static!!!
     }
 
     private void setStatusMessage(String statusMessage) {
@@ -103,7 +104,7 @@ public class ElferRausController extends Observable {
 
         for (int i = 0; i < playerStartDeck; i++) {
             for (int j = 0; j < playerAmount; j++) {
-                player[j].deck.addCard(stack.popCard());
+                player[j].deck.addCard(player[actualplayer].stack.popCard());          //static player!!
 
             }
 
