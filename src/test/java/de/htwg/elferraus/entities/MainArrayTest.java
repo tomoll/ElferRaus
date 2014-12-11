@@ -37,13 +37,9 @@ public class MainArrayTest {
         assertEquals(card2, array.getLow("r"));
 
     }
-
+    
+    @Test 
+    public void testsetEleven(){
         
-    
-    /*@Test
-    public void testColourStrToInt() {
-        assertEquals(4, array.ColourStrToInt("y"));
-    }*/
-   
-    
+    }
 }

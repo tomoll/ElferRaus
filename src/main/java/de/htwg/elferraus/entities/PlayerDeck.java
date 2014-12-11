@@ -7,33 +7,43 @@ import java.util.List;
  *
  * @author Christian Hümmer, Tobias Moll
  */
-
 public class PlayerDeck {
-    
+
     private List<Card> playerDeck = new ArrayList<Card>(80);
-  
-    public int getSize(){
+
+    public int getSize() {
         return playerDeck.size();
     }
-   
-    public Card indexToCard(int i){
+
+    public Card indexToCard(int i) {         //brauch ma die Funktion
         return playerDeck.get(i);
     }
-    public Card popplCard(Card c){
-        if(playerDeck.remove(c)){
+
+    public Card popplCard(Card c) {
+        if (playerDeck.remove(c)) {
             return c;
-        }else{
+        } else {
             return null;
         }
     }
-    public void addCard(Card c){
+
+    public void addCard(Card c) {
         playerDeck.add(c);
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         //returns a String with all the Cards from the Player
-        return "noch machen";
+        String s = "Deine Karten\n";
+        int i = 1;
+        s = s + "Index\t Farbe\t Nummer\n";
+        for (Card c : this.playerDeck) {
+            if (c != null) {
+                s = s + i + "\t" + c.getColour() + "\t" + c.getNumber() + "\n";
+            }
+            i++;
+        }
+        return s;
+
     }
 }
-

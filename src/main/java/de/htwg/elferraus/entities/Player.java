@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package de.htwg.elferraus.entities;
 
 /**
@@ -12,13 +6,23 @@ package de.htwg.elferraus.entities;
  */
 public class Player {
     private static MainArray main;
-    public int stackCards=0;
     private static MainStack stack;
+    
     public PlayerDeck deck;
+    
     private Card thisCard;
+    private boolean valid = false;
+    public int stackCards=0;
+    
+
+    public Player(MainArray main, MainStack stack) {
+        this.stack = stack;                             //???
+        this.main = main;                               //weiß ned ob des so einfach mit dem static langt 
+        deck = new PlayerDeck();
+    }
     
     public boolean setCard(Card chosenCard, String colour){
-        boolean valid = false;
+        valid = false;
         String thisColour = chosenCard.getColour();
         int thisNumber = chosenCard.getNumber();
         if(thisColour.equals(colour)) {
@@ -38,14 +42,17 @@ public class Player {
         return valid;
     }
     
-    public void getCard() {
+    public boolean getCard() {
         
-        if (stack.getAmount() > 0 &&  stackCards < 3) {
+        if (stack.getAmount() > 0 &&  stackCards < 3 && !valid) {
             deck.addCard(stack.popCard());
-            stackCards++;
+            stackCards++;                           //müssen des irgendwo wieder zurück setzen!!!!
+            return true;
 
-        } else if (stackCards == 3){
+        } else if (stackCards == 3 || valid){
+            return false;
         }
+        return false;
     }
     
     

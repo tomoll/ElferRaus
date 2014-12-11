@@ -44,7 +44,6 @@ public class MainStackTest {
         stack.mixCards();
         c = stack.popCard();
         assertFalse(19 == c.getNumber());
-        //assertFalse("b" == c.getColour());
         
     }
     
