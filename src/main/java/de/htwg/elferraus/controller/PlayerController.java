@@ -13,50 +13,73 @@ import de.htwg.elferraus.entities.*;
  * @author Tobi
  */
 public class PlayerController {
+
     //steuert Aktionen des aktuellen Spielers
     //regelt Spielregeln
     //kontrolliert Legeaktionen
     //beendet Spiel wenn Spieler keine Karten mehr hat 
     private GameStates currentstate;
-    private boolean permissionToContinue;
+    private boolean permissionToContinue = false;
+    private int stackCards = 0;
     private Card thisCard;
     private PlayerDeck deck;
-    
-    
-    
+    private static MainArray main;
+    private static MainStack stack;
 
     public PlayerController() {
-        currentstate = new ready();
+        currentstate = new GameStates.ready();
     }
-    
-    
-    public void setState(GameStates s){
+
+    public void setState(GameStates s) {
         currentstate = s;
     }
-    
-    public void setCard(Card choosedCard){
-        if(deck.contains(choosedCard))
+
+    public void setCard(Card choosedCard, String colour) {
         thisCard = deck.popplCard(choosedCard);
-        String colour = thisCard.getColour();
-        if(thisCard.get()<11){
-            if(thisCard.getNumber()==)
-            
-        } else if(thisCard.getNumber()>11){
-            
+        if (thisCard != null) {
+            String thisColour = thisCard.getColour();
+            int thisNumber = thisCard.getNumber();
+            if (thisColour.equals(colour)) {
+                if (thisNumber == 11) {
+                    main.setEleven(thisCard);
+                    setPermission(true);
+                } else if ((thisNumber + 1) == main.getLow(thisColour).getNumber()) {
+                    main.setLow(thisCard);
+                    setPermission(true);
+                } else if ((thisNumber - 1) == main.getHigh(thisColour).getNumber()) {
+                    main.setHigh(thisCard);
+                    setPermission(true);
+                } else {
+                    System.out.println("Kann nicht angelegt werden!!! Vorgängerkarte nicht vorhanden");
+                }
+
+            }
+        } else {
+            System.out.println("Karte nicht vorhanden!!!");
+        }
+
+    }
+
+    public void getCard() {
+        if (stack.getAmount() > 0 && !permissionToContinue && stackCards < 3) {
+            deck.addCard(stack.popCard());
+            stackCards++;
+
+        } else {
+            setPermission(true);
         }
     }
-    
-    public void getCard(){
-        
+
+    public void nextPlayer() {
+        if(permissionToContinue){
+            stackCards = 0;
+            setState(new GameStates.ready());
+        }
+
     }
-    
-    public void nextPlayer(){
-        
-    }
-    
-    public void setPermission(boolean state){
+
+    public void setPermission(boolean state) {
         permissionToContinue = state;
     }
-    
-    
+
 }

@@ -11,14 +11,17 @@ public class ElferRausController extends Observable {
     //leitet Ausgabe ein?
     //teilt Karten am Anfang vom Spiel aus 
     
-    
+    private String statusMessage = "Welcome to ElferRaus";
     private int playerAmount;
     private PlayerController[] player = new PlayerController[playerAmount];
-    public MainArray playTable = new MainArray();
+    public MainArray playTable;
+    public MainStack stack;
     
     
-    public ElferRausController(int players){
+    public ElferRausController(int players, MainArray playTable, MainStack stack){
         this.playerAmount = players;
+        this.playTable = playTable;
+        this.stack = stack;
     }
 
     public PlayerController nextPlayer(int i){

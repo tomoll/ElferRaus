@@ -23,7 +23,7 @@ public class ElferRausControllerTest {
   
     @Before
     public void setUp() {
-        elfer = new ElferRausController();       
+        elfer = new ElferRausController(3);       
     }
    
 
