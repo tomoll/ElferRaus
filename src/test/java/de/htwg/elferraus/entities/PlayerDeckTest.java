@@ -37,9 +37,22 @@ public class PlayerDeckTest {
         Card c = new Card(2,"r");
         deck.addCard(c);
         assertEquals(c,deck.popplCard(c));
-       
+        assertEquals(null, deck.popplCard(c));
         
-        
+    }
+    
+    @Test 
+    public void testIndexToCard(){
+        Card c = new Card(9,"b");
+        deck.addCard(c);
+        assertEquals(c,deck.indexToCard(0));
+    }
+    
+    @Test
+    public void testtoString(){
+        String s = "Deine Karten\n";
+        s = s + "Index\t Farbe\t Nummer\n";
+        assertEquals(s, deck.toString());
     }
     
 
