@@ -22,10 +22,6 @@ public class States {
                 //  player.setState(new play());
                 //else 
                 //  player.setState(new ready());
-                player[i].setState(new play());
-                player[i + 1].setState(new ready());
-                player[i + 2].setState(new ready());
-                player[i + 3].setState(new ready());
                 //maybe schlange als zirkulares feld ??
             }
         }
@@ -33,7 +29,7 @@ public class States {
         public class play implements GameStates {
 
             public void next(PlayerController player[], int i) {
-                player[i].setPermission(false);
+                //player[i].setPermission(false);
             //if keine Karten mehr 
                 //  player.setState(new win());
                 //if spieler fertig 

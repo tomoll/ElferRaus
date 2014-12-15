@@ -14,7 +14,7 @@ import de.htwg.elferraus.entities.*;
  */
 public class PlayerController {
 
-    //steuert Aktionen des aktuellen Spielers
+  /*  //steuert Aktionen des aktuellen Spielers
     //regelt Spielregeln
     //kontrolliert Legeaktionen
     //beendet Spiel wenn Spieler keine Karten mehr hat 
@@ -81,5 +81,5 @@ public class PlayerController {
     public void setPermission(boolean state) {
         permissionToContinue = state;
     }
-
+*/
 }
