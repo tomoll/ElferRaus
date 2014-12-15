@@ -11,6 +11,7 @@ import java.util.LinkedList;
 /**
  *
  * @author Christian Hümmer, Tobias Moll
+ * bla bla
  */
 public class MainArray {
 
