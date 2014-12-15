@@ -16,9 +16,9 @@ import java.util.Scanner;
 public class Tui implements IObserver {
 
     private ElferRausController controller;
-    Scanner scanner;
-    Scanner subscanner;
-    String line = "";
+    private Scanner scanner;
+    private Scanner subscanner;
+    private String line = "";
 
     public Tui(ElferRausController controller) {
         this.controller = controller;

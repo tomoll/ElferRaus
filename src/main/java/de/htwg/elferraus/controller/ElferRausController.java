@@ -26,6 +26,10 @@ public class ElferRausController extends Observable {
         player[0] = new Player(playTable, stack);
         player[1] = new Player(playTable, stack);//staaic getestet
         giveCards();
+        player[0].playTable.setEleven(new Card(11,"b"));
+        player[0].playTable.setEleven(new Card(11,"g"));
+        player[0].playTable.setEleven(new Card(11,"r"));
+        player[0].playTable.setEleven(new Card(11,"y"));
     }
 
     public Player nextPlayer(int i) {
