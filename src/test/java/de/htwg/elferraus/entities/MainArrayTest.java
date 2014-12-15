@@ -20,6 +20,8 @@ public class MainArrayTest {
         array = new MainArray();
         Card redEleven = new Card(11,"r");
         array.setEleven(redEleven);
+        array.setEleven(new Card(11,"g"));
+        array.setEleven(new Card(11,"y"));
     }
  
     
@@ -35,11 +37,12 @@ public class MainArrayTest {
         Card card2 = new Card(10,"r");
         array.setLow(card2);
         assertEquals(card2, array.getLow("r"));
+        
 
     }
     
     @Test 
-    public void testsetEleven(){
-        
+    public void testtoString(){
+        assertNotNull(array.toString());
     }
 }

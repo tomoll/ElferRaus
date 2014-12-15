@@ -53,6 +53,10 @@ public class PlayerDeckTest {
         String s = "Deine Karten\n";
         s = s + "Index\t Farbe\t Nummer\n";
         assertEquals(s, deck.toString());
+        Card c = new Card(9,"b");
+        deck.addCard(c);
+        assertNotNull(deck.toString());
+        
     }
     
 

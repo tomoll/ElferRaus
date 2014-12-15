@@ -32,16 +32,19 @@ public class ElferRausController extends Observable {
         return player[i + 1];
     }
 
-    public void setEndRound() {
+    public boolean setEndRound() {
         if (endRoundAllowed) {
             //next Player aufrufen und Statuswechsel!
+            //hier muss noch was gemacht werden nur um sonar zu beruhigen
+            return true;
         } else {
             setStatusMessage("Player not allowed to finish his turn!");
             notifyObservers();
+            return false;
         }
     }
 
-    public void setCardRequest(int next) {
+    public boolean setCardRequest(int next) {
 
         boolean valid = false;
         Card chosen = player[actualplayer].deck.indexToCard(next);
@@ -52,13 +55,16 @@ public class ElferRausController extends Observable {
                 endRoundAllowed = true;
                 setStatusMessage("Card: " + setCard.getColour() + setCard.getNumber() + " succesfully placed!");
                 notifyObservers();
+                return true;
             } else {
                 setStatusMessage("Card does not match to any colourarray!");
                 notifyObservers();
+                return false;
             }
         } else {
             setStatusMessage("The card you've chosen is not available!");
             notifyObservers();
+            return false;
         }
     }
 

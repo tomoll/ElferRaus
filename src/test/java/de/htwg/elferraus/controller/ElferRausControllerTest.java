@@ -29,22 +29,36 @@ public class ElferRausControllerTest {
 
     @Test
     public void testnextPlayer(){
-        
+        assertEquals(hans.player[1],hans.nextPlayer(0));
     }
 
     @Test
     public void testsetEndRound(){
+        assertFalse(hans.setEndRound());
+        hans.endRoundAllowed = true;
+        assertTrue(hans.setEndRound());
+        
+        
         
     }
 
     @Test
     public void testgetCardRequest(){
+        //assertFalse(hans.setCardRequest(1));
+        
         
     }
 
     @Test
     public void testcurrentPlayerString(){
+        assertNotNull(hans.currentPlayerString());
         
     }
+
+    @Test
+    public void testgetMainString(){
+        //assertNotNull(hans.getMainString());
+    }
+    
 
 }

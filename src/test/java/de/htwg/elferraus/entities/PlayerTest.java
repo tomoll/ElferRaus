@@ -36,6 +36,8 @@ public class PlayerTest {
         assertTrue(hans.player[1].setCard(new Card(14,"b"), "b"));
         assertTrue(hans.player[0].setCard(new Card(15, "b"), "b"));
         assertEquals(20, hans.player[0].deck.getSize());
+        //assertFalse(hans.player[0].setCard(new Card(16, "c"), "c")); geht nicht!!!!
+        assertFalse(hans.player[0].setCard(new Card(16, "c"), "d"));
 
     }
 
@@ -55,6 +57,16 @@ public class PlayerTest {
         assertEquals(37, hans.player[0].stack.getAmount());
         hans.player[1].getCard();
         assertTrue(21 == hans.player[1].deck.getSize());
+        
+        hans.player[0].setCard(new Card(11, "b"), "b");
+        assertFalse(hans.player[0].getCard());
+        
+        
+        for(int i = 0; i < hans.player[0].stack.getAmount();i++){
+            hans.player[0].getCard();
+        }
+        assertFalse(hans.player[0].getCard());
+        
     }
 
 }

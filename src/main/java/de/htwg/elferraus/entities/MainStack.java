@@ -34,8 +34,6 @@ public class MainStack {
                 case 3:
                     colour = "b";
                     break;
-                default:
-                    break;
             }
 
             for (int i = 0; i < anzKartenproFarbe; i++) {

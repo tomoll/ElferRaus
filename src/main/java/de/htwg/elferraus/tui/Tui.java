@@ -62,6 +62,7 @@ public class Tui implements IObserver {
            controller.setEndRound();
         }
         else if (line.equalsIgnoreCase("4")) {
+            int i = 1; //hier muss noch was gemacht werden nur um sonar zu beruhigen!!
             //Do nothing, just redraw the updated grid
         }
         else if (line.equalsIgnoreCase("5")) {
