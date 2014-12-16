@@ -1,4 +1,4 @@
-package de.htwg.elferraus.entities;
+package de.htwg.elferraus.entities.impl;
 
 /**
  *

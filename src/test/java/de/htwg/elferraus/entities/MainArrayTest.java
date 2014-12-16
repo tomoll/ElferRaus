@@ -2,6 +2,8 @@
 package de.htwg.elferraus.entities;
 
 
+import de.htwg.elferraus.entities.impl.MainArray;
+import de.htwg.elferraus.entities.impl.Card;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -4,8 +4,9 @@
  * 
  *
  */
-package de.htwg.elferraus.entities;
+package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.entities.impl.Card;
 import java.util.LinkedList;
 
 /**
