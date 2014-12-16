@@ -7,29 +7,27 @@
 package de.htwg.elferraus.entities.impl;
 
 import de.htwg.elferraus.entities.IMainArray;
-import de.htwg.elferraus.entities.impl.Card;
 import java.util.LinkedList;
 
 /**
  *
- * @author Christian Hümmer, Tobias Moll
- * bla bla
+ * @author Christian Hümmer, Tobias Moll bla bla
  */
 public class MainArray implements IMainArray {
 
     final private LinkedList<Card>[] array;
-    final private int anzColour = 5;
+    final private int anzColour = 4;
 
     public MainArray() {
-        // 1 = 'b'lue
-        // 2 = 'g'reen
-        // 3 = 'r'ed
-        // 4 = 'y'ellow
+        // 0 = 'b'lue
+        // 1 = 'g'reen
+        // 2 = 'r'ed
+        // 3 = 'y'ellow
         array = new LinkedList[anzColour];
-//        for(int i = 0; i < anzColour; i++){
-//             array[i] = new LinkedList<Card>();
-//        }
-        //Array mit 4 LinkedLists 
+        for (int i = 0; i < anzColour; i++) {
+            array[i] = new LinkedList<Card>();
+        }
+
     }
 
     public void setHigh(Card c) {
@@ -58,38 +56,74 @@ public class MainArray implements IMainArray {
 
     public void setEleven(Card eleven) {
         int i = colourStrToInt(eleven.getColour());
-        array[i] = new LinkedList<Card>();
+        //array[i] = new LinkedList<Card>();
         array[i].addFirst(eleven);
+    }
+    
+    public boolean isNotEmpty(String colour){
+        if(array[colourStrToInt(colour)].size()>0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private int colourStrToInt(String colour) {
-        int colourcode;
+        int colourcode = 0;
         if (colour.equals("b")) {
-            colourcode = 1;
+            colourcode = 0;
         }
         if (colour.equals("g")) {
-            colourcode = 2;
+            colourcode = 1;
         }
         if (colour.equals("r")) {
-            colourcode = 3;
+            colourcode = 2;
         }
         if (colour.equals("y")) {
-            colourcode = 4;
-        } else {
-            colourcode = 0;
+            colourcode = 3;
         }
         return colourcode;
     }
 
     @Override
     public String toString() {
-        //returns a String with the Cards on top and bottom of all Colours which 
-        //lay on the table 
-        String s;
-        s = "Blau:" + this.getLow("b") + "\t 11 \t" + this.getHigh("b") + "\n";
-        s = s + "Gruen:" + this.getLow("g") + "\t 11 \t" + this.getHigh("g") + "\n";
-        s = s + "Rot:" + this.getLow("r") + "\t 11 \t" + this.getHigh("r") + "\n";
-        s = s + "Gelb:" + this.getLow("y") + "\t 11 \t" + this.getHigh("y") + "\n";
+        String s = "";
+        String colour = "";
+        for (int i = 0; i < anzColour; i++) {
+            if (i == 0) {
+                s = s + "blue:    \t";
+                colour = "b";
+            }
+            if (i == 1) {
+                s = s + "green:    \t";
+                colour = "g";
+            }
+            if (i == 2) {
+                s = s + "red:    \t";
+                colour = "r";
+            }
+            if (i == 3) {
+                s = s + "yellow: \t";
+                colour = "y";
+            }
+
+            if (array[i].size() > 0) {
+                if (this.getLow(colour) != null && this.getLow(colour).getNumber() != 11) {
+                    s = s + this.getLow(colour).getNumber() + "\t 11 \t";
+                } else {
+                    s = s + "no Card" + "\t 11 \t";
+                }
+                if (this.getHigh(colour) != null && this.getHigh(colour).getNumber() != 11) {
+                    s = s + this.getHigh(colour).getNumber() + "\n";
+                } else {
+                    s = s + "no Card" + "\n";
+                }
+            } else {
+                s = s + "no eleven!\n";
+            }
+
+        }
+
         return s;
 
     }

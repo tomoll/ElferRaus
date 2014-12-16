@@ -13,6 +13,6 @@ import de.htwg.elferraus.entities.impl.Card;
  * @author Christian
  */
 public interface IPlayer {
-    public boolean setCard(Card chosenCard, String colour);
+    public boolean setCard(Card chosenCard);
     public boolean getCard();
 }

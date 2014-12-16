@@ -31,18 +31,7 @@ public class Tui implements IObserver {
     }
 
     public void printTUI() {
-        System.out.println(controller.getMainString());
-        System.out.println("------------------------------");
-        System.out.println(controller.currentPlayerString());
-        System.out.println("------------------------------");
-        System.out.println("Please enter a command:");
-        System.out.println("------------------------------");
-        System.out.println("1. Get new card from Stack");
-        System.out.println("2. Lay down card at Index");
-        System.out.println("3. End Round");
-        System.out.println("4. Update cards");
-        System.out.println("5. Quit Game");
-
+        System.out.print(controller.getMainString());
     }
 
     public boolean handleInputOrQuit(String line) {
@@ -61,11 +50,11 @@ public class Tui implements IObserver {
         else if (line.equalsIgnoreCase("3")) {
            controller.setEndRound();
         }
+//        else if (line.equalsIgnoreCase("4")) {
+//            int i = 1; //hier muss noch was gemacht werden nur um sonar zu beruhigen!!
+//            //Do nothing, just redraw the updated grid
+//        }
         else if (line.equalsIgnoreCase("4")) {
-            int i = 1; //hier muss noch was gemacht werden nur um sonar zu beruhigen!!
-            //Do nothing, just redraw the updated grid
-        }
-        else if (line.equalsIgnoreCase("5")) {
             quit = true;
         }
         else {

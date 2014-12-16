@@ -1,9 +1,7 @@
 package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.controller.IStates;
 import de.htwg.elferraus.entities.IPlayer;
-import de.htwg.elferraus.entities.impl.Card;
-import de.htwg.elferraus.entities.impl.MainArray;
-import de.htwg.elferraus.entities.impl.MainStack;
 
 /**
  *
@@ -14,36 +12,38 @@ public class Player implements IPlayer {
     public static MainStack stack;
     
     public PlayerDeck deck;
-    
+    public IStates currentstate;
     private Card thisCard;
     private boolean valid = false;
     public int stackCards=0;
     
 
     public Player(MainArray playTable, MainStack stack) {
-        this.stack = stack;                             //???
-        this.playTable = playTable;                               //weiß ned ob des so einfach mit dem static langt 
+        this.stack = stack;                             
+        this.playTable = playTable;  
         deck = new PlayerDeck();
     }
     
-    public boolean setCard(Card chosenCard, String colour){
-        valid = false;
-        String thisColour = chosenCard.getColour();
-        int thisNumber = chosenCard.getNumber();
-        if(thisColour.equals(colour)) {
-            if (thisNumber == 11) {
+    public boolean setCard(Card chosenCard){
+        valid = false;                                      //muss über die states gemacht werden!!!!! sowie stackCards
+        String chosenColour = chosenCard.getColour();
+        int chosenNumber = chosenCard.getNumber();
+            if (chosenNumber == 11) {
                 this.playTable.setEleven(chosenCard);
                 valid = true;
-            } else if ((thisNumber + 1) == playTable.getLow(thisColour).getNumber()) {
-                playTable.setLow(chosenCard);
+            } else if (playTable.isNotEmpty(chosenColour)) {
+                if((chosenNumber + 1) == playTable.getLow(chosenColour).getNumber()){
+                     playTable.setLow(chosenCard);
                 valid = true;
-            } else if ((thisNumber - 1) == playTable.getHigh(thisColour).getNumber()) {
-                playTable.setHigh(chosenCard);
-                valid = true;
+                }
+            } else if (playTable.isNotEmpty(chosenColour)) {
+                if((chosenNumber - 1) == playTable.getHigh(chosenColour).getNumber()){
+                    playTable.setHigh(chosenCard);
+                    valid = true;
+                }
             } else {
                 valid = false;
             }
-        } 
         return valid;
     }
     
@@ -54,12 +54,15 @@ public class Player implements IPlayer {
             stackCards++;                           //müssen des irgendwo wieder zurück setzen!!!!
             return true;
 
-        } else if (stackCards == 3 || valid){
+        } else if (stackCards >= 3 || valid){
             return false;
         }
         return false;
     }
     
     
-    
+     public void setState(IStates s){
+        currentstate = s;
+        
+    }
 }

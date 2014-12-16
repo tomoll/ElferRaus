@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package de.htwg.elferraus.controller.impl;
 
 import de.htwg.elferraus.controller.IStates;
@@ -14,8 +13,8 @@ import de.htwg.elferraus.controller.IStates;
  */
 public class Looser implements IStates {
 
-    public void next() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int next(ElferRausController controller, int actualPlayer, int playerAmount) {
+        return actualPlayer;
     }
-    
+
 }

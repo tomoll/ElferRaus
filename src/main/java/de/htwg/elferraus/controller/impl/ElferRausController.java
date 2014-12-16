@@ -9,41 +9,36 @@ import de.htwg.util.observer.Observable;
 
 public class ElferRausController extends Observable implements IElferRausController {
 
-    //Anzahl Spieler 
-    //Rundenfunktion, steuert wer gerade dran ist gibt bescheid für nächsten Spieler
-    //leitet Ausgabe ein?
-    //teilt Karten am Anfang vom Spiel aus 
     private String statusMessage = "Welcome to ElferRaus";
-    private int playerAmount;
+    public int playerAmount;
     private int playerStartDeck;
-    public Player[] player;                 //temp auf Public!!!! wieder ändern nur fürt die Tests
-    //public MainArray playTable;
-    //public MainStack stack;
+    public Player[] player;
     public boolean endRoundAllowed = false;
     private int actualplayer = 0;
 
     public ElferRausController(int players, MainArray playTable, MainStack stack) {
         this.playerAmount = players;
-        //this.playTable = playTable;           //staic zeug versuch --> sieht gut aus!!!! 
-        //this.stack = stack;                   //static zeug verscuh
         player = new Player[playerAmount];
-        player[0] = new Player(playTable, stack);
-        player[1] = new Player(playTable, stack);//staaic getestet
+        for(int i = 0; i<playerAmount;i++){
+            player[i] = new Player(playTable, stack);
+        }
         giveCards();
-        player[0].playTable.setEleven(new Card(11,"b"));
-        player[0].playTable.setEleven(new Card(11,"g"));
-        player[0].playTable.setEleven(new Card(11,"r"));
-        player[0].playTable.setEleven(new Card(11,"y"));
     }
 
-    public Player nextPlayer(int i) {
+    public Player nextPlayer(int i) {       //weiß ned für was gedacht??? 
         return player[i + 1];
     }
 
+    public void next(){
+        actualplayer = player[actualplayer].currentstate.next(this, actualplayer, playerAmount);
+    }
+    
+   
+    
+    
     public boolean setEndRound() {
         if (endRoundAllowed) {
-            //next Player aufrufen und Statuswechsel!
-            //hier muss noch was gemacht werden nur um sonar zu beruhigen
+            next();
             return true;
         } else {
             setStatusMessage("Player not allowed to finish his turn!");
@@ -58,7 +53,7 @@ public class ElferRausController extends Observable implements IElferRausControl
         Card chosen = player[actualplayer].deck.indexToCard(next);
         Card setCard = player[actualplayer].deck.popplCard(chosen);
         if (setCard != null) {
-            valid = player[actualplayer].setCard(setCard, setCard.getColour());
+            valid = player[actualplayer].setCard(setCard);
             if (valid) {
                 endRoundAllowed = true;
                 setStatusMessage("Card: " + setCard.getColour() + setCard.getNumber() + " succesfully placed!");
@@ -66,6 +61,7 @@ public class ElferRausController extends Observable implements IElferRausControl
                 return true;
             } else {
                 setStatusMessage("Card does not match to any colourarray!");
+                player[actualplayer].deck.addCard(setCard);
                 notifyObservers();
                 return false;
             }
@@ -77,7 +73,7 @@ public class ElferRausController extends Observable implements IElferRausControl
     }
 
     public void getCardRequest() {
-        if (player[actualplayer].stack.getAmount() > 0 && player[actualplayer].stackCards < 3) {       //stack player!! wegen static verscuh
+        if (player[actualplayer].stack.getAmount() > 0 && player[actualplayer].stackCards < 3) {
             player[actualplayer].getCard();
             setStatusMessage("Succesfully received a new card from the stack!");
             notifyObservers();
@@ -94,7 +90,21 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     public String getMainString() {
 
-        return player[actualplayer].playTable.toString();                //player playtable wegen static!!!
+        statusMessage = player[actualplayer].playTable.toString() + "\n";
+        statusMessage = statusMessage + "------------------------------" + "\n";
+        statusMessage = statusMessage + this.currentPlayerString() + "\n";
+        statusMessage = statusMessage + "------------------------------"+ "\n";
+        statusMessage = statusMessage + "Please enter a command:" + "\n";
+        statusMessage = statusMessage + "------------------------------" + "\n";
+        statusMessage = statusMessage + "1. Get new card from Stack" + "\n";
+        statusMessage = statusMessage + "2. Lay down card at Index" + "\n";
+        statusMessage = statusMessage + "3. End Round" + "\n";
+        //statusMessage = statusMessage + "4. Update cards" + "\n";
+        statusMessage = statusMessage + "4. Quit Game" + "\n";
+        
+        return statusMessage; 
+        
+        
     }
 
     private void setStatusMessage(String statusMessage) {
@@ -118,7 +128,7 @@ public class ElferRausController extends Observable implements IElferRausControl
 
         for (int i = 0; i < playerStartDeck; i++) {
             for (int j = 0; j < playerAmount; j++) {
-                player[j].deck.addCard(player[actualplayer].stack.popCard());          //static player!!
+                player[j].deck.addCard(player[actualplayer].stack.popCard());  
 
             }
 

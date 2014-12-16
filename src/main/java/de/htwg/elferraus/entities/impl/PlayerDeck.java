@@ -17,8 +17,8 @@ public class PlayerDeck implements IPlayerDeck {
         return playerDeck.size();
     }
 
-    public Card indexToCard(int i) {         //brauch ma die Funktion
-        return playerDeck.get(i);
+    public Card indexToCard(int i) {  
+        return playerDeck.get(i-1);
     }
 
     public Card popplCard(Card c) {

@@ -14,8 +14,24 @@ import de.htwg.elferraus.controller.IStates;
  */
 public class Playing implements IStates {
 
-    public void next() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int next(ElferRausController controller, int actualPlayer, int playerAmount) {
+        int i = 0;
+        if(controller.player[actualPlayer].deck.getSize()>0){
+            controller.player[actualPlayer].setState(new Waiting());
+            if(actualPlayer < playerAmount){
+                controller.player[actualPlayer + 1].setState(new Playing());
+                i = actualPlayer +1;
+            }
+            else {
+                controller.player[0].setState(new Playing());
+                i= 0;
+            }
+                
+        } else {             //passt noch ned ganz so gewinnen ja irgendwann alle!!
+            controller.player[actualPlayer].setState(new Winner());
+
+        }
+        return i;
     }
     
 }
