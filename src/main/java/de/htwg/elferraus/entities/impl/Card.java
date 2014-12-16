@@ -1,10 +1,10 @@
 package de.htwg.elferraus.entities.impl;
-
+import de.htwg.elferraus.entities.*;
 /**
  *
  * @author Christian Hümmer, Tobias Moll
  */
-public class Card {
+public class Card implements ICard {
     private final int number;
     private final String colour;
     

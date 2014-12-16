@@ -1,15 +1,16 @@
 package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.entities.IMainStack;
 import de.htwg.elferraus.entities.impl.Card;
 import java.math.BigDecimal;
-import java.util.Random;
 import static java.math.BigDecimal.ZERO;
+import java.util.Random;
 
 /**
  *
  * @author Christian Hümmer, Tobias Moll
  */
-public class MainStack {
+public class MainStack implements IMainStack {
 
     private int count = 0;
     private String colour = "";

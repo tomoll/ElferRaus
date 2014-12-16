@@ -1,14 +1,15 @@
 package de.htwg.elferraus.entities.impl;
 
-import de.htwg.elferraus.entities.impl.MainStack;
-import de.htwg.elferraus.entities.impl.MainArray;
+import de.htwg.elferraus.entities.IPlayer;
 import de.htwg.elferraus.entities.impl.Card;
+import de.htwg.elferraus.entities.impl.MainArray;
+import de.htwg.elferraus.entities.impl.MainStack;
 
 /**
  *
  * @author Christian
  */
-public class Player {
+public class Player implements IPlayer {
     public static MainArray playTable;
     public static MainStack stack;
     

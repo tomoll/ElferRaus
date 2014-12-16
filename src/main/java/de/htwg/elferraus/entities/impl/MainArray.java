@@ -6,6 +6,7 @@
  */
 package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.entities.IMainArray;
 import de.htwg.elferraus.entities.impl.Card;
 import java.util.LinkedList;
 
@@ -14,7 +15,7 @@ import java.util.LinkedList;
  * @author Christian Hümmer, Tobias Moll
  * bla bla
  */
-public class MainArray {
+public class MainArray implements IMainArray {
 
     final private LinkedList<Card>[] array;
     final private int anzColour = 5;
