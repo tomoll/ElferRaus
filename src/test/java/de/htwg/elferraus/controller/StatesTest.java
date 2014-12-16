@@ -5,7 +5,7 @@
  */
 package de.htwg.elferraus.controller;
 
-import de.htwg.elferraus.controller.States.GameStates;
+import de.htwg.elferraus.controller.impl.States.GameStates;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

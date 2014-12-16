@@ -1,5 +1,6 @@
-package de.htwg.elferraus.entities;
+package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.entities.impl.Card;
 import java.math.BigDecimal;
 import java.util.Random;
 import static java.math.BigDecimal.ZERO;

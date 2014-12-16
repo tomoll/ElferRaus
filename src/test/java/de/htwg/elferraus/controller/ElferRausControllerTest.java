@@ -5,8 +5,9 @@
  */
 package de.htwg.elferraus.controller;
 
-import de.htwg.elferraus.entities.MainArray;
-import de.htwg.elferraus.entities.MainStack;
+import de.htwg.elferraus.controller.impl.ElferRausController;
+import de.htwg.elferraus.entities.impl.MainArray;
+import de.htwg.elferraus.entities.impl.MainStack;
 import org.junit.Before;
 import org.junit.Test;
 

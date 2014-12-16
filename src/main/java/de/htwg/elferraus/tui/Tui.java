@@ -5,7 +5,7 @@
  */
 package de.htwg.elferraus.tui;
 
-import de.htwg.elferraus.controller.ElferRausController;
+import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
 

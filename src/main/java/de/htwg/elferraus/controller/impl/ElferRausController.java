@@ -1,9 +1,13 @@
-package de.htwg.elferraus.controller;
+package de.htwg.elferraus.controller.impl;
+import de.htwg.elferraus.entities.impl.Player;
+import de.htwg.elferraus.entities.impl.MainStack;
+import de.htwg.elferraus.entities.impl.MainArray;
+import de.htwg.elferraus.entities.impl.Card;
+import de.htwg.elferraus.controller.*;
 
-import de.htwg.elferraus.entities.*;
 import de.htwg.util.observer.Observable;
 
-public class ElferRausController extends Observable {
+public class ElferRausController extends Observable implements IElferRausController {
 
     //Anzahl Spieler 
     //Rundenfunktion, steuert wer gerade dran ist gibt bescheid für nächsten Spieler
