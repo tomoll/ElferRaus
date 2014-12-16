@@ -16,7 +16,7 @@ public class MainStackTest {
     MainStack stack;
     @Before
     public void setUp() throws Exception {
-        stack = new MainStack();
+        stack = new MainStack(false);
     }
     
     @Test

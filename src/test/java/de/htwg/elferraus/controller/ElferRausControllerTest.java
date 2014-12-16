@@ -24,7 +24,7 @@ public class ElferRausControllerTest {
 
     @Before
     public void setUp() {
-        hans = new ElferRausController(2, new MainArray(), new MainStack());
+        hans = new ElferRausController(2, new MainArray(), new MainStack(true));
     }
 
     @Test

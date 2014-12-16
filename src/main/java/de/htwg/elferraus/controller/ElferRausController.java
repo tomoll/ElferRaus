@@ -3,6 +3,8 @@ package de.htwg.elferraus.controller;
 import de.htwg.elferraus.entities.*;
 import de.htwg.util.observer.Observable;
 
+
+
 public class ElferRausController extends Observable {
 
     //Anzahl Spieler 

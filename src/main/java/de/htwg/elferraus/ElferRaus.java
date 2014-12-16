@@ -9,7 +9,7 @@ public class ElferRaus {
 
     public static void main(String[] args) {
 
-        Tui tui = new Tui(new ElferRausController(2, new MainArray(), new MainStack()));
+        Tui tui = new Tui(new ElferRausController(2, new MainArray(), new MainStack(true)));
         tui.printTUI();
         // continue until the user decides to quit
         boolean quit = false;
