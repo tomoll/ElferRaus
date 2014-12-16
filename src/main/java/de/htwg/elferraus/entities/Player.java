@@ -5,8 +5,8 @@ package de.htwg.elferraus.entities;
  * @author Christian
  */
 public class Player {
-    public MainArray playTable;
-    public MainStack stack;
+    public static MainArray playTable;
+    public static MainStack stack;
     
     public PlayerDeck deck;
     

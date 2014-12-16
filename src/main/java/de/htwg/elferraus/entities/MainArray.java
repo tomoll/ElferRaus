@@ -16,14 +16,17 @@ import java.util.LinkedList;
 public class MainArray {
 
     final private LinkedList<Card>[] array;
+    final private int anzColour = 5;
 
     public MainArray() {
         // 1 = 'b'lue
         // 2 = 'g'reen
         // 3 = 'r'ed
         // 4 = 'y'ellow
-        array = new LinkedList[5];
-
+        array = new LinkedList[anzColour];
+//        for(int i = 0; i < anzColour; i++){
+//             array[i] = new LinkedList<Card>();
+//        }
         //Array mit 4 LinkedLists 
     }
 

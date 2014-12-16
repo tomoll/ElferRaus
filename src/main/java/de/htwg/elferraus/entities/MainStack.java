@@ -42,6 +42,7 @@ public class MainStack {
             }
 
         }
+        this.mixCards();
 
     }
 
