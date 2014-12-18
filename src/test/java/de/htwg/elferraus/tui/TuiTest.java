@@ -37,7 +37,7 @@ public class TuiTest {
     
     @Test 
     public void testHandleInputOrQuit(){
-        
+
     }
     
     @Test
