@@ -48,7 +48,9 @@ public class Tui implements IObserver {
             controller.setCardRequest(i);
         }
         else if (line.equalsIgnoreCase("3")) {
-           controller.setEndRound();
+           if(controller.setEndRound()){
+               controller.next();
+           }
         }
 //        else if (line.equalsIgnoreCase("4")) {
 //            int i = 1; //hier muss noch was gemacht werden nur um sonar zu beruhigen!!

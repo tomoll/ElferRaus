@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htwg.elferraus.controller;
+package de.htwg.elferraus.entities;
 
 import de.htwg.elferraus.controller.impl.ElferRausController;
+import de.htwg.elferraus.entities.impl.Player;
 
 /**
  *
@@ -13,6 +14,6 @@ import de.htwg.elferraus.controller.impl.ElferRausController;
  */
 public interface IStates {
 
-    public int next(ElferRausController controller, int actualPlayer, int playerAmount);
+    public int next(Player player, int index, int amount);
 
 }

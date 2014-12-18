@@ -4,7 +4,7 @@ import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.entities.impl.Card;
 import de.htwg.elferraus.controller.*;
-
+//nur interfaces
 import de.htwg.util.observer.Observable;
 
 public class ElferRausController extends Observable implements IElferRausController {
@@ -30,7 +30,17 @@ public class ElferRausController extends Observable implements IElferRausControl
     }
 
     public void next(){
-        actualplayer = player[actualplayer].currentstate.next(this, actualplayer, playerAmount);
+    //Diese Methode wird erreicht wenn in TUI Nächste Runde gedrückt wird
+    //Überprüfung ob Gewinner und SPielende jetzt hier, welcher Spieler als nächstes, im Status
+    if(this.player[actualplayer].deck.getSize()>0){    
+        //Wird jetzt zweimal gemacht
+        //einmal Playing auf Waiting, bekommt neuen zurück
+        //Neuer von Waiting auf Playing
+          actualplayer = player[actualplayer].currentstate.next(player[actualplayer], actualplayer, playerAmount);
+          actualplayer = player[actualplayer].currentstate.next(player[actualplayer], actualplayer, playerAmount);
+    }
+    // Hier muss jetzt noch Gewonnen/Verloren rein
+    
     }
     
    

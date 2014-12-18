@@ -1,6 +1,8 @@
 package de.htwg.elferraus.entities.impl;
+//kein controller import, states in die entities, hängen nur am spieler !!
+import de.htwg.elferraus.entities.IStates;
 
-import de.htwg.elferraus.controller.IStates;
+
 import de.htwg.elferraus.entities.IPlayer;
 
 /**
@@ -65,4 +67,6 @@ public class Player implements IPlayer {
         currentstate = s;
         
     }
+
+
 }
