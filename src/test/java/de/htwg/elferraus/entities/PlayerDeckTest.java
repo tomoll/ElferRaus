@@ -52,9 +52,9 @@ public class PlayerDeckTest {
     
     @Test
     public void testtoString(){
-        
-        String s = "Deine Karten\n";
-        s = s + "Index\t Farbe\t Nummer\n";
+        assertNotNull(deck.toString());
+        String s = "Your Cards\n";
+        s = s + "Index\t Colour\t Number\n";
         assertEquals(s, deck.toString());
         Card c = new Card(9,"b");
         deck.addCard(c);

@@ -35,10 +35,9 @@ public class PlayerDeck implements IPlayerDeck {
 
     @Override
     public String toString() {
-        //returns a String with all the Cards from the Player
-        String s = "Deine Karten\n";
+        String s = "Your Cards\n";
         int i = 1;
-        s = s + "Index\t Farbe\t Nummer\n";
+        s = s + "Index\t Colour\t Number\n";
         for (Card c : this.playerDeck) {
             if (c != null) {
                 s = s + i + "\t" + c.getColour() + "\t" + c.getNumber() + "\n";

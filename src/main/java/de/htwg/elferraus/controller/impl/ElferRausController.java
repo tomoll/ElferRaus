@@ -4,12 +4,14 @@ import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.entities.impl.Card;
 import de.htwg.elferraus.controller.*;
+import de.htwg.elferraus.entities.impl.*;
 //nur interfaces
 import de.htwg.util.observer.Observable;
 
 public class ElferRausController extends Observable implements IElferRausController {
 
-    private String statusMessage = "Welcome to ElferRaus";
+    private String statusMessage = "Welcome to ElferRaus\n";
+    private String playerMessage;
     public int playerAmount;
     private int playerStartDeck;
     public Player[] player;
@@ -21,13 +23,12 @@ public class ElferRausController extends Observable implements IElferRausControl
         player = new Player[playerAmount];
         for(int i = 0; i<playerAmount;i++){
             player[i] = new Player(playTable, stack);
+            player[i].setState(new Waiting());
         }
         giveCards();
+        player[actualplayer].setState(new Playing());
     }
 
-    public Player nextPlayer(int i) {       //weiß ned für was gedacht??? 
-        return player[i + 1];
-    }
 
     public void next(){
     //Diese Methode wird erreicht wenn in TUI Nächste Runde gedrückt wird
@@ -49,9 +50,11 @@ public class ElferRausController extends Observable implements IElferRausControl
     public boolean setEndRound() {
         if (endRoundAllowed) {
             next();
+            endRoundAllowed = false;
+            notifyObservers();
             return true;
         } else {
-            setStatusMessage("Player not allowed to finish his turn!");
+            setStatusMessage("Player not allowed to finish his turn!\n");
             notifyObservers();
             return false;
         }
@@ -59,36 +62,38 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     public boolean setCardRequest(int next) {
 
-        boolean valid = false;
+        boolean valid;
         Card chosen = player[actualplayer].deck.indexToCard(next);
         Card setCard = player[actualplayer].deck.popplCard(chosen);
         if (setCard != null) {
             valid = player[actualplayer].setCard(setCard);
             if (valid) {
                 endRoundAllowed = true;
-                setStatusMessage("Card: " + setCard.getColour() + setCard.getNumber() + " succesfully placed!");
+                setStatusMessage("Card: " + setCard.getColour() + setCard.getNumber() + " succesfully placed!\n");
                 notifyObservers();
                 return true;
             } else {
-                setStatusMessage("Card does not match to any colourarray!");
+                setStatusMessage("Card does not match to any colourarray!\n");
                 player[actualplayer].deck.addCard(setCard);
                 notifyObservers();
                 return false;
             }
         } else {
-            setStatusMessage("The card you've chosen is not available!");
+            setStatusMessage("The card you've chosen is not available!\n");
             notifyObservers();
             return false;
         }
     }
 
     public void getCardRequest() {
-        if (player[actualplayer].stack.getAmount() > 0 && player[actualplayer].stackCards < 3) {
+        if (player[actualplayer].stack.getAmount() > 0 && player[actualplayer].stackCards < 3 && !endRoundAllowed) {
             player[actualplayer].getCard();
-            setStatusMessage("Succesfully received a new card from the stack!");
+            setStatusMessage("Succesfully received a new card from the stack!\n");
             notifyObservers();
+        } else if(player[actualplayer].stackCards >= 3){
+            endRoundAllowed = true;
         } else {
-            setStatusMessage("Can't pop card from the stack!");
+            setStatusMessage("Can't pop card from the stack!\n");
             notifyObservers();
         }
 
@@ -100,25 +105,28 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     public String getMainString() {
 
-        statusMessage = player[actualplayer].playTable.toString() + "\n";
-        statusMessage = statusMessage + "------------------------------" + "\n";
-        statusMessage = statusMessage + this.currentPlayerString() + "\n";
-        statusMessage = statusMessage + "------------------------------"+ "\n";
-        statusMessage = statusMessage + "Please enter a command:" + "\n";
-        statusMessage = statusMessage + "------------------------------" + "\n";
-        statusMessage = statusMessage + "1. Get new card from Stack" + "\n";
-        statusMessage = statusMessage + "2. Lay down card at Index" + "\n";
-        statusMessage = statusMessage + "3. End Round" + "\n";
-        //statusMessage = statusMessage + "4. Update cards" + "\n";
-        statusMessage = statusMessage + "4. Quit Game" + "\n";
+        playerMessage = player[actualplayer].playTable.toString() + "\n";
+        playerMessage = playerMessage + "------------------------------" + "\n";
+        playerMessage = playerMessage + this.currentPlayerString() + "\n";
+        playerMessage = playerMessage + "------------------------------"+ "\n";
+        playerMessage = playerMessage + "Please enter a command:" + "\n";
+        playerMessage = playerMessage + "------------------------------" + "\n";
+        playerMessage = playerMessage + "1. Get new card from Stack" + "\n";
+        playerMessage = playerMessage + "2. Lay down card at Index" + "\n";
+        playerMessage = playerMessage + "3. End Round" + "\n";
+        playerMessage = playerMessage + "4. Quit Game" + "\n";
         
-        return statusMessage; 
+        return playerMessage; 
         
         
     }
 
     private void setStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
+    }
+    
+    public String getStatusMessage(){
+        return this.statusMessage;
     }
 
     private void giveCards() {
@@ -145,4 +153,5 @@ public class ElferRausController extends Observable implements IElferRausControl
         }
     }
 
+    
 }

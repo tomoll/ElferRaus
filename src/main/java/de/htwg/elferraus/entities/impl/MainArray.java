@@ -1,18 +1,8 @@
-/*
- * mainLists is the playground where you lay down the right cards
- *
- * 
- *
- */
 package de.htwg.elferraus.entities.impl;
 
 import de.htwg.elferraus.entities.IMainArray;
 import java.util.LinkedList;
 
-/**
- *
- * @author Christian Hümmer, Tobias Moll bla bla
- */
 public class MainArray implements IMainArray {
 
     final private LinkedList<Card>[] array;

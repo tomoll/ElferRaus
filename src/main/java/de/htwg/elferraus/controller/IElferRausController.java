@@ -13,7 +13,7 @@ import de.htwg.elferraus.entities.impl.Player;
  * @author Christian
  */
 public interface IElferRausController {
-    public Player nextPlayer(int i);
+    public void next();
     public boolean setEndRound();
     public boolean setCardRequest(int next);
     public void getCardRequest();

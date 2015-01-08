@@ -6,10 +6,6 @@ import java.math.BigDecimal;
 import static java.math.BigDecimal.ZERO;
 import java.util.Random;
 
-/**
- *
- * @author Christian Hümmer, Tobias Moll
- */
 public class MainStack implements IMainStack {
 
     private int count = 0;

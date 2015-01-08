@@ -32,6 +32,7 @@ public class Tui implements IObserver {
 
     public void printTUI() {
         System.out.print(controller.getMainString());
+        System.out.print(controller.getStatusMessage());
     }
 
     public boolean handleInputOrQuit(String line) {
@@ -48,9 +49,7 @@ public class Tui implements IObserver {
             controller.setCardRequest(i);
         }
         else if (line.equalsIgnoreCase("3")) {
-           if(controller.setEndRound()){
-               controller.next();
-           }
+           controller.setEndRound();
         }
 //        else if (line.equalsIgnoreCase("4")) {
 //            int i = 1; //hier muss noch was gemacht werden nur um sonar zu beruhigen!!

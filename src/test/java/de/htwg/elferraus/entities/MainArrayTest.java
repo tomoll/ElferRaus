@@ -44,7 +44,19 @@ public class MainArrayTest {
     }
     
     @Test 
+    public void testisNotEmpty(){
+        assertTrue(array.isNotEmpty("y"));
+        assertFalse(array.isNotEmpty("b"));
+    }
+    
+    
+    
+    @Test 
     public void testtoString(){
+        assertNotNull(array.toString());
+        array.setLow(new Card(10,"r"));
+        assertNotNull(array.toString());
+        array.setHigh(new Card(12,"r"));
         assertNotNull(array.toString());
     }
 }
