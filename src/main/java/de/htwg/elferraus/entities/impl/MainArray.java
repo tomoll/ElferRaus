@@ -9,8 +9,8 @@ public class MainArray implements IMainArray {
 
     private final Deque<ICard>[] array;
     private static final int ANZCOLOUR = 4;
-    private final int THREE = 3;
-    private final int ELEVEN = 11;
+    private static final int THREE = 3;
+    private static final int ELEVEN = 11;
 
     public MainArray() {
         // 0 = 'b'lue

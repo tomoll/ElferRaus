@@ -16,15 +16,15 @@ public class ElferRausController extends Observable implements IElferRausControl
     private Player[] player;
     private boolean endRoundAllowed = false;
     private int actualplayer = 0;
-    private static final int popMax = 3;
-    private static final int player3 = 3;
-    private static final int player4 = 4;
-    private static final int player5 = 5;
-    private static final int player6 = 6;
-    private static final int cardsForThree = 20;
-    private static final int cardsForFour = 15;
-    private static final int cardsForFive = 12;
-    private static final int cardsForSix = 10;
+    private static final int POPMAX = 3;
+    private static final int PLAYER3 = 3;
+    private static final int PLAYER4 = 4;
+    private static final int PLAYER5 = 5;
+    private static final int PLAYER6 = 6;
+    private static final int CARDSFORTHREE = 20;
+    private static final int CARDSFORFOUR = 15;
+    private static final int CARDSFORFIVE = 12;
+    private static final int CARDSFORSIX = 10;
     
 
     public ElferRausController(int players, MainArray playTable, MainStack stack) {
@@ -84,12 +84,12 @@ public class ElferRausController extends Observable implements IElferRausControl
     }
 
     public boolean getCardRequest() {
-        if (player[actualplayer].stackSize()> 0 && player[actualplayer].pulledCards() < popMax && !endRoundAllowed) {
+        if (player[actualplayer].stackSize()> 0 && player[actualplayer].pulledCards() < POPMAX && !endRoundAllowed) {
             player[actualplayer].getCard();
             setStatusMessage("Succesfully received a new card from the stack!\n");
             notifyObservers();
             return true;
-        } else if (player[actualplayer].pulledCards() >= popMax) {
+        } else if (player[actualplayer].pulledCards() >= POPMAX) {
             endRoundAllowed = true;
             return false;
         } else {
@@ -127,17 +127,17 @@ public class ElferRausController extends Observable implements IElferRausControl
     }
 
     private void giveCards() {
-        if (playerAmount <= player3) {
-            playerStartDeck = cardsForThree;
+        if (playerAmount <= PLAYER3) {
+            playerStartDeck = CARDSFORTHREE;
         }
-        if (playerAmount == player4) {
-            playerStartDeck = cardsForFour;
+        if (playerAmount == PLAYER4) {
+            playerStartDeck = CARDSFORFOUR;
         }
-        if (playerAmount == player5) {
-            playerStartDeck = cardsForFive;
+        if (playerAmount == PLAYER5) {
+            playerStartDeck = CARDSFORFIVE;
         }
-        if (playerAmount == player6) {
-            playerStartDeck = cardsForSix;
+        if (playerAmount == PLAYER6) {
+            playerStartDeck = CARDSFORSIX;
         }
 
         for (int i = 0; i < playerStartDeck; i++) {

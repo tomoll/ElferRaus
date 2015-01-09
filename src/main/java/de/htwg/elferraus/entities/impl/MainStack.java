@@ -10,9 +10,9 @@ public class MainStack implements IMainStack {
     private String colour = "";
     private static final int ANZFARBEN = 4;
     private static final int ANZKARTENPROFARBE = 20;
-    private final int gesamtKarten = ANZFARBEN * ANZKARTENPROFARBE;
+    private static final int gesamtKarten = ANZFARBEN * ANZKARTENPROFARBE;
     private ICard[] startstack = new ICard[gesamtKarten];
-    private final int three = 3;
+    private static final int THREE = 3;
 
     public MainStack(boolean mixing) {
         for (int j = 0; j < ANZFARBEN; j++) {
@@ -25,7 +25,7 @@ public class MainStack implements IMainStack {
             if (j == 2) {
                 colour = "r";
             }
-            if (j == three) {
+            if (j == THREE) {
                 colour = "b";
             }
 
