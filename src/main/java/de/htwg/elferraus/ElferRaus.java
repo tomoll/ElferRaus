@@ -6,7 +6,15 @@ import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.tui.Tui;
 
-public class ElferRaus {
+public final class ElferRaus {
+    
+//    private final Tui tui;
+//
+//    
+//    
+//    public ElferRaus() {
+//        
+//    }
 
     public static void main(String[] args) {
 
