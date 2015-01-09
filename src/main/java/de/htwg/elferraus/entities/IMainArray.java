@@ -1,18 +1,16 @@
 package de.htwg.elferraus.entities;
 
-import de.htwg.elferraus.entities.impl.Card;
-
 public interface IMainArray {
 
-    public void setHigh(Card c);
+    public void setHigh(ICard c);
 
-    public void setLow(Card c);
+    public void setLow(ICard c);
 
-    public Card getHigh(String colour);
+    public ICard getHigh(String colour);
 
-    public Card getLow(String colour);
+    public ICard getLow(String colour);
 
-    public void setEleven(Card eleven);
+    public void setEleven(ICard eleven);
     
     public boolean isNotEmpty(String colour);
     

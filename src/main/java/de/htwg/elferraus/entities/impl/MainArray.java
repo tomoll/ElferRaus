@@ -1,11 +1,12 @@
 package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IMainArray;
 import java.util.LinkedList;
 
 public class MainArray implements IMainArray {
 
-    final private LinkedList<Card>[] array;
+    final private LinkedList<ICard>[] array;
     final private int anzColour = 4;
 
     public MainArray() {
@@ -15,32 +16,32 @@ public class MainArray implements IMainArray {
         // 3 = 'y'ellow
         array = new LinkedList[anzColour];
         for (int i = 0; i < anzColour; i++) {
-            array[i] = new LinkedList<Card>();
+            array[i] = new LinkedList<ICard>();
         }
 
     }
 
-    public void setHigh(Card c) {
+    public void setHigh(ICard c) {
         int i = colourStrToInt(c.getColour());
         array[i].addLast(c);
     }
 
-    public void setLow(Card c) {
+    public void setLow(ICard c) {
         int i = colourStrToInt(c.getColour());
         array[i].addFirst(c);
     }
 
-    public Card getHigh(String colour) {
+    public ICard getHigh(String colour) {
         int i = colourStrToInt(colour);
         return array[i].getLast();
     }
 
-    public Card getLow(String colour) {
+    public ICard getLow(String colour) {
         int i = colourStrToInt(colour);
         return array[i].getFirst();
     }
 
-    public void setEleven(Card eleven) {
+    public void setEleven(ICard eleven) {
         int i = colourStrToInt(eleven.getColour());
         array[i].addFirst(eleven);
     }

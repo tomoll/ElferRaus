@@ -1,5 +1,6 @@
 package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IStates;
 import de.htwg.elferraus.entities.IPlayer;
 
@@ -18,7 +19,7 @@ public class Player implements IPlayer {
         deck = new PlayerDeck();
     }
 
-    public boolean setCard(Card chosenCard) {
+    public boolean setCard(ICard chosenCard) {
         valid = false;
         String chosenColour = chosenCard.getColour();
         int chosenNumber = chosenCard.getNumber();

@@ -1,10 +1,8 @@
 package de.htwg.elferraus.entities;
 
-import de.htwg.elferraus.entities.impl.Card;
-
 public interface IPlayer {
 
-    public boolean setCard(Card chosenCard);
+    public boolean setCard(ICard chosenCard);
 
     public boolean getCard();
 

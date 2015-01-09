@@ -3,7 +3,6 @@ package de.htwg.elferraus.entities;
 
 
 import de.htwg.elferraus.entities.impl.MainStack;
-import de.htwg.elferraus.entities.impl.Card;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,15 +23,15 @@ public class MainStackTest {
     @Test
     public void testgetAmount() {
         assertEquals(80,stack.getAmount());
-        Card c = stack.popCard();
+        ICard c = stack.popCard();
         assertEquals(79,stack.getAmount());
     }
     
     @Test
     public void testpopCard() {
         assertEquals(80, stack.getAmount());
-        Card x = stack.popCard();
-        Card d = stack.popCard();
+        ICard x = stack.popCard();
+        ICard d = stack.popCard();
         
         assertEquals("b", d.getColour());
         assertEquals(19, d.getNumber());
@@ -40,7 +39,7 @@ public class MainStackTest {
     
     @Test
     public void testmixCards(){
-        Card c = stack.popCard();
+        ICard c = stack.popCard();
         assertEquals(20,c.getNumber());
         assertEquals("b", c.getColour());
         stack.mixCards();

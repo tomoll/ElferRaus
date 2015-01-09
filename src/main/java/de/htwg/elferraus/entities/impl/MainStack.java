@@ -1,5 +1,6 @@
 package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IMainStack;
 import java.util.Random;
 
@@ -10,7 +11,7 @@ public class MainStack implements IMainStack {
     private final int anzFarben = 4;
     private final int anzKartenproFarbe = 20;
     private final int gesamtKarten = anzFarben * anzKartenproFarbe;
-    private Card[] startstack = new Card[gesamtKarten];
+    private ICard[] startstack = new ICard[gesamtKarten];
 
     public MainStack(boolean mixing) {
         for (int j = 0; j < anzFarben; j++) {
@@ -43,7 +44,7 @@ public class MainStack implements IMainStack {
         return (count);
     }
 
-    public Card popCard() {
+    public ICard popCard() {
         count--;
         return startstack[count];
     }
@@ -53,7 +54,7 @@ public class MainStack implements IMainStack {
         for (int i = startstack.length - 1; i > 0; i--) {
             int index = rnd.nextInt(i + 1);
             // Simple swap
-            Card a = startstack[index];
+            ICard a = startstack[index];
             startstack[index] = startstack[i];
             startstack[i] = a;
         }

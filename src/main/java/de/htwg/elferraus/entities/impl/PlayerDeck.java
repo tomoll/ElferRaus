@@ -1,22 +1,23 @@
 package de.htwg.elferraus.entities.impl;
 
+import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IPlayerDeck;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerDeck implements IPlayerDeck {
 
-    private List<Card> playerDeck = new ArrayList<Card>(80);
+    private List<ICard> playerDeck = new ArrayList<ICard>(80);
 
     public int getSize() {
         return playerDeck.size();
     }
 
-    public Card indexToCard(int i) {  
+    public ICard indexToCard(int i) {  
         return playerDeck.get(i-1);
     }
 
-    public Card popplCard(Card c) {
+    public ICard popplCard(ICard c) {
         if (playerDeck.remove(c)) {
             return c;
         } else {
@@ -24,7 +25,7 @@ public class PlayerDeck implements IPlayerDeck {
         }
     }
 
-    public void addCard(Card c) {
+    public void addCard(ICard c) {
         playerDeck.add(c);
     }
 
@@ -33,7 +34,7 @@ public class PlayerDeck implements IPlayerDeck {
         String s = "Your Cards\n";
         int i = 1;
         s = s + "Index\t Colour\t Number\n";
-        for (Card c : this.playerDeck) {
+        for (ICard c : this.playerDeck) {
                 s = s + i + "\t" + c.getColour() + "\t" + c.getNumber() + "\n";
             i++;
         }

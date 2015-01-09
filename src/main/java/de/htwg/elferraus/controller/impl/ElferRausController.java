@@ -3,8 +3,8 @@ package de.htwg.elferraus.controller.impl;
 import de.htwg.elferraus.entities.impl.Player;
 import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.entities.impl.MainArray;
-import de.htwg.elferraus.entities.impl.Card;
 import de.htwg.elferraus.controller.*;
+import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.impl.*;
 import de.htwg.util.observer.Observable;
 
@@ -57,8 +57,8 @@ public class ElferRausController extends Observable implements IElferRausControl
         boolean valid;
 
         if (next <= player[actualplayer].deck.getSize()) {
-            Card chosen = player[actualplayer].deck.indexToCard(next);
-            Card setCard = player[actualplayer].deck.popplCard(chosen);
+            ICard chosen = player[actualplayer].deck.indexToCard(next);
+            ICard setCard = player[actualplayer].deck.popplCard(chosen);
             valid = player[actualplayer].setCard(setCard);
             if (valid) {
                 endRoundAllowed = true;
