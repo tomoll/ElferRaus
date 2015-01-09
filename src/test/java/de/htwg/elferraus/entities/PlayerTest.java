@@ -29,22 +29,22 @@ public class PlayerTest {
     @Test
     public void testsetCard() {
 
-        assertFalse(hans.player[0].setCard(new Card(9, "b")));
-        assertTrue(hans.player[0].setCard(new Card(11, "b")));
-        assertFalse(hans.player[0].setCard(new Card(9, "b")));
-        assertTrue(hans.player[0].setCard(new Card(10, "b")));
-        assertFalse(hans.player[0].setCard(new Card(13, "b")));
-        assertTrue(hans.player[0].setCard(new Card(12, "b")));
+        assertFalse(hans.getActualPlayer().setCard(new Card(9, "b")));
+        assertTrue(hans.getActualPlayer().setCard(new Card(11, "b")));
+        assertFalse(hans.getActualPlayer().setCard(new Card(9, "b")));
+        assertTrue(hans.getActualPlayer().setCard(new Card(10, "b")));
+        assertFalse(hans.getActualPlayer().setCard(new Card(13, "b")));
+        assertTrue(hans.getActualPlayer().setCard(new Card(12, "b")));
     }
 
     @Test
     public void testgetCard() {
-        assertTrue(hans.player[0].getCard());
+        assertTrue(hans.getActualPlayer().getCard());
     }
     
     @Test
     public void testsetState(){
-        assertTrue(hans.player[0].setState(new Waiting()));
+        assertTrue(hans.getActualPlayer().setState(new Waiting()));
     }
 
 }

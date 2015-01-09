@@ -12,10 +12,10 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     private String statusMessage = "Welcome to ElferRaus\n";
     private String playerMessage;
-    public int playerAmount;
+    private int playerAmount;
     private int playerStartDeck;
-    public Player[] player;
-    public boolean endRoundAllowed = false;
+    private Player[] player;
+    private boolean endRoundAllowed = false;
     private int actualplayer = 0;
 
     public ElferRausController(int players, MainArray playTable, MainStack stack) {
@@ -30,9 +30,9 @@ public class ElferRausController extends Observable implements IElferRausControl
     }
 
     public boolean next() {
-        if (this.player[actualplayer].deck.getSize() > 0) {
-            actualplayer = player[actualplayer].currentstate.next(player[actualplayer], actualplayer, playerAmount);
-            actualplayer = player[actualplayer].currentstate.next(player[actualplayer], actualplayer, playerAmount);
+        if (this.player[actualplayer].cardsOnHand()>0) {
+            actualplayer = player[actualplayer].nextState(player[actualplayer], actualplayer, playerAmount);
+            actualplayer = player[actualplayer].nextState(player[actualplayer], actualplayer, playerAmount);
             return true;
         }
         return false;
@@ -52,13 +52,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         }
     }
 
-    public boolean setCardRequest(int next) {
-
+    public boolean setCardRequest(int index) {
         boolean valid;
-
-        if (next <= player[actualplayer].deck.getSize()) {
-            ICard chosen = player[actualplayer].deck.indexToCard(next);
-            ICard setCard = player[actualplayer].deck.popplCard(chosen);
+        if (index <= player[actualplayer].cardsOnHand()) {
+            ICard setCard = player[actualplayer].cardToIndex(index);
             valid = player[actualplayer].setCard(setCard);
             if (valid) {
                 endRoundAllowed = true;
@@ -67,7 +64,7 @@ public class ElferRausController extends Observable implements IElferRausControl
                 return true;
             } else {
                 setStatusMessage("Card does not match to any colourarray!\n");
-                player[actualplayer].deck.addCard(setCard);
+                player[actualplayer].addCardtoHand(setCard);
                 notifyObservers();
                 return false;
             }
@@ -79,12 +76,12 @@ public class ElferRausController extends Observable implements IElferRausControl
     }
 
     public boolean getCardRequest() {
-        if (player[actualplayer].stack.getAmount() > 0 && player[actualplayer].stackCards < 3 && !endRoundAllowed) {
+        if (player[actualplayer].stackSize()> 0 && player[actualplayer].pulledCards() < 3 && !endRoundAllowed) {
             player[actualplayer].getCard();
             setStatusMessage("Succesfully received a new card from the stack!\n");
             notifyObservers();
             return true;
-        } else if (player[actualplayer].stackCards >= 3) {
+        } else if (player[actualplayer].pulledCards() >= 3) {
             endRoundAllowed = true;
             return false;
         } else {
@@ -95,15 +92,15 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     }
 
-    public String currentPlayerString() {
-        return player[actualplayer].deck.toString();
-    }
+//    public String currentPlayerString() {
+//        return player[actualplayer].printDeck();
+//    }
 
     public String getMainString() {
 
-        playerMessage = player[actualplayer].playTable.toString() + "\n";
+        playerMessage = player[actualplayer].printTable() + "\n";
         playerMessage = playerMessage + "------------------------------" + "\n";
-        playerMessage = playerMessage + this.currentPlayerString() + "\n";
+        playerMessage = playerMessage + player[actualplayer].printDeck() + "\n";
         playerMessage = playerMessage + "------------------------------" + "\n";
         playerMessage = playerMessage + "Please enter a command:" + "\n";
         playerMessage = playerMessage + "------------------------------" + "\n";
@@ -140,9 +137,13 @@ public class ElferRausController extends Observable implements IElferRausControl
 
         for (int i = 0; i < playerStartDeck; i++) {
             for (int j = 0; j < playerAmount; j++) {
-                player[j].deck.addCard(player[actualplayer].stack.popCard());
+                player[j].addCardtoHand(player[actualplayer].takeCard());
             }
         }
+    }
+    
+    public Player getActualPlayer(){
+        return player[actualplayer];
     }
  
 }

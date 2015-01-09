@@ -6,12 +6,12 @@ import de.htwg.elferraus.entities.IPlayer;
 
 public class Player implements IPlayer {
 
-    public static MainArray playTable;
-    public static MainStack stack;
-    public PlayerDeck deck;
-    public IStates currentstate;
+    private static MainArray playTable;
+    private static MainStack stack;
+    private PlayerDeck deck;
+    private IStates currentstate;
     private boolean valid = false;
-    public int stackCards = 0;
+    private int pulledCards = 0;
 
     public Player(MainArray playTable, MainStack stack) {
         this.stack = stack;
@@ -44,14 +44,50 @@ public class Player implements IPlayer {
 
     public boolean getCard() {
         deck.addCard(stack.popCard());
-        stackCards++;
+        pulledCards++;
         return true;
     }
 
     public boolean setState(IStates s) {
         currentstate = s;
-        stackCards = 0;
+        pulledCards = 0;
         return true;
+    }
+    public int nextState(IPlayer player, int index, int amount){
+        return currentstate.next(this, index, amount);
+    }
+    
+    public int cardsOnHand(){
+        return deck.getSize();
+    }
+    
+    public ICard cardToIndex(int index){
+        return deck.popplCard(deck.indexToCard(index));
+    }
+    
+    public boolean addCardtoHand(ICard c){
+        deck.addCard(c);
+        return true;
+    }
+    
+    public int pulledCards(){
+        return pulledCards;
+    }
+    
+    public int stackSize(){
+        return stack.getAmount();
+    }
+    
+    public String printDeck(){
+        return deck.toString();
+    }
+    
+    public String printTable(){
+        return playTable.toString();
+    }
+    
+    public ICard takeCard(){
+        return stack.popCard();        
     }
 
 }

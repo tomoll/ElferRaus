@@ -33,7 +33,7 @@ public class ElferRausControllerTest {
     public void testnext() {
         assertTrue(hans.next());
         for (int i = 20; i > 0; i--) {
-            hans.player[1].deck.popplCard(hans.player[1].deck.indexToCard(i));
+            hans.getActualPlayer().cardToIndex(i);
         }
         assertFalse(hans.next());
     }
@@ -41,7 +41,7 @@ public class ElferRausControllerTest {
     @Test
     public void testsetEndRound() {
         assertFalse(hans.setEndRound());
-        hans.player[0].deck.addCard(new Card(11, "b"));
+        hans.getActualPlayer().addCardtoHand(new Card(11, "b"));
         hans.setCardRequest(21);
         assertTrue(hans.setEndRound());
     }
@@ -50,7 +50,7 @@ public class ElferRausControllerTest {
     public void testsetCardRequest() {
         assertFalse(hans.setCardRequest(30));
         assertFalse(hans.setCardRequest(20));
-        hans.player[0].deck.addCard(new Card(11, "b"));
+        hans.getActualPlayer().addCardtoHand(new Card(11, "b"));
         assertTrue(hans.setCardRequest(21));
     }
 
@@ -60,25 +60,19 @@ public class ElferRausControllerTest {
         hans.getCardRequest();
         hans.getCardRequest();
         assertFalse(hans.getCardRequest());
-        while (hans.player[0].stack.getAmount() > 0) {
-            hans.player[1].stack.popCard();
+        while (hans.getActualPlayer().stackSize() > 0) {
+            hans.getActualPlayer().takeCard();
         }
         hans.next();
         assertFalse(hans.getCardRequest());
         
         
         hans = new ElferRausController(2, new MainArray(), new MainStack(false));
-        while (hans.player[0].stack.getAmount() > 0) {
-            hans.player[1].stack.popCard();
+        while (hans.getActualPlayer().stackSize() > 0) {
+            hans.getActualPlayer().takeCard();
         }
         assertFalse(hans.getCardRequest());
         
-
-    }
-
-    @Test
-    public void testcurrentPlayerString() {
-        assertNotNull(hans.currentPlayerString());
 
     }
 
