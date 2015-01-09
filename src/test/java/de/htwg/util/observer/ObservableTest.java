@@ -49,12 +49,6 @@ public class ObservableTest {
 		assertFalse(ping);
 	}
 	
-	@Test
-	public void testRemoveAll() {
-		assertFalse(ping);
-		testObservable.removeAllObservers();
-		testObservable.notifyObservers();
-		assertFalse(ping);
-	}
+
 
 }

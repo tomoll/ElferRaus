@@ -8,9 +8,8 @@ import java.util.Scanner;
 public class Tui implements IObserver {
 
     private ElferRausController controller;
-    private Scanner scanner;
+    private final Scanner scanner;
     private Scanner subscanner;
-    private String line = "";
 
     public Tui(ElferRausController controller) {
         this.controller = controller;
@@ -45,7 +44,6 @@ public class Tui implements IObserver {
         }
         else if (line.equalsIgnoreCase("4")) {
             controller.removeObserver(this);
-            controller.removeAllObservers();
             quit = true;
         }
         else {

@@ -10,8 +10,8 @@ public class Player implements IPlayer {
     private static MainStack stack;
     private PlayerDeck deck;
     private IStates currentstate;
-    private boolean valid = false;
     private int pulledCards = 0;
+    private final int eleven = 11;
 
     public Player(MainArray playTable, MainStack stack) {
         this.stack = stack;
@@ -20,24 +20,20 @@ public class Player implements IPlayer {
     }
 
     public boolean setCard(ICard chosenCard) {
-        valid = false;
+        boolean valid = false;
         String chosenColour = chosenCard.getColour();
         int chosenNumber = chosenCard.getNumber();
-        if (chosenNumber == 11) {
+        if (chosenNumber == eleven) {
             this.playTable.setEleven(chosenCard);
             valid = true;
         }
-        if (playTable.isNotEmpty(chosenColour)) {
-            if ((chosenNumber + 1) == playTable.getLow(chosenColour).getNumber()) {
-                playTable.setLow(chosenCard);
-                valid = true;
-            }
+        if (playTable.isNotEmpty(chosenColour) && (chosenNumber + 1) == playTable.getLow(chosenColour).getNumber()) {
+            playTable.setLow(chosenCard);
+            valid = true;
         }
-        if (playTable.isNotEmpty(chosenColour)) {
-            if ((chosenNumber - 1) == playTable.getHigh(chosenColour).getNumber()) {
-                playTable.setHigh(chosenCard);
-                valid = true;
-            }
+        if (playTable.isNotEmpty(chosenColour) && (chosenNumber - 1) == playTable.getHigh(chosenColour).getNumber()) {
+            playTable.setHigh(chosenCard);
+            valid = true;
         }
         return valid;
     }

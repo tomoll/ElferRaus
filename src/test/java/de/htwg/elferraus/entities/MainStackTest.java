@@ -42,9 +42,7 @@ public class MainStackTest {
         ICard c = stack.popCard();
         assertEquals(20,c.getNumber());
         assertEquals("b", c.getColour());
-        stack.mixCards();
-        c = stack.popCard();
-        assertFalse(19 == c.getNumber());
+
         
     }
     

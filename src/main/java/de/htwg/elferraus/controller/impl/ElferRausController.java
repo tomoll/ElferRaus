@@ -11,12 +11,21 @@ import de.htwg.util.observer.Observable;
 public class ElferRausController extends Observable implements IElferRausController {
 
     private String statusMessage = "Welcome to ElferRaus\n";
-    private String playerMessage;
     private int playerAmount;
     private int playerStartDeck;
     private Player[] player;
     private boolean endRoundAllowed = false;
     private int actualplayer = 0;
+    private final int popMax = 3;
+    private final int player3 = 3;
+    private final int player4 = 4;
+    private final int player5 = 5;
+    private final int player6 = 6;
+    private final int cardsForThree = 20;
+    private final int cardsForFour = 15;
+    private final int cardsForFive = 12;
+    private final int cardsForSix = 10;
+    
 
     public ElferRausController(int players, MainArray playTable, MainStack stack) {
         this.playerAmount = players;
@@ -36,7 +45,6 @@ public class ElferRausController extends Observable implements IElferRausControl
             return true;
         }
         return false;
-        // Hier muss jetzt noch Gewonnen/Verloren rein
     }
 
     public boolean setEndRound() {
@@ -76,12 +84,12 @@ public class ElferRausController extends Observable implements IElferRausControl
     }
 
     public boolean getCardRequest() {
-        if (player[actualplayer].stackSize()> 0 && player[actualplayer].pulledCards() < 3 && !endRoundAllowed) {
+        if (player[actualplayer].stackSize()> 0 && player[actualplayer].pulledCards() < popMax && !endRoundAllowed) {
             player[actualplayer].getCard();
             setStatusMessage("Succesfully received a new card from the stack!\n");
             notifyObservers();
             return true;
-        } else if (player[actualplayer].pulledCards() >= 3) {
+        } else if (player[actualplayer].pulledCards() >= popMax) {
             endRoundAllowed = true;
             return false;
         } else {
@@ -92,12 +100,9 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     }
 
-//    public String currentPlayerString() {
-//        return player[actualplayer].printDeck();
-//    }
-
     public String getMainString() {
 
+        String playerMessage;
         playerMessage = player[actualplayer].printTable() + "\n";
         playerMessage = playerMessage + "------------------------------" + "\n";
         playerMessage = playerMessage + player[actualplayer].printDeck() + "\n";
@@ -122,17 +127,17 @@ public class ElferRausController extends Observable implements IElferRausControl
     }
 
     private void giveCards() {
-        if (playerAmount <= 3) {
-            playerStartDeck = 20;
+        if (playerAmount <= player3) {
+            playerStartDeck = cardsForThree;
         }
-        if (playerAmount == 4) {
-            playerStartDeck = 15;
+        if (playerAmount == player4) {
+            playerStartDeck = cardsForFour;
         }
-        if (playerAmount == 5) {
-            playerStartDeck = 12;
+        if (playerAmount == player5) {
+            playerStartDeck = cardsForFive;
         }
-        if (playerAmount == 6) {
-            playerStartDeck = 10;
+        if (playerAmount == player6) {
+            playerStartDeck = cardsForSix;
         }
 
         for (int i = 0; i < playerStartDeck; i++) {

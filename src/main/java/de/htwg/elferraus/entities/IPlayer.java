@@ -2,9 +2,9 @@ package de.htwg.elferraus.entities;
 
 public interface IPlayer {
 
-    public boolean setCard(ICard chosenCard);
+    boolean setCard(ICard chosenCard);
 
-    public boolean getCard();
+    boolean getCard();
 
-    public boolean setState(IStates s);
+    boolean setState(IStates s);
 }

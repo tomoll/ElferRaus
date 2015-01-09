@@ -2,8 +2,8 @@ package de.htwg.elferraus.entities;
 
 public interface ICard {
 
-    public int getNumber();
+    int getNumber();
 
-    public String getColour();
+    String getColour();
 
 }

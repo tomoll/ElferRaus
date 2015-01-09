@@ -8,10 +8,11 @@ public class MainStack implements IMainStack {
 
     private int count = 0;
     private String colour = "";
-    private final int anzFarben = 4;
-    private final int anzKartenproFarbe = 20;
+    private final static int anzFarben = 4;
+    private final static int anzKartenproFarbe = 20;
     private final int gesamtKarten = anzFarben * anzKartenproFarbe;
     private ICard[] startstack = new ICard[gesamtKarten];
+    private final int three = 3;
 
     public MainStack(boolean mixing) {
         for (int j = 0; j < anzFarben; j++) {
@@ -24,7 +25,7 @@ public class MainStack implements IMainStack {
             if (j == 2) {
                 colour = "r";
             }
-            if (j == 3) {
+            if (j == three) {
                 colour = "b";
             }
 
@@ -49,11 +50,10 @@ public class MainStack implements IMainStack {
         return startstack[count];
     }
 
-    public void mixCards() {
+    private void mixCards() {
         Random rnd = new Random();
         for (int i = startstack.length - 1; i > 0; i--) {
             int index = rnd.nextInt(i + 1);
-            // Simple swap
             ICard a = startstack[index];
             startstack[index] = startstack[i];
             startstack[i] = a;

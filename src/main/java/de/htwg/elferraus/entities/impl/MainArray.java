@@ -2,12 +2,15 @@ package de.htwg.elferraus.entities.impl;
 
 import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IMainArray;
+import java.util.Deque;
 import java.util.LinkedList;
 
 public class MainArray implements IMainArray {
 
-    final private LinkedList<ICard>[] array;
-    final private int anzColour = 4;
+    private final Deque<ICard>[] array;
+    private final static int anzColour = 4;
+    private final int three = 3;
+    private final int eleven = 11;
 
     public MainArray() {
         // 0 = 'b'lue
@@ -47,11 +50,7 @@ public class MainArray implements IMainArray {
     }
 
     public boolean isNotEmpty(String colour) {
-        if (array[colourStrToInt(colour)].size() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return array[colourStrToInt(colour)].size() > 0;
     }
 
     private int colourStrToInt(String colour) {
@@ -66,7 +65,7 @@ public class MainArray implements IMainArray {
             colourcode = 2;
         }
         if (colour.equals("y")) {
-            colourcode = 3;
+            colourcode = three;
         }
         return colourcode;
     }
@@ -88,18 +87,18 @@ public class MainArray implements IMainArray {
                 s = s + "red:    \t";
                 colour = "r";
             }
-            if (i == 3) {
+            if (i == three) {
                 s = s + "yellow: \t";
                 colour = "y";
             }
 
             if (array[i].size() > 0) {
-                if (this.getLow(colour).getNumber() != 11) {
+                if (this.getLow(colour).getNumber() != eleven) {
                     s = s + this.getLow(colour).getNumber() + "\t 11 \t";
                 } else {
                     s = s + "no Card" + "\t 11 \t";
                 }
-                if (this.getHigh(colour).getNumber() != 11) {
+                if (this.getHigh(colour).getNumber() != eleven) {
                     s = s + this.getHigh(colour).getNumber() + "\n";
                 } else {
                     s = s + "no Card" + "\n";

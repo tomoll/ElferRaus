@@ -2,10 +2,8 @@ package de.htwg.elferraus.entities;
 
 public interface IMainStack {
 
-    public int getAmount();
+    int getAmount();
 
-    public ICard popCard();
-
-    public void mixCards();
+    ICard popCard();
 
 }

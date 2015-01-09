@@ -1,10 +1,16 @@
 package de.htwg.elferraus.controller;
 
 public interface IElferRausController {
-    public boolean next();
-    public boolean setEndRound();
-    public boolean setCardRequest(int next);
-    public boolean getCardRequest();
-    public String getMainString();
-    public String getStatusMessage();
+
+    boolean next();
+
+    boolean setEndRound();
+
+    boolean setCardRequest(int next);
+
+    boolean getCardRequest();
+
+    String getMainString();
+
+    String getStatusMessage();
 }

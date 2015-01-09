@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerDeck implements IPlayerDeck {
+    
+    
 
-    private List<ICard> playerDeck = new ArrayList<ICard>(80);
+    private final int playerDeckSize = 80;
+    private List<ICard> playerDeck = new ArrayList<ICard>(playerDeckSize);
 
     public int getSize() {
         return playerDeck.size();

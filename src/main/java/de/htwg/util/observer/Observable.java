@@ -1,28 +1,30 @@
 package de.htwg.util.observer;
 
-import java.util.Iterator;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Observable  {
+public class Observable {
 
-	private Vector<IObserver> subscribers = new Vector<IObserver>(2);
+    private final List<IObserver> subscribers = new ArrayList<IObserver>();
 
-	public void addObserver(IObserver s) {
-		subscribers.addElement(s);
-	}
+    public final void addObserver(final IObserver s) {
+        if (!subscribers.contains(s)) {
+            subscribers.add(s);
+        }
+    }
 
-	public void removeObserver(IObserver s) {
-		subscribers.removeElement(s);
-	}
+    public final void notifyObservers() {
+        for (IObserver observer : subscribers) {
+            observer.update();
+        }
+    }
 
-	public void removeAllObservers() {
-		subscribers.removeAllElements();
-	}
+    public void removeObserver(IObserver s) {
+        subscribers.remove(s);
+    }
 
-	public void notifyObservers() {
-		for ( Iterator<IObserver> iter = subscribers.iterator(); iter.hasNext();) {
-			IObserver observer = iter.next();
-			observer.update();
-		}
-	}
+    public final List<IObserver> getSubscribers() {
+        return subscribers;
+    }
+
 }

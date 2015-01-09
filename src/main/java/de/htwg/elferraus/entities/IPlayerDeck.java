@@ -2,12 +2,12 @@ package de.htwg.elferraus.entities;
 
 public interface IPlayerDeck {
 
-    public int getSize();
+    int getSize();
 
-    public ICard indexToCard(int i);
+    ICard indexToCard(int i);
 
-    public ICard popplCard(ICard c);
+    ICard popplCard(ICard c);
 
-    public void addCard(ICard c);
+    void addCard(ICard c);
 
 }
