@@ -144,6 +144,5 @@ public class ElferRausController extends Observable implements IElferRausControl
             }
         }
     }
-    
-
+ 
 }

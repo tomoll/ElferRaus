@@ -27,16 +27,18 @@ public class TuiTest {
     
     @Test
     public void testIterate(){
+        //assertFalse(tui.iterate());
 
-    }
-    
-    @Test
-    public void testPrintTui(){
-        
     }
     
     @Test 
     public void testHandleInputOrQuit(){
+        assertFalse(tui.handleInputOrQuit("7"));
+        //assertTrue(tui.handleInputOrQuit("1"));
+        //assertTrue(tui.handleInputOrQuit("2"));
+        //assertTrue(tui.handleInputOrQuit("3"));
+        //assertTrue(tui.handleInputOrQuit("4"));
+        
 
     }
     

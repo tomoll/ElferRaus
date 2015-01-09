@@ -4,10 +4,7 @@ import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
 
-/**
- *
- * @author Tobi
- */
+
 public class Tui implements IObserver {
 
     private ElferRausController controller;
@@ -46,11 +43,9 @@ public class Tui implements IObserver {
         else if (line.equalsIgnoreCase("3")) {
            controller.setEndRound();
         }
-//        else if (line.equalsIgnoreCase("4")) {
-//            int i = 1; //hier muss noch was gemacht werden nur um sonar zu beruhigen!!
-//            //Do nothing, just redraw the updated grid
-//        }
         else if (line.equalsIgnoreCase("4")) {
+            controller.removeObserver(this);
+            controller.removeAllObservers();
             quit = true;
         }
         else {

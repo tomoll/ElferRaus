@@ -63,6 +63,7 @@ public class ElferRausControllerTest {
         while (hans.player[0].stack.getAmount() > 0) {
             hans.player[1].stack.popCard();
         }
+        hans.next();
         assertFalse(hans.getCardRequest());
 
     }
@@ -80,7 +81,7 @@ public class ElferRausControllerTest {
 
     @Test
     public void testgetStatusMessage() {
-        assertNotNull(hans.getMainString());
+        assertNotNull(hans.getStatusMessage());
     }
 
     @Test

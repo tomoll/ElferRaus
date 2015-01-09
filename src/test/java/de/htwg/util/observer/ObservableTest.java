@@ -5,10 +5,7 @@
  */
 package de.htwg.util.observer;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,34 +15,46 @@ import static org.junit.Assert.*;
  */
 public class ObservableTest {
     
-    public ObservableTest() {
-    }
+    private boolean ping=false;
+	private TestObserver testObserver;
+	private Observable testObservable;
+	
+	class TestObserver implements IObserver {
     
- /*  
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+		public void update() {
+			ping=true;
+		}
+		
+	}
 
-    
-    @Test
-    public void testAddObserver() {
-    
-    }
+	@Before
+	public void setUp() throws Exception {
+		testObserver = new TestObserver();
+		testObservable = new Observable();
+		testObservable.addObserver(testObserver);
+	}
 
-   
-    @Test
-    public void testRemoveObserver() {
-        
-    }
+	@Test
+	public void testNotify() {
+		assertFalse(ping);
+		testObservable.notifyObservers();
+		assertTrue(ping);
+	}
+	
+	@Test
+	public void testRemove() {
+		assertFalse(ping);
+		testObservable.removeObserver(testObserver);
+		testObservable.notifyObservers();
+		assertFalse(ping);
+	}
+	
+	@Test
+	public void testRemoveAll() {
+		assertFalse(ping);
+		testObservable.removeAllObservers();
+		testObservable.notifyObservers();
+		assertFalse(ping);
+	}
 
-  
-    @Test
-    public void testRemoveAllObservers() {
-      
-    }
-    */
 }
