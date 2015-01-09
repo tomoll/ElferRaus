@@ -1,14 +1,9 @@
 package de.htwg.elferraus.entities.impl;
 
 import de.htwg.elferraus.entities.IPlayerDeck;
-import de.htwg.elferraus.entities.impl.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Christian Hümmer, Tobias Moll
- */
 public class PlayerDeck implements IPlayerDeck {
 
     private List<Card> playerDeck = new ArrayList<Card>(80);

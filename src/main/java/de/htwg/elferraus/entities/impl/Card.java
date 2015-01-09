@@ -1,23 +1,22 @@
 package de.htwg.elferraus.entities.impl;
+
 import de.htwg.elferraus.entities.*;
-/**
- *
- * @author Christian Hümmer, Tobias Moll
- */
+
 public class Card implements ICard {
+
     private final int number;
     private final String colour;
-    
-    public Card(int i, String s){
+
+    public Card(int i, String s) {
         this.number = i;
         this.colour = s;
     }
-    
-    public int getNumber(){
+
+    public int getNumber() {
         return this.number;
     }
-    
-    public String getColour(){
+
+    public String getColour() {
         return this.colour;
     }
 }

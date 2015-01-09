@@ -3,12 +3,10 @@ package de.htwg.elferraus.entities.impl;
 import de.htwg.elferraus.entities.IStates;
 import de.htwg.elferraus.entities.IPlayer;
 
-
 public class Player implements IPlayer {
 
     public static MainArray playTable;
     public static MainStack stack;
-
     public PlayerDeck deck;
     public IStates currentstate;
     private boolean valid = false;
@@ -27,17 +25,19 @@ public class Player implements IPlayer {
         if (chosenNumber == 11) {
             this.playTable.setEleven(chosenCard);
             valid = true;
-        } if (playTable.isNotEmpty(chosenColour)) {
+        }
+        if (playTable.isNotEmpty(chosenColour)) {
             if ((chosenNumber + 1) == playTable.getLow(chosenColour).getNumber()) {
                 playTable.setLow(chosenCard);
                 valid = true;
             }
-        } if (playTable.isNotEmpty(chosenColour)) {
+        }
+        if (playTable.isNotEmpty(chosenColour)) {
             if ((chosenNumber - 1) == playTable.getHigh(chosenColour).getNumber()) {
                 playTable.setHigh(chosenCard);
                 valid = true;
             }
-        } 
+        }
         return valid;
     }
 

@@ -1,9 +1,6 @@
 package de.htwg.elferraus.entities.impl;
 
 import de.htwg.elferraus.entities.IMainStack;
-import de.htwg.elferraus.entities.impl.Card;
-import java.math.BigDecimal;
-import static java.math.BigDecimal.ZERO;
 import java.util.Random;
 
 public class MainStack implements IMainStack {
@@ -15,14 +12,20 @@ public class MainStack implements IMainStack {
     private final int gesamtKarten = anzFarben * anzKartenproFarbe;
     private Card[] startstack = new Card[gesamtKarten];
 
-    //kein Array sondern Stack
-    //am besten eigenen Zähler wegen Array 0 quasi 1!!!
     public MainStack(boolean mixing) {
         for (int j = 0; j < anzFarben; j++) {
-            if(j == 0) colour = "y";
-            if(j == 1) colour = "g";
-            if(j == 2) colour = "r";
-            if(j == 3) colour = "b";
+            if (j == 0) {
+                colour = "y";
+            }
+            if (j == 1) {
+                colour = "g";
+            }
+            if (j == 2) {
+                colour = "r";
+            }
+            if (j == 3) {
+                colour = "b";
+            }
 
             for (int i = 0; i < anzKartenproFarbe; i++) {
                 startstack[count] = new Card(i + 1, colour);
@@ -30,10 +33,9 @@ public class MainStack implements IMainStack {
             }
 
         }
-        if(mixing){
+        if (mixing) {
             this.mixCards();
         }
-        
 
     }
 
