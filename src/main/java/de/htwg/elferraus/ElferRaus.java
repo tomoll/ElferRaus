@@ -5,10 +5,16 @@ import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.tui.Tui;
 
+/**
+ *
+ * @author Tobi
+ */
 public final class ElferRaus {
     
-
-
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         Tui tui = new Tui(new ElferRausController(2, new MainArray(), new MainStack(true)));

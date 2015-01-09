@@ -5,6 +5,10 @@ import de.htwg.elferraus.entities.IPlayerDeck;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Tobi
+ */
 public class PlayerDeck implements IPlayerDeck {
     
     
@@ -12,14 +16,28 @@ public class PlayerDeck implements IPlayerDeck {
     private static final int PLAYERDECKSIZE = 80;
     private List<ICard> playerDeck = new ArrayList<ICard>(PLAYERDECKSIZE);
 
+    /**
+     *
+     * @return
+     */
     public int getSize() {
         return playerDeck.size();
     }
 
+    /**
+     *
+     * @param i
+     * @return
+     */
     public ICard indexToCard(int i) {  
         return playerDeck.get(i-1);
     }
 
+    /**
+     *
+     * @param c
+     * @return
+     */
     public ICard popplCard(ICard c) {
         if (playerDeck.remove(c)) {
             return c;
@@ -28,6 +46,10 @@ public class PlayerDeck implements IPlayerDeck {
         }
     }
 
+    /**
+     *
+     * @param c
+     */
     public void addCard(ICard c) {
         playerDeck.add(c);
     }

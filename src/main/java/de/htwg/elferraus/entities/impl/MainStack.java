@@ -4,16 +4,24 @@ import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IMainStack;
 import java.util.Random;
 
+/**
+ *
+ * @author Tobi
+ */
 public class MainStack implements IMainStack {
 
     private int count = 0;
     private String colour = "";
     private static final int ANZFARBEN = 4;
     private static final int ANZKARTENPROFARBE = 20;
-    private static final int gesamtKarten = ANZFARBEN * ANZKARTENPROFARBE;
-    private ICard[] startstack = new ICard[gesamtKarten];
+    private static final int GESAMTKARTEN = ANZFARBEN * ANZKARTENPROFARBE;
+    private ICard[] startstack = new ICard[GESAMTKARTEN];
     private static final int THREE = 3;
 
+    /**
+     *
+     * @param mixing
+     */
     public MainStack(boolean mixing) {
         for (int j = 0; j < ANZFARBEN; j++) {
             if (j == 0) {
@@ -41,10 +49,18 @@ public class MainStack implements IMainStack {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public int getAmount() {
         return (count);
     }
 
+    /**
+     *
+     * @return
+     */
     public ICard popCard() {
         count--;
         return startstack[count];

@@ -5,6 +5,10 @@ import de.htwg.elferraus.entities.IMainArray;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ *
+ * @author Tobi
+ */
 public class MainArray implements IMainArray {
 
     private final Deque<ICard>[] array;
@@ -12,6 +16,9 @@ public class MainArray implements IMainArray {
     private static final int THREE = 3;
     private static final int ELEVEN = 11;
 
+    /**
+     *
+     */
     public MainArray() {
         // 0 = 'b'lue
         // 1 = 'g'reen
@@ -24,31 +31,58 @@ public class MainArray implements IMainArray {
 
     }
 
+    /**
+     *
+     * @param c
+     */
     public void setHigh(ICard c) {
         int i = colourStrToInt(c.getColour());
         array[i].addLast(c);
     }
 
+    /**
+     *
+     * @param c
+     */
     public void setLow(ICard c) {
         int i = colourStrToInt(c.getColour());
         array[i].addFirst(c);
     }
 
+    /**
+     *
+     * @param colour
+     * @return
+     */
     public ICard getHigh(String colour) {
         int i = colourStrToInt(colour);
         return array[i].getLast();
     }
 
+    /**
+     *
+     * @param colour
+     * @return
+     */
     public ICard getLow(String colour) {
         int i = colourStrToInt(colour);
         return array[i].getFirst();
     }
 
+    /**
+     *
+     * @param eleven
+     */
     public void setEleven(ICard eleven) {
         int i = colourStrToInt(eleven.getColour());
         array[i].addFirst(eleven);
     }
 
+    /**
+     *
+     * @param colour
+     * @return
+     */
     public boolean isNotEmpty(String colour) {
         return array[colourStrToInt(colour)].size() > 0;
     }

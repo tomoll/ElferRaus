@@ -8,6 +8,10 @@ import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.impl.*;
 import de.htwg.util.observer.Observable;
 
+/**
+ *
+ * @author Tobi
+ */
 public class ElferRausController extends Observable implements IElferRausController {
 
     private String statusMessage = "Welcome to ElferRaus\n";
@@ -26,7 +30,12 @@ public class ElferRausController extends Observable implements IElferRausControl
     private static final int CARDSFORFIVE = 12;
     private static final int CARDSFORSIX = 10;
     
-
+    /**
+     *
+     * @param players
+     * @param playTable
+     * @param stack
+     */
     public ElferRausController(int players, MainArray playTable, MainStack stack) {
         this.playerAmount = players;
         player = new Player[playerAmount];
@@ -38,6 +47,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         player[actualplayer].setState(new Playing());
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean next() {
         if (this.player[actualplayer].cardsOnHand()>0) {
             actualplayer = player[actualplayer].nextState(player[actualplayer], actualplayer, playerAmount);
@@ -47,6 +60,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean setEndRound() {
         if (endRoundAllowed) {
             next();
@@ -60,6 +77,11 @@ public class ElferRausController extends Observable implements IElferRausControl
         }
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     public boolean setCardRequest(int index) {
         boolean valid;
         if (index <= player[actualplayer].cardsOnHand()) {
@@ -83,6 +105,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean getCardRequest() {
         if (player[actualplayer].stackSize()> 0 && player[actualplayer].pulledCards() < POPMAX && !endRoundAllowed) {
             player[actualplayer].getCard();
@@ -100,6 +126,10 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMainString() {
 
         String playerMessage;
@@ -122,6 +152,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         this.statusMessage = statusMessage;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStatusMessage() {
         return this.statusMessage;
     }
@@ -147,6 +181,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public Player getActualPlayer(){
         return player[actualplayer];
     }
