@@ -98,12 +98,12 @@ public class MainArray implements IMainArray {
             }
 
             if (array[i].size() > 0) {
-                if (this.getLow(colour) != null && this.getLow(colour).getNumber() != 11) {
+                if (this.getLow(colour).getNumber() != 11) {
                     s = s + this.getLow(colour).getNumber() + "\t 11 \t";
                 } else {
                     s = s + "no Card" + "\t 11 \t";
                 }
-                if (this.getHigh(colour) != null && this.getHigh(colour).getNumber() != 11) {
+                if (this.getHigh(colour).getNumber() != 11) {
                     s = s + this.getHigh(colour).getNumber() + "\n";
                 } else {
                     s = s + "no Card" + "\n";

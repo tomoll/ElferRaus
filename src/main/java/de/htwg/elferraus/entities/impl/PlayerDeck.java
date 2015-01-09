@@ -39,9 +39,7 @@ public class PlayerDeck implements IPlayerDeck {
         int i = 1;
         s = s + "Index\t Colour\t Number\n";
         for (Card c : this.playerDeck) {
-            if (c != null) {
                 s = s + i + "\t" + c.getColour() + "\t" + c.getNumber() + "\n";
-            }
             i++;
         }
         return s;
