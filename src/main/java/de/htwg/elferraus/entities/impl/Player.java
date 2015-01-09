@@ -11,7 +11,7 @@ public class Player implements IPlayer {
     private PlayerDeck deck;
     private IStates currentstate;
     private int pulledCards = 0;
-    private final int eleven = 11;
+    private static final int ELEVEN = 11;
 
     public Player(MainArray playTable, MainStack stack) {
         this.stack = stack;
@@ -23,7 +23,7 @@ public class Player implements IPlayer {
         boolean valid = false;
         String chosenColour = chosenCard.getColour();
         int chosenNumber = chosenCard.getNumber();
-        if (chosenNumber == eleven) {
+        if (chosenNumber == ELEVEN) {
             this.playTable.setEleven(chosenCard);
             valid = true;
         }

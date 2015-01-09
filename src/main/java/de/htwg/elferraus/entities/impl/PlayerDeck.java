@@ -9,8 +9,8 @@ public class PlayerDeck implements IPlayerDeck {
     
     
 
-    private final int playerDeckSize = 80;
-    private List<ICard> playerDeck = new ArrayList<ICard>(playerDeckSize);
+    private static final int PLAYERDECKSIZE = 80;
+    private List<ICard> playerDeck = new ArrayList<ICard>(PLAYERDECKSIZE);
 
     public int getSize() {
         return playerDeck.size();

@@ -8,17 +8,17 @@ import java.util.LinkedList;
 public class MainArray implements IMainArray {
 
     private final Deque<ICard>[] array;
-    private final static int anzColour = 4;
-    private final int three = 3;
-    private final int eleven = 11;
+    private static final int ANZCOLOUR = 4;
+    private final int THREE = 3;
+    private final int ELEVEN = 11;
 
     public MainArray() {
         // 0 = 'b'lue
         // 1 = 'g'reen
         // 2 = 'r'ed
         // 3 = 'y'ellow
-        array = new LinkedList[anzColour];
-        for (int i = 0; i < anzColour; i++) {
+        array = new LinkedList[ANZCOLOUR];
+        for (int i = 0; i < ANZCOLOUR; i++) {
             array[i] = new LinkedList<ICard>();
         }
 
@@ -65,7 +65,7 @@ public class MainArray implements IMainArray {
             colourcode = 2;
         }
         if (colour.equals("y")) {
-            colourcode = three;
+            colourcode = THREE;
         }
         return colourcode;
     }
@@ -74,7 +74,7 @@ public class MainArray implements IMainArray {
     public String toString() {
         String s = "";
         String colour = "";
-        for (int i = 0; i < anzColour; i++) {
+        for (int i = 0; i < ANZCOLOUR; i++) {
             if (i == 0) {
                 s = s + "blue:    \t";
                 colour = "b";
@@ -87,18 +87,18 @@ public class MainArray implements IMainArray {
                 s = s + "red:    \t";
                 colour = "r";
             }
-            if (i == three) {
+            if (i == THREE) {
                 s = s + "yellow: \t";
                 colour = "y";
             }
 
             if (array[i].size() > 0) {
-                if (this.getLow(colour).getNumber() != eleven) {
+                if (this.getLow(colour).getNumber() != ELEVEN) {
                     s = s + this.getLow(colour).getNumber() + "\t 11 \t";
                 } else {
                     s = s + "no Card" + "\t 11 \t";
                 }
-                if (this.getHigh(colour).getNumber() != eleven) {
+                if (this.getHigh(colour).getNumber() != ELEVEN) {
                     s = s + this.getHigh(colour).getNumber() + "\n";
                 } else {
                     s = s + "no Card" + "\n";

@@ -16,15 +16,15 @@ public class ElferRausController extends Observable implements IElferRausControl
     private Player[] player;
     private boolean endRoundAllowed = false;
     private int actualplayer = 0;
-    private final int popMax = 3;
-    private final int player3 = 3;
-    private final int player4 = 4;
-    private final int player5 = 5;
-    private final int player6 = 6;
-    private final int cardsForThree = 20;
-    private final int cardsForFour = 15;
-    private final int cardsForFive = 12;
-    private final int cardsForSix = 10;
+    private static final int popMax = 3;
+    private static final int player3 = 3;
+    private static final int player4 = 4;
+    private static final int player5 = 5;
+    private static final int player6 = 6;
+    private static final int cardsForThree = 20;
+    private static final int cardsForFour = 15;
+    private static final int cardsForFive = 12;
+    private static final int cardsForSix = 10;
     
 
     public ElferRausController(int players, MainArray playTable, MainStack stack) {
