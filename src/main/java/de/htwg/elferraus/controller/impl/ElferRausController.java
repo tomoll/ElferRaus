@@ -6,6 +6,8 @@ import de.htwg.elferraus.ElferRausModule;
 import de.htwg.elferraus.entities.impl.Player;
 import de.htwg.elferraus.controller.*;
 import de.htwg.elferraus.entities.*;
+import de.htwg.elferraus.entities.impl.MainArray;
+import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.entities.impl.Playing;
 import de.htwg.elferraus.entities.impl.Waiting;
 import de.htwg.util.observer.Observable;
@@ -50,8 +52,10 @@ public class ElferRausController extends Observable implements IElferRausControl
      */
     public void startGame(){
         setStatusMessage("Welcome Player 1\n");
-        IMainArray playTable = injector.getInstance(IMainArray.class);
-        IMainStack stack = injector.getInstance(IMainStack.class);
+        MainArray playTable = new MainArray();
+        MainStack stack = new MainStack();
+//        IMainArray playTable = injector.getInstance(IMainArray.class);
+//        IMainStack stack = injector.getInstance(IMainStack.class);
         player = new Player[playerAmount];
         for (int i = 0; i < playerAmount; i++) {
             
