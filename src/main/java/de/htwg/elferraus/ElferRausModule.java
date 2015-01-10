@@ -1,17 +1,20 @@
 package de.htwg.elferraus;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Singleton;
 
 import de.htwg.elferraus.controller.IElferRausController;
+import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.elferraus.entities.IMainArray;
 import de.htwg.elferraus.entities.IMainStack;
+import de.htwg.elferraus.entities.impl.MainArray;
+import de.htwg.elferraus.entities.impl.MainStack;
 
 /**
  *
  * @author Tobi
  */
 public final class ElferRausModule extends AbstractModule {
-
 
     /**
      *
@@ -20,12 +23,12 @@ public final class ElferRausModule extends AbstractModule {
     protected void configure() {
 
         bind(IElferRausController.class)
-                .to(de.htwg.elferraus.controller.impl.ElferRausController.class);
+                .to(ElferRausController.class).in(Singleton.class);
         bind(IMainStack.class).
-                to(de.htwg.elferraus.entities.impl.MainStack.class);
+                to(MainStack.class);
         bind(IMainArray.class).
-                to(de.htwg.elferraus.entities.impl.MainArray.class);
-        
+                to(MainArray.class);
+
     }
 
 }
