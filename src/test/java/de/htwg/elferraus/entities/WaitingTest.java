@@ -21,11 +21,19 @@ import org.junit.Test;
 public class WaitingTest {
     
     Waiting test;
+
+    /**
+     *
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception{
         test = new Waiting();
     }
 
+    /**
+     *
+     */
     @Test
     public void testnext() {
          assertEquals(1, test.next(new Player(new MainArray(), new MainStack()), 1, 2));

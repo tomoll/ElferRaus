@@ -17,6 +17,10 @@ public class MainArrayTest {
     
     MainArray array;
 
+    /**
+     *
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         array = new MainArray();
@@ -26,7 +30,9 @@ public class MainArrayTest {
         array.setEleven(new Card(11,"y"));
     }
  
-    
+    /**
+     *
+     */
     @Test
     public void testgetHigh() {
         Card card1 = new Card(12,"r");
@@ -34,6 +40,10 @@ public class MainArrayTest {
         assertEquals(card1, array.getHigh("r"));
 
     }
+
+    /**
+     *
+     */
     @Test
     public void testgetLow() {
         Card card2 = new Card(10,"r");
@@ -43,14 +53,18 @@ public class MainArrayTest {
 
     }
     
+    /**
+     *
+     */
     @Test 
     public void testisNotEmpty(){
         assertTrue(array.isNotEmpty("y"));
         assertFalse(array.isNotEmpty("b"));
     }
     
-    
-    
+    /**
+     *
+     */
     @Test 
     public void testtoString(){
         assertNotNull(array.toString());

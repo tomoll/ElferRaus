@@ -17,12 +17,18 @@ public class PlayerDeckTest {
     
     PlayerDeck deck;
     
+    /**
+     *
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         deck = new PlayerDeck();
     }
     
-   
+    /**
+     *
+     */
     @Test
     public void testGetSize() {
         Card a = new Card(3, "r");
@@ -34,6 +40,9 @@ public class PlayerDeckTest {
         assertEquals(3, deck.getSize());
     }
 
+    /**
+     *
+     */
     @Test
     public void testpopplCard() {
         Card c = new Card(2,"r");
@@ -43,6 +52,9 @@ public class PlayerDeckTest {
         
     }
     
+    /**
+     *
+     */
     @Test 
     public void testIndexToCard(){
         Card c = new Card(9,"b");
@@ -50,6 +62,9 @@ public class PlayerDeckTest {
         assertEquals(c,deck.indexToCard(1));
     }
     
+    /**
+     *
+     */
     @Test
     public void testtoString(){
         assertNotNull(deck.toString());

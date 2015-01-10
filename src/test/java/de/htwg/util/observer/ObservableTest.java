@@ -27,21 +27,31 @@ public class ObservableTest {
 		
 	}
 
-	@Before
+    /**
+     *
+     * @throws Exception
+     */
+    @Before
 	public void setUp() throws Exception {
 		testObserver = new TestObserver();
 		testObservable = new Observable();
 		testObservable.addObserver(testObserver);
 	}
 
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testNotify() {
 		assertFalse(ping);
 		testObservable.notifyObservers();
 		assertTrue(ping);
 	}
 	
-	@Test
+    /**
+     *
+     */
+    @Test
 	public void testRemove() {
 		assertFalse(ping);
 		testObservable.removeObserver(testObserver);

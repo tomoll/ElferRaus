@@ -6,7 +6,10 @@ import de.htwg.elferraus.controller.IElferRausController;
 import de.htwg.elferraus.entities.IMainArray;
 import de.htwg.elferraus.entities.IMainStack;
 
-
+/**
+ *
+ * @author Tobi
+ */
 public final class ElferRausModule extends AbstractModule {
 
 

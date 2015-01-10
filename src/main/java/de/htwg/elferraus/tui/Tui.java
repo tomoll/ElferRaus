@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class Tui implements IObserver {
 
-    private ElferRausController controller;
+    private final ElferRausController controller;
     private final Scanner scanner;
     private Scanner subscanner;
 
@@ -27,6 +27,10 @@ public class Tui implements IObserver {
         scanner = new Scanner(System.in);
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean initialize() {
         System.out.println("How Many Players??");
         int i;

@@ -10,15 +10,26 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/**
+ *
+ * @author Tobi
+ */
 public class PlayingTest {
 
     Playing test;
+
+    /**
+     *
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception{
         test = new Playing();
     }
 
+    /**
+     *
+     */
     @Test
     public void testnext() {
          assertEquals(0, test.next(new Player(new MainArray(), new MainStack()), 1, 2));

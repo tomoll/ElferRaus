@@ -21,23 +21,35 @@ public class TuiTest {
     //private ElferRausController controller;
     Tui tui;
     
+    /**
+     *
+     */
     @Before
     public void testsetUp(){
         tui = new Tui(new ElferRausController());
     }
     
+    /**
+     *
+     */
     @Test
     public void testIterate(){
         //assertFalse(tui.iterate());
 
     }
     
-     @Test
+    /**
+     *
+     */
+    @Test
     public void testprintTUI(){
         //9assertTrue(tui.printTUI());
 
     }
     
+    /**
+     *
+     */
     @Test 
     public void testHandleInputOrQuit(){
         assertFalse(tui.handleInputOrQuit("7"));
@@ -50,12 +62,19 @@ public class TuiTest {
 
     }
     
+    /**
+     *
+     */
     @Test
     public void testInitialize(){
-        //assertTrue(tui.initialize());
+        assertTrue(tui.initialize());
         
         
     }
+
+    /**
+     *
+     */
     @Test
     public void testupdate(){
        //  tui.update();

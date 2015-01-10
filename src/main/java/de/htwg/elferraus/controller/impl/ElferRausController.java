@@ -5,10 +5,9 @@ import com.google.inject.Injector;
 import de.htwg.elferraus.ElferRausModule;
 import de.htwg.elferraus.entities.impl.Player;
 import de.htwg.elferraus.controller.*;
-import de.htwg.elferraus.entities.ICard;
-import de.htwg.elferraus.entities.IMainArray;
-import de.htwg.elferraus.entities.IMainStack;
-import de.htwg.elferraus.entities.impl.*;
+import de.htwg.elferraus.entities.*;
+import de.htwg.elferraus.entities.impl.Playing;
+import de.htwg.elferraus.entities.impl.Waiting;
 import de.htwg.util.observer.Observable;
 
 /**
@@ -38,14 +37,21 @@ public class ElferRausController extends Observable implements IElferRausControl
      */
     private final Injector injector
             = Guice.createInjector(new ElferRausModule());
-  
+    
+    /**
+     *
+     */
     public void create(){
         statusMessage = "Welcome to ElferRaus\n";
     }
+
+    /**
+     *
+     */
     public void startGame(){
         setStatusMessage("Welcome Player 1\n");
         IMainArray playTable = injector.getInstance(IMainArray.class);
-        IMainStack stack = injector.getInstance(IMainStack.class);;
+        IMainStack stack = injector.getInstance(IMainStack.class);
         player = new Player[playerAmount];
         for (int i = 0; i < playerAmount; i++) {
             
@@ -169,6 +175,10 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     }
 
+    /**
+     *
+     * @param statusMessage
+     */
     public void setStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
     }
@@ -210,6 +220,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         return player[actualplayer];
     }
     
+    /**
+     *
+     * @param playerAmount
+     */
     public void setPlayer(int playerAmount){
         this.playerAmount=playerAmount;
         startGame();

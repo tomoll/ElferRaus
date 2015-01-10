@@ -6,8 +6,14 @@ package de.htwg.elferraus.controller;
  */
 public interface IElferRausController {
 
-    
+    /**
+     *
+     */
     void create();
+
+    /**
+     *
+     */
     void startGame();
     /**
      *

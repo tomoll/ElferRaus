@@ -15,11 +15,19 @@ import static org.junit.Assert.*;
 public class MainStackTest {
     
     MainStack stack;
+
+    /**
+     *
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         stack = new MainStack();
     }
     
+    /**
+     *
+     */
     @Test
     public void testgetAmount() {
         assertEquals(80,stack.getAmount());
@@ -27,6 +35,9 @@ public class MainStackTest {
         assertEquals(79,stack.getAmount());
     }
     
+    /**
+     *
+     */
     @Test
     public void testpopCard() {
         assertEquals(80, stack.getAmount());

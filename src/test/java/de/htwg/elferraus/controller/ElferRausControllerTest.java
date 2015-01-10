@@ -9,18 +9,31 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ *
+ * @author Tobi
+ */
 public class ElferRausControllerTest {
 
+    /**
+     *
+     */
     public ElferRausControllerTest() {
     }
     ElferRausController hans;
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         hans = new ElferRausController();
         hans.setPlayer(2);
     }
 
+    /**
+     *
+     */
     @Test
     public void testcreate() {
         hans.setPlayer(2);
@@ -28,6 +41,9 @@ public class ElferRausControllerTest {
         assertEquals("Welcome to ElferRaus\n", hans.getStatusMessage());
     }
 
+    /**
+     *
+     */
     @Test
     public void teststartGame() {
         hans.startGame();
@@ -36,6 +52,9 @@ public class ElferRausControllerTest {
 
     }
 
+    /**
+     *
+     */
     @Test
     public void testnext() {
         assertTrue(hans.next());
@@ -46,6 +65,9 @@ public class ElferRausControllerTest {
         assertNotNull(hans.getStatusMessage());
     }
 
+    /**
+     *
+     */
     @Test
     public void testsetEndRound() {
         assertFalse(hans.setEndRound());
@@ -54,6 +76,9 @@ public class ElferRausControllerTest {
         assertTrue(hans.setEndRound());
     }
 
+    /**
+     *
+     */
     @Test
     public void testsetCardRequest() {
         assertFalse(hans.setCardRequest(30));
@@ -62,6 +87,9 @@ public class ElferRausControllerTest {
         assertTrue(hans.setCardRequest(21));
     }
 
+    /**
+     *
+     */
     @Test
     public void testgetCardRequest() {
         assertTrue(hans.getCardRequest());
@@ -93,16 +121,25 @@ public class ElferRausControllerTest {
 
     }
 
+    /**
+     *
+     */
     @Test
     public void testgetMainString() {
         assertNotNull(hans.getMainString());
     }
 
+    /**
+     *
+     */
     @Test
     public void testgetStatusMessage() {
         assertNotNull(hans.getStatusMessage());
     }
 
+    /**
+     *
+     */
     @Test
     public void testgiveCards() {
         hans = new ElferRausController();
