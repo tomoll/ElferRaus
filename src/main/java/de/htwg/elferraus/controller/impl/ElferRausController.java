@@ -1,10 +1,15 @@
 package de.htwg.elferraus.controller.impl;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import de.htwg.elferraus.ElferRausModule;
 import de.htwg.elferraus.entities.impl.Player;
 import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.controller.*;
 import de.htwg.elferraus.entities.ICard;
+import de.htwg.elferraus.entities.IMainArray;
+import de.htwg.elferraus.entities.IMainStack;
 import de.htwg.elferraus.entities.impl.*;
 import de.htwg.util.observer.Observable;
 
@@ -14,7 +19,7 @@ import de.htwg.util.observer.Observable;
  */
 public class ElferRausController extends Observable implements IElferRausController {
 
-    private String statusMessage = "Welcome to ElferRaus\n";
+    private String statusMessage;
     private int playerAmount;
     private int playerStartDeck;
     private Player[] player;
@@ -29,23 +34,34 @@ public class ElferRausController extends Observable implements IElferRausControl
     private static final int CARDSFORFOUR = 15;
     private static final int CARDSFORFIVE = 12;
     private static final int CARDSFORSIX = 10;
-    
-    /**
-     *
-     * @param players
-     * @param playTable
-     * @param stack
+      /**
+     * Set up Google Guice Dependency Injector. Build up the application,
+     * resolving dependencies automatically by Guice
      */
-    public ElferRausController(int players, MainArray playTable, MainStack stack) {
-        this.playerAmount = players;
+    private final Injector injector
+            = Guice.createInjector(new ElferRausModule());
+  
+    public void create(){
+        statusMessage = "Welcome to ElferRaus\n";
+    }
+    public void startGame(){
+        setStatusMessage("Welcome Player 1\n");
+        IMainArray playTable = injector.getInstance(IMainArray.class);
+        IMainStack stack = injector.getInstance(IMainStack.class);;
         player = new Player[playerAmount];
         for (int i = 0; i < playerAmount; i++) {
+            
             player[i] = new Player(playTable, stack);
             player[i].setState(new Waiting());
         }
         giveCards();
         player[actualplayer].setState(new Playing());
+        notifyObservers();
+  
+        
     }
+    
+    
 
     /**
      *
@@ -55,8 +71,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         if (this.player[actualplayer].cardsOnHand()>0) {
             actualplayer = player[actualplayer].nextState(player[actualplayer], actualplayer, playerAmount);
             actualplayer = player[actualplayer].nextState(player[actualplayer], actualplayer, playerAmount);
+            setStatusMessage("Now Player "+(actualplayer+1)+"\n");
             return true;
         }
+        setStatusMessage("WUHUUU You are the Winner!!!!! \nGame Over");
         return false;
     }
 
@@ -65,6 +83,7 @@ public class ElferRausController extends Observable implements IElferRausControl
      * @return
      */
     public boolean setEndRound() {
+        
         if (endRoundAllowed) {
             next();
             endRoundAllowed = false;
@@ -112,11 +131,15 @@ public class ElferRausController extends Observable implements IElferRausControl
     public boolean getCardRequest() {
         if (player[actualplayer].stackSize()> 0 && player[actualplayer].pulledCards() < POPMAX && !endRoundAllowed) {
             player[actualplayer].getCard();
+            if(player[actualplayer].pulledCards() == POPMAX){
+                endRoundAllowed = true;
+            }
             setStatusMessage("Succesfully received a new card from the stack!\n");
             notifyObservers();
             return true;
         } else if (player[actualplayer].pulledCards() >= POPMAX) {
-            endRoundAllowed = true;
+            setStatusMessage("Already allowed to End Round!\n");
+            notifyObservers();
             return false;
         } else {
             setStatusMessage("Can't pop card from the stack!\n");
@@ -148,7 +171,7 @@ public class ElferRausController extends Observable implements IElferRausControl
 
     }
 
-    private void setStatusMessage(String statusMessage) {
+    public void setStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
     }
 
@@ -187,6 +210,12 @@ public class ElferRausController extends Observable implements IElferRausControl
      */
     public Player getActualPlayer(){
         return player[actualplayer];
+    }
+    
+    public void setPlayer(int playerAmount){
+        this.playerAmount=playerAmount;
+        startGame();
+        
     }
  
 }

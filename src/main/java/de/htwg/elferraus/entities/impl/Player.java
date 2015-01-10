@@ -1,6 +1,8 @@
 package de.htwg.elferraus.entities.impl;
 
 import de.htwg.elferraus.entities.ICard;
+import de.htwg.elferraus.entities.IMainArray;
+import de.htwg.elferraus.entities.IMainStack;
 import de.htwg.elferraus.entities.IStates;
 import de.htwg.elferraus.entities.IPlayer;
 
@@ -10,8 +12,8 @@ import de.htwg.elferraus.entities.IPlayer;
  */
 public class Player implements IPlayer {
 
-    private static MainArray playTable;
-    private static MainStack stack;
+    private static IMainArray playTable;
+    private static IMainStack stack;
     private PlayerDeck deck;
     private IStates currentstate;
     private int pulledCards = 0;
@@ -22,7 +24,8 @@ public class Player implements IPlayer {
      * @param playTable
      * @param stack
      */
-    public Player(MainArray playTable, MainStack stack) {
+    
+    public Player(IMainArray playTable, IMainStack stack) {
         this.stack = stack;
         this.playTable = playTable;
         deck = new PlayerDeck();

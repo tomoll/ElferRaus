@@ -1,5 +1,6 @@
 package de.htwg.elferraus.entities.impl;
 
+import com.google.inject.Inject;
 import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IMainStack;
 import java.util.Random;
@@ -18,11 +19,14 @@ public class MainStack implements IMainStack {
     private ICard[] startstack = new ICard[GESAMTKARTEN];
     private static final int THREE = 3;
 
+    
     /**
      *
      * @param mixing
      */
-    public MainStack(boolean mixing) {
+    @Inject
+    public MainStack() {
+        boolean mixing = true;
         for (int j = 0; j < ANZFARBEN; j++) {
             if (j == 0) {
                 colour = "y";

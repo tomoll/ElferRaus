@@ -1,5 +1,6 @@
 package de.htwg.elferraus.tui;
 
+import com.google.inject.Inject;
 import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
@@ -18,10 +19,21 @@ public class Tui implements IObserver {
      *
      * @param controller
      */
+    @Inject
     public Tui(ElferRausController controller) {
+
         this.controller = controller;
         controller.addObserver(this);
         scanner = new Scanner(System.in);
+    }
+
+    public boolean initialize() {
+        System.out.println("How Many Players??");
+        int i;
+        subscanner = new Scanner(System.in);
+        i = Integer.parseInt(subscanner.next());
+        this.controller.setPlayer(i);
+        return true;
     }
 
     /**
@@ -29,7 +41,7 @@ public class Tui implements IObserver {
      * @return
      */
     public boolean iterate() {
-        return handleInputOrQuit(scanner.next());
+        return handleInputOrQuit(scanner.next());    
     }
 
     /**
@@ -47,25 +59,21 @@ public class Tui implements IObserver {
      */
     public boolean handleInputOrQuit(String line) {
         boolean quit = false;
-                       
+
         if (line.equalsIgnoreCase("1")) {
             controller.getCardRequest();
-        }
-        else if (line.equalsIgnoreCase("2")) {
+        } else if (line.equalsIgnoreCase("2")) {
             System.out.println("Please enter the index: ");
             int i;
             subscanner = new Scanner(System.in);
             i = Integer.parseInt(subscanner.next());
             controller.setCardRequest(i);
-        }
-        else if (line.equalsIgnoreCase("3")) {
-           controller.setEndRound();
-        }
-        else if (line.equalsIgnoreCase("4")) {
+        } else if (line.equalsIgnoreCase("3")) {
+            controller.setEndRound();
+        } else if (line.equalsIgnoreCase("4")) {
             controller.removeObserver(this);
             quit = true;
-        }
-        else {
+        } else {
             System.out.println("Falsche Eingabe!");
         }
         return quit;
