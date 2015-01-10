@@ -1,5 +1,8 @@
 package de.htwg.elferraus.entities.impl;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import de.htwg.elferraus.ElferRausModule;
 import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IMainArray;
 import de.htwg.elferraus.entities.IMainStack;
@@ -19,13 +22,19 @@ public class Player implements IPlayer {
     private int pulledCards = 0;
     private static final int ELEVEN = 11;
 
+    
+    private final Injector injector
+            = Guice.createInjector(new ElferRausModule());
+    
     /**
      *
      * @param playTable
      * @param stack
      */
     
-    public Player(IMainArray playTable, IMainStack stack) {
+    public Player() {
+        IMainArray playTable = injector.getInstance(IMainArray.class);
+        IMainStack stack = injector.getInstance(IMainStack.class);
         this.stack = stack;
         this.playTable = playTable;
         deck = new PlayerDeck();

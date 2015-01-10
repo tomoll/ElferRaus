@@ -50,12 +50,11 @@ public class ElferRausController extends Observable implements IElferRausControl
      */
     public void startGame(){
         setStatusMessage("Welcome Player 1\n");
-        IMainArray playTable = injector.getInstance(IMainArray.class);
-        IMainStack stack = injector.getInstance(IMainStack.class);
+        
         player = new Player[playerAmount];
         for (int i = 0; i < playerAmount; i++) {
             
-            player[i] = new Player(playTable, stack);
+            player[i] = new Player();
             player[i].setState(new Waiting());
         }
         giveCards();

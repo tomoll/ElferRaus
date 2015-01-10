@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -14,6 +15,7 @@ public class Tui implements IObserver {
     private final ElferRausController controller;
     private final Scanner scanner;
     private Scanner subscanner;
+    private Logger logger = Logger.getLogger("de.htwg.elferraus.view.tui");
 
     /**
      *
@@ -32,6 +34,7 @@ public class Tui implements IObserver {
      * @return
      */
     public boolean initialize() {
+        //logger.info("How many Players?");
         System.out.println("How Many Players??");
         int i;
         subscanner = new Scanner(System.in);

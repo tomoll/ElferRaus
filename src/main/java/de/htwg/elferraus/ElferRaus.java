@@ -16,11 +16,11 @@ public final class ElferRaus {
      */
     private final Tui tui;
     /**
-     * static BlackJack instance.
+     * static ElferRaus instance.
      */
     private static ElferRaus instance = null;
     /**
-     * BlackJackController.
+     * ElferRausController.
      */
     private IElferRausController controller;
 
@@ -58,7 +58,7 @@ public final class ElferRaus {
         controller.create();
 
          // Set up logging through log4j
-        PropertyConfigurator.configure("log4j.properties");
+        //PropertyConfigurator.configure("/Users/Tobi/NetBeansProjects/SE2014WS-19-ElferRaus/ElferRaus/log4j.properties");
     }
     
     
@@ -69,6 +69,7 @@ public final class ElferRaus {
      */
     public static void main(String[] args) {
 
+        
     ElferRaus game = ElferRaus.getInstance();
     
     game.getTui().initialize();
