@@ -17,7 +17,23 @@ public class ElferRausControllerTest {
 
     @Before
     public void setUp() {
-        hans = new ElferRausController(2, new MainArray(), new MainStack(false));
+        hans = new ElferRausController();
+        hans.setPlayer(2);
+    }
+
+    @Test
+    public void testcreate() {
+        hans.setPlayer(2);
+        hans.create();
+        assertEquals("Welcome to ElferRaus\n", hans.getStatusMessage());
+    }
+
+    @Test
+    public void teststartGame() {
+        hans.startGame();
+        assertNotNull(hans.getActualPlayer());
+        assertNotNull(hans.getStatusMessage());
+
     }
 
     @Test
@@ -27,6 +43,7 @@ public class ElferRausControllerTest {
             hans.getActualPlayer().cardToIndex(i);
         }
         assertFalse(hans.next());
+        assertNotNull(hans.getStatusMessage());
     }
 
     @Test
@@ -56,14 +73,13 @@ public class ElferRausControllerTest {
         }
         hans.next();
         assertFalse(hans.getCardRequest());
-        
-        
-        hans = new ElferRausController(2, new MainArray(), new MainStack(false));
+
+        hans = new ElferRausController();
+        hans.setPlayer(2);
         while (hans.getActualPlayer().stackSize() > 0) {
             hans.getActualPlayer().takeCard();
         }
         assertFalse(hans.getCardRequest());
-        
 
     }
 
@@ -79,10 +95,14 @@ public class ElferRausControllerTest {
 
     @Test
     public void testgiveCards() {
-        hans = new ElferRausController(4, new MainArray(), new MainStack(false));
-        hans = new ElferRausController(5, new MainArray(), new MainStack(false));
-        hans = new ElferRausController(6, new MainArray(), new MainStack(false));
-        hans = new ElferRausController(6, new MainArray(), new MainStack(false));
+        hans = new ElferRausController();
+        hans.setPlayer(3);
+        hans = new ElferRausController();
+        hans.setPlayer(4);
+        hans = new ElferRausController();
+        hans.setPlayer(5);
+        hans = new ElferRausController();
+        hans.setPlayer(6);
 
     }
 

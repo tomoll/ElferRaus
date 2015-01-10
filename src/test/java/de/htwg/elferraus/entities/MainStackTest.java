@@ -17,7 +17,7 @@ public class MainStackTest {
     MainStack stack;
     @Before
     public void setUp() throws Exception {
-        stack = new MainStack(false);
+        stack = new MainStack();
     }
     
     @Test
@@ -32,19 +32,11 @@ public class MainStackTest {
         assertEquals(80, stack.getAmount());
         ICard x = stack.popCard();
         ICard d = stack.popCard();
-        
-        assertEquals("b", d.getColour());
-        assertEquals(19, d.getNumber());
+        assertEquals(78, stack.getAmount());
+        assertNotNull(d.getColour());
+        assertNotNull(d.getNumber());
     }
     
-    @Test
-    public void testmixCards(){
-        ICard c = stack.popCard();
-        assertEquals(20,c.getNumber());
-        assertEquals("b", c.getColour());
 
-        
-    }
-    
     
 }

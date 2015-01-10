@@ -19,14 +19,13 @@ public class MainStack implements IMainStack {
     private ICard[] startstack = new ICard[GESAMTKARTEN];
     private static final int THREE = 3;
 
-    
     /**
      *
-     * @param mixing
+     *
      */
     @Inject
     public MainStack() {
-        boolean mixing = true;
+
         for (int j = 0; j < ANZFARBEN; j++) {
             if (j == 0) {
                 colour = "y";
@@ -47,9 +46,7 @@ public class MainStack implements IMainStack {
             }
 
         }
-        if (mixing) {
-            this.mixCards();
-        }
+        this.mixCards();
 
     }
 

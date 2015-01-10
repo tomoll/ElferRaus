@@ -22,7 +22,7 @@ public class TuiTest {
     
     @Before
     public void testsetUp(){
-        tui = new Tui(new ElferRausController(2, new MainArray(), new MainStack(true)));
+        tui = new Tui(new ElferRausController());
     }
     
     @Test

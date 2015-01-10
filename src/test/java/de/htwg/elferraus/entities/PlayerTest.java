@@ -23,7 +23,8 @@ public class PlayerTest {
 
     @Before
     public void setUp() {
-        hans = new ElferRausController(2, new MainArray(), new MainStack(false));
+        hans = new ElferRausController();
+        hans.setPlayer(2);
     }
 
     @Test
