@@ -3,9 +3,6 @@ package de.htwg.elferraus;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.htwg.elferraus.controller.IElferRausController;
-import de.htwg.elferraus.controller.impl.ElferRausController;
-import de.htwg.elferraus.entities.impl.MainArray;
-import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.tui.Tui;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -71,16 +68,7 @@ public final class ElferRaus {
      * @param args
      */
     public static void main(String[] args) {
-        /*
-        Tui tui = new Tui(new ElferRausController(2, new MainArray(), new MainStack(true)));
-        tui.printTUI();
 
-        boolean quit = false;
-        while (!quit) {
-            quit = tui.iterate();
-        }
-                */
-    
     ElferRaus game = ElferRaus.getInstance();
     
     game.getTui().initialize();

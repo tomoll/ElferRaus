@@ -71,6 +71,7 @@ public class ElferRausControllerTest {
         while (hans.getActualPlayer().stackSize() > 0) {
             hans.getActualPlayer().takeCard();
         }
+        
         hans.next();
         assertFalse(hans.getCardRequest());
 
@@ -80,6 +81,15 @@ public class ElferRausControllerTest {
             hans.getActualPlayer().takeCard();
         }
         assertFalse(hans.getCardRequest());
+        
+        
+        hans = new ElferRausController();
+        hans.setPlayer(2);
+        for ( int i = hans.getActualPlayer().stackSize(); i > 0; i--) {
+            hans.setCardRequest(i);
+        }
+        assertFalse(hans.getCardRequest());
+        
 
     }
 

@@ -46,10 +46,12 @@ public class Tui implements IObserver {
 
     /**
      *
+     * @return 
      */
-    public void printTUI() {
+    public boolean printTUI() {
         System.out.print(controller.getMainString());
         System.out.print(controller.getStatusMessage());
+        return true;
     }
 
     /**

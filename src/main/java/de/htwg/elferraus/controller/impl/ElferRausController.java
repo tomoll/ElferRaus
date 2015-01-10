@@ -4,8 +4,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.htwg.elferraus.ElferRausModule;
 import de.htwg.elferraus.entities.impl.Player;
-import de.htwg.elferraus.entities.impl.MainStack;
-import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.controller.*;
 import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IMainArray;

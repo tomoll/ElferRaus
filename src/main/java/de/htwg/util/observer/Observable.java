@@ -16,9 +16,7 @@ public class Observable {
      * @param s
      */
     public final void addObserver(final IObserver s) {
-        if (!subscribers.contains(s)) {
             subscribers.add(s);
-        }
     }
 
     /**
@@ -38,12 +36,5 @@ public class Observable {
         subscribers.remove(s);
     }
 
-    /**
-     *
-     * @return
-     */
-    public final List<IObserver> getSubscribers() {
-        return subscribers;
-    }
 
 }

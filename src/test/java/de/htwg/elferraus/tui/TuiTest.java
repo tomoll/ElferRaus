@@ -18,6 +18,7 @@ import org.junit.Test;
  */
 public class TuiTest {
     
+    //private ElferRausController controller;
     Tui tui;
     
     @Before
@@ -31,19 +32,35 @@ public class TuiTest {
 
     }
     
+     @Test
+    public void testprintTUI(){
+        //9assertTrue(tui.printTUI());
+
+    }
+    
     @Test 
     public void testHandleInputOrQuit(){
         assertFalse(tui.handleInputOrQuit("7"));
-        //assertTrue(tui.handleInputOrQuit("1"));
-        //assertTrue(tui.handleInputOrQuit("2"));
-        //assertTrue(tui.handleInputOrQuit("3"));
-        //assertTrue(tui.handleInputOrQuit("4"));
-        
+//        assertTrue(tui.handleInputOrQuit("1"));
+//        assertTrue(tui.handleInputOrQuit("1"));
+//        assertTrue(tui.handleInputOrQuit("1"));
+//        assertTrue(tui.handleInputOrQuit("3"));
+//        //assertTrue(tui.handleInputOrQuit("4"));
+           //assertTrue(tui.handleInputOrQuit("2"));
 
     }
     
     @Test
-    public void testUpdate(){
+    public void testInitialize(){
+        //assertTrue(tui.initialize());
+        
         
     }
+    @Test
+    public void testupdate(){
+       //  tui.update();
+        
+        
+    }
+    
 }
