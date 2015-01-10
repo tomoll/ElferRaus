@@ -32,8 +32,8 @@ public class PlayingTest {
      */
     @Test
     public void testnext() {
-         assertEquals(0, test.next(new Player(), 1, 2));
-         assertEquals(1, test.next(new Player(), 0, 2));
+         assertEquals(0, test.next(new Player(new MainArray(), new MainStack()), 1, 2));
+         assertEquals(1, test.next(new Player(new MainArray(), new MainStack()), 0, 2));
     }
     
 
