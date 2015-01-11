@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,8 +19,41 @@ import javax.swing.JPanel;
  * @author Christian
  */
 public class MainStackPanel extends JPanel{
+    
+    JPanel mainStackPanel = new JPanel();
+    JButton mainStackButton;
+    JButton exitButton = new JButton("Exit Game");
+    JButton nextButton = new JButton("End Round");
+    
+    
+    
+    
+    
+    
+    
+    
     public MainStackPanel() {
+        
+        
+        mainStackButton.setSize(30, 50);
+        mainStackButton.setBackground(Color.BLACK);
+        exitButton.setSize(30,20);
+        nextButton.setSize(30,20);
+        mainStackPanel.add(mainStackButton);
+        mainStackPanel.add(nextButton);
+        mainStackPanel.add(exitButton);
+        
+        
+        
+        
+        
         setBorder(BorderFactory.createLineBorder(Color.black));
+            JLabel welcome = new JLabel("Kartenstapel : ");
+        add(welcome);
+        JButton card1 = new JButton("");
+        card1.setBackground(Color.black);
+    //    card1.addActionListener(this);
+        add(card1);
        
     }
 
@@ -27,13 +61,5 @@ public class MainStackPanel extends JPanel{
         return new Dimension(250,200);
         
     }
-    public void paint(Graphics g) {
-      g.drawString("Kartenstapel", 0, 10);
-      g.setColor(Color.black);
-      
-      g.fillRect (10, 200, 50, 75);
-     
 
-    
-}
 }

@@ -153,5 +153,19 @@ public class Player implements IPlayer {
     public ICard takeCard(){
         return stack.popCard();        
     }
+    
+//    public ICard[] getCardsFromTable(){
+//        ICard [] cards = new ICard[12];
+//        cards[0] = playTable.getLow("b");
+//        cards[1] = playTable.getHigh("b");
+//        cards[2] = playTable.getLow("g");
+//        cards[3] = playTable.getHigh("g");
+//        cards[4] = playTable.getLow("r");
+//        cards[5] = playTable.getHigh("r");
+//        cards[6] = playTable.getLow("y");
+//        cards[7] = playTable.getHigh("y");
+//        return cards;
+//    }
+    
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package de.htwg.elferraus.gui;
 
@@ -26,7 +21,7 @@ public class GuiTest {
         JFrame f = new JFrame("Elfer Raus");
         f.getContentPane().setLayout(new GridLayout());
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.getContentPane().add(new MainArrayPanel());
+   //     f.getContentPane().add(new MainArrayPanel());
         f.getContentPane().add(new MainStackPanel());
         f.getContentPane().add(new OptionsPanel());
         f.getContentPane().add(new DeckPanel());
