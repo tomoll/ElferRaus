@@ -5,6 +5,8 @@ import de.htwg.elferraus.entities.IMainArray;
 import de.htwg.elferraus.entities.IMainStack;
 import de.htwg.elferraus.entities.IStates;
 import de.htwg.elferraus.entities.IPlayer;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -24,7 +26,6 @@ public class Player implements IPlayer {
      * @param playTable
      * @param stack
      */
-    
     public Player(IMainArray playTable, IMainStack stack) {
         this.stack = stack;
         this.playTable = playTable;
@@ -83,89 +84,131 @@ public class Player implements IPlayer {
      * @param amount
      * @return
      */
-    public int nextState(IPlayer player, int index, int amount){
+    public int nextState(IPlayer player, int index, int amount) {
         return currentstate.next(this, index, amount);
     }
-    
+
     /**
      *
      * @return
      */
-    public int cardsOnHand(){
+    public int cardsOnHand() {
         return deck.getSize();
     }
-    
+
     /**
      *
      * @param index
      * @return
      */
-    public ICard cardToIndex(int index){
+    public ICard cardToIndex(int index) {
         return deck.popplCard(deck.indexToCard(index));
     }
-    
+
     /**
      *
      * @param c
      * @return
      */
-    public boolean addCardtoHand(ICard c){
+    public boolean addCardtoHand(ICard c) {
         deck.addCard(c);
         return true;
     }
-    
+
     /**
      *
      * @return
      */
-    public int pulledCards(){
+    public int pulledCards() {
         return pulledCards;
     }
-    
+
     /**
      *
      * @return
      */
-    public int stackSize(){
+    public int stackSize() {
         return stack.getAmount();
     }
-    
+
     /**
      *
      * @return
      */
-    public String printDeck(){
+    public String printDeck() {
         return deck.toString();
     }
-    
+
     /**
      *
      * @return
      */
-    public String printTable(){
+    public String printTable() {
         return playTable.toString();
     }
-    
+
     /**
      *
      * @return
      */
-    public ICard takeCard(){
-        return stack.popCard();        
+    public ICard takeCard() {
+        return stack.popCard();
     }
-    
-//    public ICard[] getCardsFromTable(){
-//        ICard [] cards = new ICard[12];
-//        cards[0] = playTable.getLow("b");
-//        cards[1] = playTable.getHigh("b");
-//        cards[2] = playTable.getLow("g");
-//        cards[3] = playTable.getHigh("g");
-//        cards[4] = playTable.getLow("r");
-//        cards[5] = playTable.getHigh("r");
-//        cards[6] = playTable.getLow("y");
-//        cards[7] = playTable.getHigh("y");
-//        return cards;
-//    }
-    
+
+    public HashMap<String, Integer> getTable() {
+        HashMap<String, Integer> temp = new HashMap<String, Integer>();
+        for (int i = 0; i < 4; i++) {
+            String s = "x";
+            if (i == 0) {
+                s = "b";
+            }
+            if (i == 1) {
+                s = "g";
+
+            }
+            if (i == 2) {
+                s = "r";
+            }
+            if (i == 3) {
+                s = "y";
+            }
+            Integer zahl;
+            ICard temp2 = playTable.getLow(s);
+            if (temp2 == null) {
+                temp.put(s, null);
+            } else {
+                zahl = temp2.getNumber();
+                if (zahl == 11) {
+                    temp.put(s, null);
+                } else {
+                    temp.put(s, zahl);
+                }
+            }
+
+            s = s + " ";
+            temp2 = playTable.getHigh(s);
+            if (temp2 == null) {
+                temp.put(s, null);
+            } else {
+                zahl = temp2.getNumber();
+                if (zahl == 11) {
+                    temp.put(s, null);
+                } else {
+                    temp.put(s, zahl);
+                }
+            }
+
+        }
+        return temp;
+    }
+
+    public HashMap<String, Integer> getHand() {
+        HashMap<String, Integer> temp = new HashMap<String, Integer>();
+        ArrayList<ICard> array = deck.getCards();
+        for (int i = 0; i < deck.getCards().size(); i++) {
+            temp.put(array.get(i).getColour(), array.get(i).getNumber());
+        }
+        return temp;
+    }
 
 }

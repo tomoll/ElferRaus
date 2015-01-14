@@ -3,6 +3,7 @@ package de.htwg.elferraus.entities.impl;
 import de.htwg.elferraus.entities.ICard;
 import de.htwg.elferraus.entities.IPlayerDeck;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class PlayerDeck implements IPlayerDeck {
     
 
     private static final int PLAYERDECKSIZE = 80;
-    private List<ICard> playerDeck = new ArrayList<ICard>(PLAYERDECKSIZE);
+    private ArrayList<ICard> playerDeck = new ArrayList<ICard>(PLAYERDECKSIZE);
 
     /**
      *
@@ -52,6 +53,10 @@ public class PlayerDeck implements IPlayerDeck {
      */
     public void addCard(ICard c) {
         playerDeck.add(c);
+    }
+    
+    public ArrayList<ICard> getCards(){
+        return playerDeck;        
     }
 
     @Override

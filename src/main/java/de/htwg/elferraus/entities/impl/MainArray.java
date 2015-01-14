@@ -56,7 +56,11 @@ public class MainArray implements IMainArray {
      */
     public ICard getHigh(String colour) {
         int i = colourStrToInt(colour);
-        return array[i].getLast();
+        if (array[i].size() > 0) {
+            return array[i].getLast();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -66,7 +70,12 @@ public class MainArray implements IMainArray {
      */
     public ICard getLow(String colour) {
         int i = colourStrToInt(colour);
-        return array[i].getFirst();
+        if (array[i].size() > 0) {
+            return array[i].getFirst();
+        } else {
+            return null;
+        }
+
     }
 
     /**

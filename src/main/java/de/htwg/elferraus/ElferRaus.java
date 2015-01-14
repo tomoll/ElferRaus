@@ -3,6 +3,7 @@ package de.htwg.elferraus;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.htwg.elferraus.controller.IElferRausController;
+import de.htwg.elferraus.gui.GuiTest;
 import de.htwg.elferraus.tui.Tui;
 import java.util.Scanner;
 import org.apache.log4j.PropertyConfigurator;
@@ -49,20 +50,29 @@ public final class ElferRaus {
 
         // Set up logging through log4j
         //PropertyConfigurator.configure("/Users/Tobi/NetBeansProjects/SE2014WS-19-ElferRaus/ElferRaus/log4j.properties");
+        
+        
         Injector injector = Guice.createInjector(new ElferRausModule());
         controller = injector.getInstance(IElferRausController.class);
         controller.setInjector(injector);
-        tui = new Tui(controller);
-        int i = tui.initialize();
-        controller.setInjector(injector);
-        controller.setPlayer(i);
-        boolean quit = false;
+//        tui = new Tui(controller);
+//        int i = tui.initialize();
+//        controller.setInjector(injector);             ganze Block gut nur für Gui
+//        controller.setPlayer(i);
+//        boolean quit = false;
         
-        scanner = new Scanner(System.in);
-        while (!quit) {
-            //tui.inputLine(scanner.nextLine());
-            quit = tui.iterate();
-        }
+        
+        GuiTest dieter = new GuiTest();
+        int i = dieter.GUIFrame(controller);                              //alles scheiß für gui
+        controller.setInjector(injector); 
+        controller.setPlayer(i);
+        dieter.start();
+//        
+//        scanner = new Scanner(System.in);
+//        while (!quit) {
+//            //tui.inputLine(scanner.nextLine());          ganze Block gut nur für Gui
+//            quit = tui.iterate();
+//        }
     }
 
 }
