@@ -1,6 +1,7 @@
 package de.htwg.elferraus.tui;
 
-import com.google.inject.Inject;
+
+import de.htwg.elferraus.controller.IElferRausController;
 import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
@@ -12,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class Tui implements IObserver {
 
-    private final ElferRausController controller;
+    private final IElferRausController controller;
     private final Scanner scanner;
     private Scanner subscanner;
     private Logger logger = Logger.getLogger("de.htwg.elferraus.view.tui");
@@ -21,11 +22,11 @@ public class Tui implements IObserver {
      *
      * @param controller
      */
-    @Inject
-    public Tui(ElferRausController controller) {
+
+    public Tui(final IElferRausController controller) {
 
         this.controller = controller;
-        controller.addObserver(this);
+        this.controller.addObserver(this);
         scanner = new Scanner(System.in);
     }
 
@@ -33,14 +34,13 @@ public class Tui implements IObserver {
      *
      * @return
      */
-    public boolean initialize() {
+    public int initialize() {
         //logger.info("How many Players?");
         System.out.println("How Many Players??");
         int i;
         subscanner = new Scanner(System.in);
         i = Integer.parseInt(subscanner.next());
-        this.controller.setPlayer(i);
-        return true;
+        return i;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Tui implements IObserver {
         } else if (line.equalsIgnoreCase("3")) {
             controller.setEndRound();
         } else if (line.equalsIgnoreCase("4")) {
-            controller.removeObserver(this);
+            this.controller.removeObserver(this);
             quit = true;
         } else {
             System.out.println("Falsche Eingabe!");

@@ -23,11 +23,11 @@ public final class ElferRausModule extends AbstractModule {
     protected void configure() {
 
         bind(IElferRausController.class)
-                .to(ElferRausController.class).in(Singleton.class);
+                .to(ElferRausController.class);
         bind(IMainStack.class).
                 to(MainStack.class).in(Singleton.class);
         bind(IMainArray.class).
-                to(MainArray.class).in(Singleton.class);
+                to(MainArray.class);
 
     }
 

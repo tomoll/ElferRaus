@@ -10,7 +10,7 @@ import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.entities.impl.Playing;
 import de.htwg.elferraus.entities.impl.Waiting;
-import de.htwg.util.observer.Observable;
+import de.htwg.util.observer.impl.Observable;
 
 /**
  *
@@ -37,8 +37,8 @@ public class ElferRausController extends Observable implements IElferRausControl
      * Set up Google Guice Dependency Injector. Build up the application,
      * resolving dependencies automatically by Guice
      */
-    private final Injector injector
-            = Guice.createInjector(new ElferRausModule());
+    private Injector injector;
+            //= Guice.createInjector(new ElferRausModule());
     
     /**
      *
@@ -232,6 +232,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         this.playerAmount=playerAmount;
         startGame();
         
+    }
+    
+    public void setInjector(Injector injector){
+        this.injector = injector;
     }
  
 }

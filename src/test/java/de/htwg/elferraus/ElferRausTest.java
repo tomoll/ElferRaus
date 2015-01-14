@@ -32,16 +32,7 @@ public class ElferRausTest {
     public void testgetInstance() {
         assertTrue(instance instanceof ElferRaus);
     }
-    
-    /**
-     *
-     */
-    @Test
-    public void testgetTui(){
-        tui = instance.getTui();
-        assertTrue(tui instanceof Tui);
-        
-    }
+  
     
 
     

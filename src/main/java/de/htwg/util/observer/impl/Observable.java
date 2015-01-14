@@ -1,5 +1,6 @@
-package de.htwg.util.observer;
+package de.htwg.util.observer.impl;
 
+import de.htwg.util.observer.IObserver;
 import java.util.ArrayList;
 import java.util.List;
 

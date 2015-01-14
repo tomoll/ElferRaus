@@ -4,6 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.htwg.elferraus.controller.IElferRausController;
 import de.htwg.elferraus.tui.Tui;
+import java.util.Scanner;
 import org.apache.log4j.PropertyConfigurator;
 
 /**
@@ -11,10 +12,11 @@ import org.apache.log4j.PropertyConfigurator;
  * @author Tobi
  */
 public final class ElferRaus {
+
     /**
      * tui.
      */
-    private final Tui tui;
+    private static Tui tui;
     /**
      * static ElferRaus instance.
      */
@@ -22,8 +24,10 @@ public final class ElferRaus {
     /**
      * ElferRausController.
      */
-    private IElferRausController controller;
+    private static IElferRausController controller;
 
+
+    private static Scanner scanner;
     /**
      * Singleton.
      *
@@ -33,51 +37,32 @@ public final class ElferRaus {
         if (instance == null) {
             instance = new ElferRaus();
         }
+
         return instance;
 
     }
-
-    /**
-     * @return tui
-     */
-    public Tui getTui() {
-        return tui;
-    }
-
-    /**
-     *
-     */
-    private ElferRaus() {
-        // Set up Google Guice Dependency Injector
-        Injector injector = Guice.createInjector(new ElferRausModule());
-        // Build up the application, resolving dependencies automatically by
-        // Guice
-        controller = injector.getInstance(IElferRausController.class);
-        tui = injector.getInstance(Tui.class);
-
-        controller.create();
-
-         // Set up logging through log4j
-        //PropertyConfigurator.configure("/Users/Tobi/NetBeansProjects/SE2014WS-19-ElferRaus/ElferRaus/log4j.properties");
-    }
-    
-    
-    
     /**
      *
      * @param args
      */
     public static void main(String[] args) {
 
+        // Set up logging through log4j
+        //PropertyConfigurator.configure("/Users/Tobi/NetBeansProjects/SE2014WS-19-ElferRaus/ElferRaus/log4j.properties");
+        Injector injector = Guice.createInjector(new ElferRausModule());
+        controller = injector.getInstance(IElferRausController.class);
+        controller.setInjector(injector);
+        tui = new Tui(controller);
+        int i = tui.initialize();
+        controller.setInjector(injector);
+        controller.setPlayer(i);
+        boolean quit = false;
         
-    ElferRaus game = ElferRaus.getInstance();
-    
-    game.getTui().initialize();
-    boolean quit = false;
+        scanner = new Scanner(System.in);
         while (!quit) {
-            quit = game.getTui().iterate();
+            //tui.inputLine(scanner.nextLine());
+            quit = tui.iterate();
         }
     }
-                
 
 }

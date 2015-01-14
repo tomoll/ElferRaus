@@ -1,10 +1,12 @@
 package de.htwg.elferraus.controller;
 
+import com.google.inject.Injector;
+import de.htwg.util.observer.IObservable;
 /**
  *
  * @author Tobi
  */
-public interface IElferRausController {
+public interface IElferRausController extends IObservable {
 
     /**
      *
@@ -51,5 +53,8 @@ public interface IElferRausController {
      * @return
      */
     String getStatusMessage();
+    
+    void setInjector(Injector injector);
+    void setPlayer(int playerAmount);
 
 }

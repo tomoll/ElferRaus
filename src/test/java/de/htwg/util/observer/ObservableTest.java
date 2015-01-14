@@ -5,6 +5,7 @@
  */
 package de.htwg.util.observer;
 
+import de.htwg.util.observer.impl.Observable;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

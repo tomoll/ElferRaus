@@ -1,5 +1,8 @@
 package de.htwg.elferraus.entities;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import de.htwg.elferraus.ElferRausModule;
 import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.entities.impl.Card;
@@ -16,6 +19,9 @@ import static org.junit.Assert.*;
  */
 public class PlayerTest {
 
+    
+        Injector injector = Guice.createInjector(new ElferRausModule());
+        
     /**
      *
      */
@@ -30,6 +36,7 @@ public class PlayerTest {
     @Before
     public void setUp() {
         hans = new ElferRausController();
+        hans.setInjector(injector);
         hans.setPlayer(2);
     }
 
