@@ -22,8 +22,8 @@ import javax.swing.JTextField;
  */
 public class DeckPanel extends JPanel implements ActionListener {
 
-    JButton[] cards;
-    private final int MAXIMUM_CARDS = 40;
+    private JButton[] cards;
+    private static final int MAXIMUM_CARDS = 40;
 
     /**
      *

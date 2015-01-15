@@ -15,9 +15,9 @@ import javax.swing.JPanel;
  */
 public class MainStackPanel extends JPanel implements ActionListener{
     
-    JButton mainStackButton;
-    JButton exitButton = new JButton("Exit Game");
-    JButton nextButton = new JButton("End Round");
+    private JButton mainStackButton;
+    private JButton exitButton = new JButton("Exit Game");
+    private JButton nextButton = new JButton("End Round");
     
     /**
      *

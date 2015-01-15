@@ -14,8 +14,8 @@ import javax.swing.JPanel;
  */
 public class MainArrayPanel extends JPanel {
 
-    JButton[] b1;
-    private final int SIZE = 12;
+    private JButton[] b1;
+    private static final int SIZE = 12;
 
     /**
      *

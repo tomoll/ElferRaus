@@ -23,12 +23,12 @@ public class GuiTest implements ActionListener, IObserver {
     private JButton start = new JButton("Start");
     private static IElferRausController controller;
     private int spielerzahl = Integer.MAX_VALUE;
-    private final int MAX_PLAYERS = 6;
-    private final int WAITTIME = 2000;
-    private final int XSIZE = 800;
-    private final int YSIZE = 600;
-    private final int SXSIZE = 200;
-    private final int SYSIZE = 150;
+    private static final int MAXPLAYERS = 6;
+    private static final int WAITTIME = 2000;
+    private static final int XSIZE = 800;
+    private static final int YSIZE = 600;
+    private static final int SXSIZE = 200;
+    private static final int SYSIZE = 150;
 
     /**
      *
@@ -47,7 +47,7 @@ public class GuiTest implements ActionListener, IObserver {
     public int GuiFrame() {
 
         this.initialize();
-        while (spielerzahl > MAX_PLAYERS) {
+        while (spielerzahl > MAXPLAYERS) {
             try {
                 Thread.sleep(WAITTIME);
             } catch (InterruptedException ex) {
