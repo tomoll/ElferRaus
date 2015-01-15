@@ -51,10 +51,10 @@ public class MainStackPanel extends JPanel implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==this.nextButton){
-            GuiTest.controller.setEndRound();
+            GuiTest.getController().setEndRound();
         }
         else if(e.getSource()==this.mainStackButton){
-            GuiTest.controller.getCardRequest();
+            GuiTest.getController().getCardRequest();
         }
     }
 

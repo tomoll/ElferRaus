@@ -3,11 +3,10 @@ package de.htwg.elferraus.entities;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.htwg.elferraus.ElferRausModule;
-import de.htwg.elferraus.entities.impl.MainStack;
-import de.htwg.elferraus.entities.impl.MainArray;
 import de.htwg.elferraus.entities.impl.Card;
 import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.elferraus.entities.impl.Waiting;
+import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -70,4 +69,19 @@ public class PlayerTest {
         assertTrue(hans.getActualPlayer().setState(new Waiting()));
     }
 
+    @Test
+    public void testgetTable() {
+        HashMap<Integer, HashMap<String, Integer>> temp = new HashMap<Integer, HashMap<String, Integer>>();
+        temp = hans.getActualPlayer().getTable();
+        assertNotNull(temp);
+    }
+    
+    @Test
+    public void testgetHand(){
+        HashMap<Integer, HashMap<String, Integer>> temp = new HashMap<Integer, HashMap<String, Integer>>();
+        temp = hans.getActualPlayer().getHand();
+        assertNotNull(temp);
+        
+        
+    }
 }

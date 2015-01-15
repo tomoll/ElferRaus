@@ -5,8 +5,6 @@ import com.google.inject.Injector;
 import de.htwg.elferraus.ElferRausModule;
 import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.elferraus.entities.impl.Card;
-import de.htwg.elferraus.entities.impl.MainArray;
-import de.htwg.elferraus.entities.impl.MainStack;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -111,6 +109,10 @@ public class ElferRausControllerTest {
 
         hans = new ElferRausController();
         hans.setInjector(injector);
+        
+        
+        
+        
 //        hans.setPlayer(2);
 //        while (hans.getActualPlayer().stackSize() > 0) {
 //            hans.getActualPlayer().takeCard();
@@ -152,17 +154,34 @@ public class ElferRausControllerTest {
     public void testgiveCards() {
         hans = new ElferRausController();
         hans.setInjector(injector);
- //       hans.setPlayer(3);
-//        hans = new ElferRausController();
-//        hans.setInjector(injector);
-//        hans.setPlayer(4);
-//        hans = new ElferRausController();
-//        hans.setInjector(injector);
-//        hans.setPlayer(5);
-//        hans = new ElferRausController();
-//        hans.setInjector(injector);
-//        hans.setPlayer(6);
-
+        hans.setPlayer(2);
+        
+        hans = new ElferRausController();
+        hans.setInjector(injector);
+        hans.setPlayer(3);
+        
+        hans = new ElferRausController();
+        hans.setInjector(injector);
+        hans.setPlayer(4);
+        
+        hans = new ElferRausController();
+        hans.setInjector(injector);
+        hans.setPlayer(5);
+        
+        hans = new ElferRausController();
+        hans.setInjector(injector);
+        hans.setPlayer(6);
+        
+        
+        
     }
+    
+    @Test
+    public void testgetIntPlayer(){
+        int i = hans.getIntPlayer();
+        assertEquals(2,i);
+    }
+    
+    
 
 }

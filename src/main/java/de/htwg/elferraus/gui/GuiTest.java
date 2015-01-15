@@ -17,12 +17,18 @@ import javax.swing.JTextField;
  */
 public class GuiTest implements ActionListener, IObserver {
 
-    JFrame mainWindow = new JFrame();
-    JFrame startWindow;
-    JTextField playerAmount = new JTextField();
-    JButton start = new JButton("Start");
-    static IElferRausController controller;
-    private int spielerzahl = 10;
+    private JFrame mainWindow = new JFrame();
+    private JFrame startWindow;
+    private JTextField playerAmount = new JTextField();
+    private JButton start = new JButton("Start");
+    private static IElferRausController controller;
+    private int spielerzahl = Integer.MAX_VALUE;
+    private final int MAX_PLAYERS = 6;
+    private final int WAITTIME = 2000;
+    private final int XSIZE = 800;
+    private final int YSIZE = 600;
+    private final int SXSIZE = 200;
+    private final int SYSIZE = 150;
 
     /**
      *
@@ -38,12 +44,12 @@ public class GuiTest implements ActionListener, IObserver {
      *
      * @return
      */
-    public int GUIFrame() {
+    public int GuiFrame() {
 
         this.initialize();
-        while (spielerzahl > 6) {
+        while (spielerzahl > MAX_PLAYERS) {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(WAITTIME);
             } catch (InterruptedException ex) {
                 Logger.getLogger(GuiTest.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -61,8 +67,8 @@ public class GuiTest implements ActionListener, IObserver {
         startWindow.setVisible(false);
         mainWindow.setVisible(false);
         mainWindow = new JFrame("Elfer Raus");
-        mainWindow.setSize(800, 500);
-        mainWindow.setLayout(new GridLayout(1, 3));
+        mainWindow.setSize(XSIZE, YSIZE);
+        mainWindow.setLayout(new GridLayout());
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
 
@@ -82,7 +88,7 @@ public class GuiTest implements ActionListener, IObserver {
      */
     public void initialize() {
         startWindow = new JFrame("Welcome");
-        startWindow.setSize(200, 180);
+        startWindow.setSize(SXSIZE, SYSIZE);
         startWindow.setLayout(new GridLayout());
         startWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         start.addActionListener(this);
@@ -102,5 +108,9 @@ public class GuiTest implements ActionListener, IObserver {
             spielerzahl = Integer.parseInt(playerAmount.getText());
 
         }
+    }
+    
+    public static IElferRausController getController(){
+        return controller;
     }
 }

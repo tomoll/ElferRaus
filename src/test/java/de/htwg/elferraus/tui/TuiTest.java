@@ -6,8 +6,6 @@
 package de.htwg.elferraus.tui;
 
 import de.htwg.elferraus.controller.impl.ElferRausController;
-import de.htwg.elferraus.entities.impl.MainArray;
-import de.htwg.elferraus.entities.impl.MainStack;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -76,7 +74,7 @@ public class TuiTest {
      *
      */
     @Test
-    public void testupdate(){
+    public void testprint(){
        //  tui.update();
         
         

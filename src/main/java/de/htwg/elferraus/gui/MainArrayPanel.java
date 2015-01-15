@@ -28,7 +28,7 @@ public class MainArrayPanel extends JPanel {
         b1 = new JButton[SIZE];
 
         HashMap<Integer, HashMap<String, Integer>> temp;
-        temp = GuiTest.controller.getActualPlayer().getTable();
+        temp = GuiTest.getController().getActualPlayer().getTable();
         for (int i = 0; i < SIZE; i++) {
             Set st = temp.get(i).keySet();
             String s = st.toString();

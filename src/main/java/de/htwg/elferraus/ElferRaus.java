@@ -58,7 +58,7 @@ public final class ElferRaus {
         tui = new Tui(controller);
        
         GuiTest dieter = new GuiTest(controller);
-        int i = dieter.GUIFrame();                        
+        int i = dieter.GuiFrame();                        
         controller.setInjector(injector); 
         controller.setPlayer(i);
         tui.initialize();

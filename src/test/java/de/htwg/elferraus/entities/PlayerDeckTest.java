@@ -2,12 +2,13 @@
 package de.htwg.elferraus.entities;
 
 
-import de.htwg.elferraus.entities.impl.PlayerDeck;
 import de.htwg.elferraus.entities.impl.Card;
-import org.junit.Before;
-import org.junit.Test;
+import de.htwg.elferraus.entities.impl.PlayerDeck;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  *
@@ -75,6 +76,14 @@ public class PlayerDeckTest {
         deck.addCard(c);
         assertNotNull(deck.toString());
         
+    }
+    
+    
+    @Test 
+    public void testgetCards(){
+        ArrayList<ICard> dieter;
+        dieter = deck.getCards();
+        assertNotNull(dieter);
     }
     
 

@@ -33,7 +33,7 @@ public class DeckPanel extends JPanel implements ActionListener {
         setLayout(new GridLayout(8, 5));
 
         cards = new JButton[MAXIMUM_CARDS];
-        HashMap<Integer, HashMap<String, Integer>> temp = GuiTest.controller.getActualPlayer().getHand();
+        HashMap<Integer, HashMap<String, Integer>> temp = GuiTest.getController().getActualPlayer().getHand();
         for (int i = 0; i < temp.size(); i++) {
             if (temp.get(i).keySet() != null) {
                 Set st = temp.get(i).keySet();
@@ -62,7 +62,7 @@ public class DeckPanel extends JPanel implements ActionListener {
 
             }
         }
-        JTextField actualPlayer = new JTextField("Now Pl " + (GuiTest.controller.getIntPlayer()+1));
+        JTextField actualPlayer = new JTextField("Now Pl " + (GuiTest.getController().getIntPlayer()+1));
         add(actualPlayer);
         setVisible(true);
 
@@ -71,7 +71,7 @@ public class DeckPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < 40; i++) {
             if (e.getSource() == this.cards[i]) {
-                GuiTest.controller.setCardRequest(i + 1);
+                GuiTest.getController().setCardRequest(i + 1);
                 updateUI();
             }
         }
