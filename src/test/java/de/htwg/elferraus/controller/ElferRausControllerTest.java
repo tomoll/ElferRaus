@@ -111,23 +111,6 @@ public class ElferRausControllerTest {
         hans.setInjector(injector);
         
         
-        
-        
-//        hans.setPlayer(2);
-//        while (hans.getActualPlayer().stackSize() > 0) {
-//            hans.getActualPlayer().takeCard();
-//        }
-//        assertFalse(hans.getCardRequest());
-//        
-//        
-//        hans = new ElferRausController();
-//        hans.setInjector(injector);
-//        hans.setPlayer(2);
-//        for ( int i = hans.getActualPlayer().stackSize(); i > 0; i--) {
-//            hans.setCardRequest(i);
-//        }
-//        assertFalse(hans.getCardRequest());
-//        
 
     }
 
@@ -156,21 +139,21 @@ public class ElferRausControllerTest {
         hans.setInjector(injector);
         hans.setPlayer(2);
         
-        hans = new ElferRausController();
-        hans.setInjector(injector);
-        hans.setPlayer(3);
-        
-        hans = new ElferRausController();
-        hans.setInjector(injector);
-        hans.setPlayer(4);
-        
-        hans = new ElferRausController();
-        hans.setInjector(injector);
-        hans.setPlayer(5);
-        
-        hans = new ElferRausController();
-        hans.setInjector(injector);
-        hans.setPlayer(6);
+//        hans = new ElferRausController();
+//        hans.setInjector(injector);
+//        hans.setPlayer(3);
+//        
+//        hans = new ElferRausController();
+//        hans.setInjector(injector);
+//        hans.setPlayer(4);
+//        
+//        hans = new ElferRausController();
+//        hans.setInjector(injector);
+//        hans.setPlayer(5);
+//        
+//        hans = new ElferRausController();
+//        hans.setInjector(injector);
+//        hans.setPlayer(6);
         
         
         
@@ -179,7 +162,7 @@ public class ElferRausControllerTest {
     @Test
     public void testgetIntPlayer(){
         int i = hans.getIntPlayer();
-        assertEquals(2,i);
+        assertEquals(0,i);
     }
     
     

@@ -51,11 +51,13 @@ public class MainArrayPanel extends JPanel {
             if (temp.get(i).get(s) == null) {
                 b1[i] = new JButton("---");
                 b1[i].setBackground(c);
+                b1[i].setForeground(c);
 
                 add(b1[i]);
             } else {
                 b1[i] = new JButton(temp.get(i).get(s).toString());
                 b1[i].setBackground(c);
+                b1[i].setForeground(c);
 
                 add(b1[i]);
             }

@@ -38,7 +38,7 @@ public class MainArrayTest {
         Card card1 = new Card(12,"r");
         array.setHigh(card1);
         assertEquals(card1, array.getHigh("r"));
-        assertNull(array.getHigh("r"));
+        assertNotNull(array.getHigh("r"));
 
     }
 
@@ -50,7 +50,7 @@ public class MainArrayTest {
         Card card2 = new Card(10,"r");
         array.setLow(card2);
         assertEquals(card2, array.getLow("r"));
-        assertNull(array.getLow("r"));
+        assertNotNull(array.getLow("r"));
 
     }
     

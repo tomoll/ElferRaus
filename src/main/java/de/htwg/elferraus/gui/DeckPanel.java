@@ -57,6 +57,7 @@ public class DeckPanel extends JPanel implements ActionListener {
 
                 cards[i] = new JButton(temp.get(i).get(s).toString());
                 cards[i].setBackground(c);
+                cards[i].setForeground(c);
                 cards[i].addActionListener(this);
                 add(cards[i]);
 
