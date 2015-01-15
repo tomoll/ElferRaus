@@ -16,6 +16,7 @@ import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,54 +24,53 @@ import javax.swing.JTextArea;
  */
 public class DeckPanel extends JPanel implements ActionListener {
 
-
     JButton[] cards;
     private final int MAXIMUM_CARDS = 40;
 
     public DeckPanel() {
         setSize(400, 500);
-        setLayout(new GridLayout(8,5));
-
+        setLayout(new GridLayout(8, 5));
 
         cards = new JButton[MAXIMUM_CARDS];
         HashMap<Integer, HashMap<String, Integer>> temp = GuiTest.controller.getActualPlayer().getHand();
-        for(int i= 0; i<MAXIMUM_CARDS;i++){
-            Set st = temp.get(i).keySet();
-            String s = st.toString();
-            Color c = Color.BLACK;
-            
-            if (s.equals("b")) {
-                c = Color.BLUE;
-            }
-            if (s.equals("g")) {
-                c = Color.GREEN;
-            }
-            if (s.equals("r")) {
-                c = Color.RED;
-            }
-            if (s.equals("y")) {
-                c = Color.YELLOW;
-            }
-            
-            
+        for (int i = 0; i < temp.size(); i++) {
+            if (temp.get(i).keySet() != null) {
+                Set st = temp.get(i).keySet();
+                String s = st.toString();
+                char x = s.charAt(1);
+                s = "" + x;
+                Color c = Color.BLACK;
 
-            cards[i] = new JButton(temp.get(i).get(s).toString());
-            cards[i].setBackground(c);
-            cards[i].addActionListener(this);
-            add(cards[i]);
-            i++;
+                if (s.equals("b")) {
+                    c = Color.BLUE;
+                }
+                if (s.equals("g")) {
+                    c = Color.GREEN;
+                }
+                if (s.equals("r")) {
+                    c = Color.RED;
+                }
+                if (s.equals("y")) {
+                    c = Color.YELLOW;
+                }
 
+                cards[i] = new JButton(temp.get(i).get(s).toString());
+                cards[i].setBackground(c);
+                cards[i].addActionListener(this);
+                add(cards[i]);
+
+            }
         }
+        JTextField actualPlayer = new JTextField("Now Pl " + (GuiTest.controller.getIntPlayer()+1));
+        add(actualPlayer);
         setVisible(true);
-        System.out.println(GuiTest.controller.getMainString());
 
     }
 
-
     public void actionPerformed(ActionEvent e) {
-        for(int i=0; i<40; i++){
-            if(e.getSource()==this.cards[i]){
-                GuiTest.controller.setCardRequest(i+1);
+        for (int i = 0; i < 40; i++) {
+            if (e.getSource() == this.cards[i]) {
+                GuiTest.controller.setCardRequest(i + 1);
                 updateUI();
             }
         }

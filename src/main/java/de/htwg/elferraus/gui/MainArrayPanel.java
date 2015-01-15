@@ -30,9 +30,11 @@ public class MainArrayPanel extends JPanel {
 
         HashMap<Integer, HashMap<String, Integer>> temp;
         temp = GuiTest.controller.getActualPlayer().getTable();
-        for(int i= 0; i<SIZE;i++){
-        Set st = temp.get(i).keySet();
+        for (int i = 0; i < SIZE; i++) {
+            Set st = temp.get(i).keySet();
             String s = st.toString();
+            char x = s.charAt(1);
+            s = "" + x;
             Color c = Color.BLACK;
             if (s.equals("b")) {
                 c = Color.BLUE;
@@ -46,30 +48,21 @@ public class MainArrayPanel extends JPanel {
             if (s.equals("y")) {
                 c = Color.YELLOW;
             }
-            if (i == 1 || i == 3 || i == 5 || i == 7) {
-                b1[i] = new JButton("11");
-                b1[i].setBackground(c);
-                //b1[i].setForeground(c);
-                add(b1[i]);
-            }
 
-            if (temp.get(s) == null) {
+            if (temp.get(i).get(s) == null) {
                 b1[i] = new JButton("---");
                 b1[i].setBackground(c);
                 //b1[i].setForeground(c);
                 add(b1[i]);
-                i++;
             } else {
-                b1[i] = new JButton(temp.get(s).toString());
+                b1[i] = new JButton(temp.get(i).get(s).toString());
                 b1[i].setBackground(c);
-               // b1[i].setForeground(c);
+                // b1[i].setForeground(c);
                 add(b1[i]);
-                i++;
             }
 
         }
         setVisible(true);
 
-
-    }   
+    }
 }

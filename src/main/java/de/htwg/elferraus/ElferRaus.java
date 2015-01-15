@@ -55,23 +55,18 @@ public final class ElferRaus {
         Injector injector = Guice.createInjector(new ElferRausModule());
         controller = injector.getInstance(IElferRausController.class);
         controller.setInjector(injector);
-//        tui = new Tui(controller);
-//        int i = tui.initialize();
-//        controller.setInjector(injector);             ganze Block gut nur für Gui
-//        controller.setPlayer(i);
-//        boolean quit = false;
-        
-        
+        tui = new Tui(controller);
+       
         GuiTest dieter = new GuiTest(controller);
         int i = dieter.GUIFrame();                              //alles scheiß für gui
         controller.setInjector(injector); 
         controller.setPlayer(i);
-//        
-//        scanner = new Scanner(System.in);
-//        while (!quit) {
-//            //tui.inputLine(scanner.nextLine());          ganze Block gut nur für Gui
-//            quit = tui.iterate();
-//        }
+        tui.initialize();
+        
+        scanner = new Scanner(System.in);
+        while (true) {
+            tui.handleInputOrQuit(scanner.nextLine());
+        }
     }
 
 }

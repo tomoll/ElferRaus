@@ -1,17 +1,14 @@
 package de.htwg.elferraus.gui;
 
 import de.htwg.elferraus.controller.IElferRausController;
-import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.util.observer.IObserver;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -26,7 +23,12 @@ public class GuiTest implements ActionListener, IObserver {
     JButton start = new JButton("Start");
     static IElferRausController controller;
     private int spielerzahl = 10;
-     
+
+    public GuiTest(IElferRausController controller) {
+        this.controller = controller;
+        this.controller.addObserver(this);
+          
+    }
 
     public int GUIFrame() {
 
@@ -44,17 +46,13 @@ public class GuiTest implements ActionListener, IObserver {
 
     }
 
-    public GuiTest(IElferRausController controller) {
-        this.controller = controller;
-        this.controller.addObserver(this);
-    }
-
     public void start() {
 
         mainWindow = new JFrame("Elfer Raus");
         mainWindow.setSize(800, 500);
         mainWindow.setLayout(new GridLayout(1, 3));
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
 
         MainArrayPanel array = new MainArrayPanel();
         MainStackPanel stack = new MainStackPanel();
@@ -75,7 +73,6 @@ public class GuiTest implements ActionListener, IObserver {
         start.addActionListener(this);
         startWindow.add(playerAmount);
         startWindow.add(start);
-        System.out.println((playerAmount.getText()));
         startWindow.setVisible(true);
 
     }
@@ -90,15 +87,11 @@ public class GuiTest implements ActionListener, IObserver {
 
     @Override
     public void update() {
-//       mainWindow.setVisible(false);
-//        mainWindow.dispose();
         start();
-        //printGUI();
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.start) {
-            System.out.println(Integer.parseInt(playerAmount.getText()));
             spielerzahl = Integer.parseInt(playerAmount.getText());
 
         }

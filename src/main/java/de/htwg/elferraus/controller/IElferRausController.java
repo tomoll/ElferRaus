@@ -3,6 +3,7 @@ package de.htwg.elferraus.controller;
 import com.google.inject.Injector;
 import de.htwg.elferraus.entities.impl.Player;
 import de.htwg.util.observer.IObservable;
+
 /**
  *
  * @author Tobi
@@ -18,6 +19,7 @@ public interface IElferRausController extends IObservable {
      *
      */
     void startGame();
+
     /**
      *
      * @return
@@ -54,10 +56,13 @@ public interface IElferRausController extends IObservable {
      * @return
      */
     String getStatusMessage();
-    
+
     void setInjector(Injector injector);
+
     Player getActualPlayer();
+
     void setPlayer(int playerAmount);
-    
+
+    int getIntPlayer();
 
 }

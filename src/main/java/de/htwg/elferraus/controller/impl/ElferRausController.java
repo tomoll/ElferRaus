@@ -223,6 +223,9 @@ public class ElferRausController extends Observable implements IElferRausControl
     public Player getActualPlayer(){
         return player[actualplayer];
     }
+    public int getIntPlayer(){
+        return actualplayer;
+    }
     
     /**
      *
@@ -231,6 +234,7 @@ public class ElferRausController extends Observable implements IElferRausControl
     public void setPlayer(int playerAmount){
         this.playerAmount=playerAmount;
         startGame();
+        notifyObservers();
         
     }
     

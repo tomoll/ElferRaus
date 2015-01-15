@@ -2,7 +2,6 @@ package de.htwg.elferraus.tui;
 
 
 import de.htwg.elferraus.controller.IElferRausController;
-import de.htwg.elferraus.controller.impl.ElferRausController;
 import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
@@ -82,6 +81,7 @@ public class Tui implements IObserver {
         } else if (line.equalsIgnoreCase("4")) {
             this.controller.removeObserver(this);
             quit = true;
+            //view = new EndMenuViewer();
         } else {
             System.out.println("Falsche Eingabe!");
         }

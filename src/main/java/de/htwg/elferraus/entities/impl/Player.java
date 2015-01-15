@@ -179,8 +179,10 @@ public class Player implements IPlayer {
             if (temp2 == null) {
                 temp.get(count).put(s, null);
                 count++;
+                temp.put(count, new HashMap<String, Integer>());
                 temp.get(count).put(s, null);
                 count++;
+                temp.put(count, new HashMap<String, Integer>());
                 temp.get(count).put(s, null);
                 count++;
                 continue;
@@ -192,8 +194,10 @@ public class Player implements IPlayer {
                     temp.get(count).put(s, zahl);
                 }
                 count++;
+                temp.put(count, new HashMap<String, Integer>());
                 temp.get(count).put(s, 11);
                 count++;
+                temp.put(count, new HashMap<String, Integer>());
                 temp2 = playTable.getHigh(s);
                 zahl = temp2.getNumber();
                 if (zahl == 11) {

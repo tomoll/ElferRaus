@@ -55,15 +55,14 @@ public class MainStackPanel extends JPanel implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==this.exitButton){
-            //GuiTest.controller.removeObserver(GuiTest);
+            //GuiTest
+
         }
         else if(e.getSource()==this.nextButton){
             GuiTest.controller.setEndRound();
-            System.out.println(GuiTest.controller.getStatusMessage());
         }
         else if(e.getSource()==this.mainStackButton){
             GuiTest.controller.getCardRequest();
-            System.out.println(GuiTest.controller.getStatusMessage());
         }
     }
 
