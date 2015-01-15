@@ -11,9 +11,20 @@ package de.htwg.util.observer;
  */
 public interface IObservable {
     
+    /**
+     *
+     * @param s
+     */
     void addObserver(final IObserver s);
     
+    /**
+     *
+     */
     void notifyObservers();
     
+    /**
+     *
+     * @param s
+     */
     void removeObserver(IObserver s);
 }

@@ -155,6 +155,10 @@ public class Player implements IPlayer {
         return stack.popCard();
     }
 
+    /**
+     *
+     * @return
+     */
     public HashMap<Integer, HashMap<String, Integer>> getTable() {
         HashMap<Integer, HashMap<String, Integer>> temp = new HashMap<Integer, HashMap<String, Integer>>();
         int count = 0;
@@ -212,6 +216,10 @@ public class Player implements IPlayer {
         return temp;
     }
 
+    /**
+     *
+     * @return
+     */
     public HashMap<Integer, HashMap<String, Integer>> getHand() {
         HashMap<Integer, HashMap<String, Integer>> temp = new HashMap<Integer, HashMap<String, Integer>>();
         ArrayList<ICard> array = deck.getCards();

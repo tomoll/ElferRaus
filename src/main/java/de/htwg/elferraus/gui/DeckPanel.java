@@ -5,7 +5,6 @@
  */
 package de.htwg.elferraus.gui;
 
-import de.htwg.elferraus.controller.IElferRausController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -15,7 +14,6 @@ import java.util.HashMap;
 import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -27,6 +25,9 @@ public class DeckPanel extends JPanel implements ActionListener {
     JButton[] cards;
     private final int MAXIMUM_CARDS = 40;
 
+    /**
+     *
+     */
     public DeckPanel() {
         setSize(400, 500);
         setLayout(new GridLayout(8, 5));
@@ -76,7 +77,4 @@ public class DeckPanel extends JPanel implements ActionListener {
         }
     }
 
-    public Dimension getPreferredSize() {
-        return new Dimension(250, 200);
-    }
 }

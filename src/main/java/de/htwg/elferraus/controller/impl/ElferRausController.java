@@ -1,13 +1,9 @@
 package de.htwg.elferraus.controller.impl;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import de.htwg.elferraus.ElferRausModule;
 import de.htwg.elferraus.entities.impl.Player;
 import de.htwg.elferraus.controller.*;
 import de.htwg.elferraus.entities.*;
-import de.htwg.elferraus.entities.impl.MainArray;
-import de.htwg.elferraus.entities.impl.MainStack;
 import de.htwg.elferraus.entities.impl.Playing;
 import de.htwg.elferraus.entities.impl.Waiting;
 import de.htwg.util.observer.impl.Observable;
@@ -38,10 +34,9 @@ public class ElferRausController extends Observable implements IElferRausControl
      * resolving dependencies automatically by Guice
      */
     private Injector injector;
-            //= Guice.createInjector(new ElferRausModule());
     
     /**
-     *
+     *  Create Method the Startsequence for the Player
      */
     public void create(){
         statusMessage = "Welcome to ElferRaus\n";
@@ -52,8 +47,6 @@ public class ElferRausController extends Observable implements IElferRausControl
      */
     public void startGame(){
         setStatusMessage("Welcome Player 1\n");
-       // MainArray playTable = new MainArray();
-       // MainStack stack = new MainStack();
         IMainArray playTable = injector.getInstance(IMainArray.class);
         IMainStack stack = injector.getInstance(IMainStack.class);
         player = new Player[playerAmount];
@@ -223,6 +216,11 @@ public class ElferRausController extends Observable implements IElferRausControl
     public Player getActualPlayer(){
         return player[actualplayer];
     }
+
+    /**
+     *
+     * @return
+     */
     public int getIntPlayer(){
         return actualplayer;
     }
@@ -238,6 +236,10 @@ public class ElferRausController extends Observable implements IElferRausControl
         
     }
     
+    /**
+     *
+     * @param injector
+     */
     public void setInjector(Injector injector){
         this.injector = injector;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package de.htwg.elferraus.gui;
 
@@ -20,12 +15,13 @@ import javax.swing.JPanel;
  */
 public class MainStackPanel extends JPanel implements ActionListener{
     
-    //JPanel mainStackPanel = new JPanel();
     JButton mainStackButton;
     JButton exitButton = new JButton("Exit Game");
     JButton nextButton = new JButton("End Round");
     
-
+    /**
+     *
+     */
     public MainStackPanel() {
         
         setSize(200,500);
@@ -54,11 +50,7 @@ public class MainStackPanel extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==this.exitButton){
-            //GuiTest
-
-        }
-        else if(e.getSource()==this.nextButton){
+        if(e.getSource()==this.nextButton){
             GuiTest.controller.setEndRound();
         }
         else if(e.getSource()==this.mainStackButton){

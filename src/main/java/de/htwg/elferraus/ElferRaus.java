@@ -44,14 +44,13 @@ public final class ElferRaus {
 
     }
     /**
-     *
+     * the main
      * @param args
      */
     public static void main(String[] args) {
 
-        // Set up logging through log4j
-        //PropertyConfigurator.configure("/Users/Tobi/NetBeansProjects/SE2014WS-19-ElferRaus/ElferRaus/log4j.properties");
         
+        PropertyConfigurator.configure("/Users/Tobi/NetBeansProjects/SE2014WS-19-ElferRaus/ElferRaus/log4j.properties");
         
         Injector injector = Guice.createInjector(new ElferRausModule());
         controller = injector.getInstance(IElferRausController.class);
@@ -59,7 +58,7 @@ public final class ElferRaus {
         tui = new Tui(controller);
        
         GuiTest dieter = new GuiTest(controller);
-        int i = dieter.GUIFrame();                              //alles scheiß für gui
+        int i = dieter.GUIFrame();                        
         controller.setInjector(injector); 
         controller.setPlayer(i);
         tui.initialize();

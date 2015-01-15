@@ -24,12 +24,20 @@ public class GuiTest implements ActionListener, IObserver {
     static IElferRausController controller;
     private int spielerzahl = 10;
 
+    /**
+     *
+     * @param controller
+     */
     public GuiTest(IElferRausController controller) {
         this.controller = controller;
         this.controller.addObserver(this);
           
     }
 
+    /**
+     *
+     * @return
+     */
     public int GUIFrame() {
 
         this.initialize();
@@ -46,6 +54,9 @@ public class GuiTest implements ActionListener, IObserver {
 
     }
 
+    /**
+     *
+     */
     public void start() {
         startWindow.setVisible(false);
         mainWindow.setVisible(false);
@@ -66,6 +77,9 @@ public class GuiTest implements ActionListener, IObserver {
         mainWindow.setVisible(true);
     }
 
+    /**
+     *
+     */
     public void initialize() {
         startWindow = new JFrame("Welcome");
         startWindow.setSize(200, 180);
@@ -76,14 +90,6 @@ public class GuiTest implements ActionListener, IObserver {
         startWindow.add(start);
         startWindow.setVisible(true);
 
-    }
-
-    public void iterate() {
-
-    }
-
-    public static void printGUI() {
-        //deck.updateUI();
     }
 
     @Override

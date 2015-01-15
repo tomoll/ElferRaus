@@ -34,7 +34,6 @@ public class Tui implements IObserver {
      * @return
      */
     public int initialize() {
-        //logger.info("How many Players?");
         System.out.println("How Many Players??");
         int i;
         subscanner = new Scanner(System.in);
@@ -81,7 +80,6 @@ public class Tui implements IObserver {
         } else if (line.equalsIgnoreCase("4")) {
             this.controller.removeObserver(this);
             quit = true;
-            //view = new EndMenuViewer();
         } else {
             System.out.println("Falsche Eingabe!");
         }
