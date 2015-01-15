@@ -14,6 +14,7 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public final class ElferRaus {
 
+    private static boolean quit = false;
     /**
      * tui.
      */
@@ -64,8 +65,8 @@ public final class ElferRaus {
         tui.initialize();
         
         scanner = new Scanner(System.in);
-        while (true) {
-            tui.handleInputOrQuit(scanner.nextLine());
+        while (!quit) {
+            quit = tui.handleInputOrQuit(scanner.nextLine());
         }
     }
 

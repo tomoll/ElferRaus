@@ -17,7 +17,7 @@ import javax.swing.JTextField;
  */
 public class GuiTest implements ActionListener, IObserver {
 
-    JFrame mainWindow;
+    JFrame mainWindow = new JFrame();
     JFrame startWindow;
     JTextField playerAmount = new JTextField();
     JButton start = new JButton("Start");
@@ -47,7 +47,8 @@ public class GuiTest implements ActionListener, IObserver {
     }
 
     public void start() {
-
+        startWindow.setVisible(false);
+        mainWindow.setVisible(false);
         mainWindow = new JFrame("Elfer Raus");
         mainWindow.setSize(800, 500);
         mainWindow.setLayout(new GridLayout(1, 3));
