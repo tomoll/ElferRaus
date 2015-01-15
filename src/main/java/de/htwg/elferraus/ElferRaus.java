@@ -62,11 +62,10 @@ public final class ElferRaus {
 //        boolean quit = false;
         
         
-        GuiTest dieter = new GuiTest();
-        int i = dieter.GUIFrame(controller);                              //alles scheiß für gui
+        GuiTest dieter = new GuiTest(controller);
+        int i = dieter.GUIFrame();                              //alles scheiß für gui
         controller.setInjector(injector); 
         controller.setPlayer(i);
-        dieter.start();
 //        
 //        scanner = new Scanner(System.in);
 //        while (!quit) {

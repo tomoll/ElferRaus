@@ -155,8 +155,9 @@ public class Player implements IPlayer {
         return stack.popCard();
     }
 
-    public HashMap<String, Integer> getTable() {
-        HashMap<String, Integer> temp = new HashMap<String, Integer>();
+    public HashMap<Integer, HashMap<String, Integer>> getTable() {
+        HashMap<Integer, HashMap<String, Integer>> temp = new HashMap<Integer, HashMap<String, Integer>>();
+        int count = 0;
         for (int i = 0; i < 4; i++) {
             String s = "x";
             if (i == 0) {
@@ -174,39 +175,45 @@ public class Player implements IPlayer {
             }
             Integer zahl;
             ICard temp2 = playTable.getLow(s);
+            temp.put(count, new HashMap<String, Integer>());
             if (temp2 == null) {
-                temp.put(s, null);
+                temp.get(count).put(s, null);
+                count++;
+                temp.get(count).put(s, null);
+                count++;
+                temp.get(count).put(s, null);
+                count++;
+                continue;
             } else {
                 zahl = temp2.getNumber();
                 if (zahl == 11) {
-                    temp.put(s, null);
+                    temp.get(count).put(s, null);
                 } else {
-                    temp.put(s, zahl);
+                    temp.get(count).put(s, zahl);
                 }
-            }
-
-            s = s + " ";
-            temp2 = playTable.getHigh(s);
-            if (temp2 == null) {
-                temp.put(s, null);
-            } else {
+                count++;
+                temp.get(count).put(s, 11);
+                count++;
+                temp2 = playTable.getHigh(s);
                 zahl = temp2.getNumber();
                 if (zahl == 11) {
-                    temp.put(s, null);
+                    temp.get(count).put(s, null);
                 } else {
-                    temp.put(s, zahl);
+                    temp.get(count).put(s, zahl);
                 }
-            }
+                count++;
 
+            }
         }
         return temp;
     }
 
-    public HashMap<String, Integer> getHand() {
-        HashMap<String, Integer> temp = new HashMap<String, Integer>();
+    public HashMap<Integer, HashMap<String, Integer>> getHand() {
+        HashMap<Integer, HashMap<String, Integer>> temp = new HashMap<Integer, HashMap<String, Integer>>();
         ArrayList<ICard> array = deck.getCards();
-        for (int i = 0; i < deck.getCards().size(); i++) {
-            temp.put(array.get(i).getColour(), array.get(i).getNumber());
+        for (int i = 0; i < array.size(); i++) {
+            temp.put(i, new HashMap<String, Integer>());
+            temp.get(i).put(array.get(i).getColour(), array.get(i).getNumber());
         }
         return temp;
     }
