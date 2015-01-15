@@ -21,13 +21,14 @@ public class GuiTest implements ActionListener {
     //JComboBox indexChooser = new JComboBox();
     JTextField playerAmount = new JTextField();
     JButton start = new JButton("Start");
-    private  IElferRausController controller;
+    static IElferRausController controller;
     //GuiTest hans = new GuiTest();
     private int spielerzahl;
 
     JPanel test = new JPanel();
     JButton test2 = new JButton("DIETER");
     boolean weiter = false; 
+    static DeckPanel deck;
  
 
     public int GUIFrame(IElferRausController controller) {
@@ -35,26 +36,29 @@ public class GuiTest implements ActionListener {
         this.controller = controller;
         //this.controller = controller;
         //controller.addObserver(this);
-        this.initialize();
-        return spielerzahl = 4;
+        spielerzahl = this.initialize();
+        return spielerzahl;
         
         
 
     }
  
     public void start(){
+        //JFrame mainWindow = new JFrame("Elfer Raus");
         mainWindow.setSize(600, 500);
         mainWindow.setLayout(new GridLayout(3,1));
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         MainArrayPanel array = new MainArrayPanel(controller);
         MainStackPanel stack = new MainStackPanel();
-        DeckPanel deck = new DeckPanel(controller);
+         deck = new DeckPanel(controller);
         
-        this.mainWindow.add(array);
-        this.mainWindow.add(stack);
-        this.mainWindow.add(deck);
+      
         
+        mainWindow.add(array);
+        mainWindow.add(stack);
+        mainWindow.add(deck);
+        mainWindow.pack();
         mainWindow.setVisible(true);
     }
 
@@ -71,19 +75,19 @@ public class GuiTest implements ActionListener {
         System.out.println((playerAmount.getText()));
         startWindow.setVisible(true);
         //irgendwie noch aufhalten das erst der rest gestartet wird wenn spieleranzahl gesetzt wurde!!
-        return spielerzahl;
+        //return spielerzahl;
+        return 2;
     }
 
     public void iterate() {
 
     }
 
-    public void printGUI() {
-      //  mainArrayPanel.
-
+    public static void printGUI() {
+       deck.updateUI();
     }
 
-    public void update() {
+    public static void update() {
         printGUI();
     }
 //        JFrame.setDefaultLookAndFeelDecorated(true);

@@ -18,13 +18,13 @@ import javax.swing.JPanel;
  */
 public class MainArrayPanel extends JPanel {
 
-    JPanel mainArrayPanel = new JPanel();
+    //JPanel mainArrayPanel = new JPanel();
     JButton[] b1;
 
     public MainArrayPanel(IElferRausController controller) {
 
-        mainArrayPanel.setSize(200, 500);
-        mainArrayPanel.setLayout(new GridLayout(4, 3));
+        setSize(200, 500);
+        setLayout(new GridLayout(4, 3));
 
         b1 = new JButton[12];
         int i = 0;
@@ -47,23 +47,23 @@ public class MainArrayPanel extends JPanel {
             if (i == 1 || i == 3 || i == 5 || i == 7) {
                 b1[i] = new JButton("11");
                 b1[i].setBackground(c);
-                mainArrayPanel.add(b1[i]);
+                add(b1[i]);
             }
 
             if (temp.get(s) == null) {
                 b1[i] = new JButton("---");
                 b1[i].setBackground(c);
-                mainArrayPanel.add(b1[i]);
+                add(b1[i]);
                 i++;
             } else {
                 b1[i] = new JButton(temp.get(s).toString());
                 b1[i].setBackground(c);
-                mainArrayPanel.add(b1[i]);
+                add(b1[i]);
                 i++;
             }
 
         }
-        mainArrayPanel.setVisible(true);
+        setVisible(true);
 
 //        setBorder(BorderFactory.createLineBorder(Color.black));
 //        JButton card1 = new JButton("");

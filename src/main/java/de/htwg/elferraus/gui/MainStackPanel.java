@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  */
 public class MainStackPanel extends JPanel implements ActionListener{
     
-    JPanel mainStackPanel = new JPanel();
+    //JPanel mainStackPanel = new JPanel();
     JButton mainStackButton;
     JButton exitButton = new JButton("Exit Game");
     JButton nextButton = new JButton("End Round");
@@ -34,8 +34,10 @@ public class MainStackPanel extends JPanel implements ActionListener{
     
     public MainStackPanel() {
         
-        mainStackPanel.setSize(200, 500);
-        mainStackPanel.setLayout(new GridLayout(3,1));
+        //mainStackPanel.setSize(200, 500);
+        setSize(200,500);
+        //mainStackPanel.setLayout(new GridLayout(3,1));
+        setLayout(new GridLayout(3,1));
         mainStackButton = new JButton("Main Stack");
         mainStackButton.setSize(30, 50);
         mainStackButton.setBackground(Color.BLACK);
@@ -46,11 +48,15 @@ public class MainStackPanel extends JPanel implements ActionListener{
         exitButton.addActionListener(this);
         nextButton.addActionListener(this);
         
-        mainStackPanel.add(mainStackButton);
-        mainStackPanel.add(nextButton);
-        mainStackPanel.add(exitButton);
+        //mainStackPanel.add(mainStackButton);
+        add(mainStackButton);
+        //mainStackPanel.add(nextButton);
+        add(nextButton);
+        //mainStackPanel.add(exitButton);
+        add(exitButton);
         
-        mainStackPanel.setVisible(true);
+        //mainStackPanel.setVisible(true);
+        setVisible(true);
         
         
         
@@ -77,13 +83,19 @@ public class MainStackPanel extends JPanel implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==this.exitButton){
-            //Spiel irgendwie beenden
+            //GuiTest.controller.removeObserver(GuiTest);
         }
         else if(e.getSource()==this.nextButton){
-            //Nächster Spieler
+            GuiTest.controller.setEndRound();
+            GuiTest.update();
+            System.out.println(GuiTest.controller.getStatusMessage());
+            //GuiTest.controller.setEndRound();
         }
         else if(e.getSource()==this.mainStackButton){
-            //Karte vom Stack ziehen
+            GuiTest.controller.getCardRequest();
+            GuiTest.update();
+            System.out.println(GuiTest.controller.getStatusMessage());
+            //GuiTest.controller.getCardRequest();
         }
     }
 

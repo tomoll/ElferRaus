@@ -22,11 +22,14 @@ import javax.swing.JTextArea;
  */
 public class DeckPanel extends JPanel implements ActionListener {
 
-    JPanel playerPanel = new JPanel();
+    //JPanel playerPanel = new JPanel();
+    private final IElferRausController controller;
+
     JTextArea playerDeck = new JTextArea();
     JButton[] cards;
 
     public DeckPanel(IElferRausController controller) {
+        this.controller = controller;
         playerDeck.setSize(200, 500);
 
         playerDeck.setLayout(new GridLayout());
@@ -59,7 +62,9 @@ public class DeckPanel extends JPanel implements ActionListener {
             i++;
 
         }
-        playerDeck.setVisible(true);
+        add(playerDeck);
+        setVisible(true);
+        System.out.println(controller.getMainString());
 //
 //        setBorder(BorderFactory.createLineBorder(Color.black));
 //        JLabel welcome = new JLabel("Deine Karten : ");
@@ -77,6 +82,14 @@ public class DeckPanel extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        for(int i=0; i<40; i++){
+            if(e.getSource()==this.cards[i]){
+                controller.setCardRequest(i);
+                updateUI();
+            }
+        }
+        
+        /*
         if(e.getSource()==this.cards[0]){
             //Karte mit Index 0 ausgewählt 
         } else if( e.getSource()==this.cards[0]){
@@ -163,7 +176,7 @@ public class DeckPanel extends JPanel implements ActionListener {
             //Karte mit Index....
         }
             
-            
+            */
     }
 
     public Dimension getPreferredSize() {
