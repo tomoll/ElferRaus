@@ -52,12 +52,12 @@ public class DeckPanel extends JPanel implements ActionListener {
                     c = Color.RED;
                 }
                 if (s.equals("y")) {
-                    c = Color.YELLOW;
+                    c = Color.ORANGE;
                 }
 
                 cards[i] = new JButton(temp.get(i).get(s).toString());
-                cards[i].setBackground(c);
-                cards[i].setForeground(c);
+                //cards[i].setBackground(c);    //Windows-Version
+                cards[i].setForeground(c);      //Mac-Version
                 cards[i].addActionListener(this);
                 add(cards[i]);
 

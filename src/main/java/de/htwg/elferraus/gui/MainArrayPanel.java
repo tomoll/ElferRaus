@@ -45,19 +45,19 @@ public class MainArrayPanel extends JPanel {
                 c = Color.RED;
             }
             if (s.equals("y")) {
-                c = Color.YELLOW;
+                c = Color.ORANGE;
             }
 
             if (temp.get(i).get(s) == null) {
                 b1[i] = new JButton("---");
-                b1[i].setBackground(c);
-                b1[i].setForeground(c);
+                //b1[i].setBackground(c);   //Windows-Version
+                b1[i].setForeground(c);     //Mac-Version
 
                 add(b1[i]);
             } else {
                 b1[i] = new JButton(temp.get(i).get(s).toString());
-                b1[i].setBackground(c);
-                b1[i].setForeground(c);
+                //b1[i].setBackground(c);   //Windows-Version
+                b1[i].setForeground(c);     //Mac-Version
 
                 add(b1[i]);
             }
